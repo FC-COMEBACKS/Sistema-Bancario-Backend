@@ -59,7 +59,4 @@ const UsuarioSchema = new Schema({
     }
 });
 
-UsuarioSchema.index({ username: 1 });
-UsuarioSchema.index({ email: 1 });
-
 export default model('Usuario', UsuarioSchema);
