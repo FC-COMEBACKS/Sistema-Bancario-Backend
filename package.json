@@ -1,0 +1,38 @@
+{
+  "name": "hackerrank-bank",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FC-COMEBACKS/Sistema-Bancario-Backend.git"
+  },
+  "author": "FC COMEBACKS",
+  "license": "MIT",
+  "type": "module",
+  "description": "Api que simula un sistema bancario",
+  "dependencies": {
+    "adoptionsystem": "file:",
+    "argon2": "^0.41.1",
+    "cloudinary": "^2.6.0",
+    "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0",
+    "nodejs-fyph-backend": "file:",
+    "pdf-lib": "^1.17.1",
+    "pdfkit": "^0.17.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
