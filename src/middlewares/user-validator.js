@@ -3,18 +3,16 @@ import { emailExists, usernameExists, dpiExists } from "../helpers/db-validator.
 import { validateField } from "./validate-fields.js";
 import { handleErrors } from "./handle-errors.js";
 
-// Validador para registro de usuario
 export const validatorRegister = [
   body("nombre").notEmpty().withMessage("El nombre es obligatorio"),
   body("username")
     .notEmpty().withMessage("El username es obligatorio")
     .custom(usernameExists),
   body("password")
-    .notEmpty().withMessage("La contraseña es obligatoria")
-    .isStrongPassword({
-      minLength: 6,
-      minUppercase: 6,
-    }).withMessage("La contraseña debe tener al menos 6 caracteres, incluyendo mayúsculas"),
+     .notEmpty().withMessage("La contraseña es obligatoria")
+  .isLength({ min: 6 })
+  .withMessage("La contraseña debe tener al menos 6 caracteres")
+  .matches(/^(?:.*[A-Z]){6,}$/).withMessage("La contraseña debe contener al menos 6 letras mayúsculas"),
   body("dpi")
     .notEmpty().withMessage("El DPI es obligatorio")
     .custom(dpiExists),
@@ -32,7 +30,6 @@ export const validatorRegister = [
   validateField,
   handleErrors
 ];
-
 
 export const validatorLogin = [
   body("username").notEmpty().withMessage("El username es obligatorio"),
