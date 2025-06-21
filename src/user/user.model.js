@@ -18,7 +18,7 @@ const UsuarioSchema = new Schema({
     rol: { 
         type: String, 
         enum: ['ADMIN', 'CLIENT'], 
-        default: 'CLIENTE' 
+        default: 'CLIENT' 
     },
     dpi: { 
         type: String, 
