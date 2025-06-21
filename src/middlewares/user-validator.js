@@ -1,7 +1,8 @@
-import { body } from "express-validator";
-import { emailExists, usernameExists, dpiExists } from "../helpers/db-validator.js";
+import { body, param } from "express-validator";
+import { emailExists, usernameExists, dpiExists, userExists } from "../helpers/db-validator.js";
 import { validateField } from "./validate-fields.js";
 import { handleErrors } from "./handle-errors.js";
+import { validateJWT } from "./validate-jwt.js";
 
 export const validatorRegister = [
   body("nombre").notEmpty().withMessage("El nombre es obligatorio"),
@@ -9,10 +10,9 @@ export const validatorRegister = [
     .notEmpty().withMessage("El username es obligatorio")
     .custom(usernameExists),
   body("password")
-     .notEmpty().withMessage("La contraseña es obligatoria")
-  .isLength({ min: 6 })
-  .withMessage("La contraseña debe tener al menos 6 caracteres")
-  .matches(/^(?:.*[A-Z]){6,}$/).withMessage("La contraseña debe contener al menos 6 letras mayúsculas"),
+    .notEmpty().withMessage("La contraseña es obligatoria")
+    .isLength({ min: 6 }).withMessage("La contraseña debe tener al menos 6 caracteres")
+    .matches(/^(?:.*[A-Z]){6,}$/).withMessage("La contraseña debe contener al menos 6 letras mayúsculas"),
   body("dpi")
     .notEmpty().withMessage("El DPI es obligatorio")
     .custom(dpiExists),
@@ -37,6 +37,62 @@ export const validatorLogin = [
     .notEmpty().withMessage("La contraseña es obligatoria")
     .isLength({ min: 6 }).withMessage("La contraseña debe tener al menos 6 caracteres")
     .matches(/^(?:.*[A-Z]){6,}$/).withMessage("La contraseña debe contener al menos 6 letras mayúsculas"),
+  validateField,
+  handleErrors
+];
+
+export const getUserByIdValidator = [
+  validateJWT,
+  param("uid").isMongoId().withMessage("El id no es válido"),
+  param("uid").custom(userExists),
+  validateField,
+  handleErrors
+];
+
+export const updateUserValidatorAdmin = [
+  validateJWT,
+  param("uid").isMongoId().withMessage("El id no es válido"),
+  param("uid").custom(userExists),
+  validateField,
+  handleErrors
+];
+
+export const updateUserValidatorClient = [
+  validateJWT,
+  validateField,
+  handleErrors
+];
+
+export const deleteUserValidatorAdmin = [
+  validateJWT,
+  param("uid").isMongoId().withMessage("El id no es válido"),
+  param("uid").custom(userExists),
+  validateField,
+  handleErrors
+];
+
+export const deleteUserValidatorClient = [
+  validateJWT,
+  validateField,
+  handleErrors
+];
+
+export const updatePasswordValidator = [
+  validateJWT,
+  body("newPassword")
+    .notEmpty().withMessage("La nueva contraseña es obligatoria")
+    .isLength({ min: 6 }).withMessage("La contraseña debe tener al menos 6 caracteres")
+    .matches(/^(?:.*[A-Z]){6,}$/).withMessage("La contraseña debe contener al menos 6 letras mayúsculas"),
+  validateField,
+  handleErrors
+];
+
+export const updateRoleValidator = [
+  validateJWT,
+  param("uid").isMongoId().withMessage("El id no es válido"),
+  body("newRole")
+    .notEmpty().withMessage("El rol es obligatorio")
+    .isIn(["ADMIN", "CLIENT"]).withMessage("El rol no es válido"),
   validateField,
   handleErrors
 ];
