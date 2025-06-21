@@ -1,0 +1,333 @@
+{
+	"info": {
+		"_postman_id": "ded3cabf-ae04-4050-8d65-a8c563cbcfe1",
+		"name": "HRB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42000110"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "LOGIN ADMIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"ADMINB\",\r\n    \"password\":\"ADMINB\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REGISTER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Juan Gallardo\",\r\n  \"username\": \"JUANPZ\",\r\n  \"password\": \"JUANPZ\",\r\n  \"dpi\": \"1234567890123\",\r\n  \"email\": \"juangallardo@email.com\",\r\n  \"direccion\": \"Zona 5, Ciudad de Guatemala\",\r\n  \"celular\": \"12345678\",\r\n  \"nombreTrabajo\": \"Ingeniero\",\r\n  \"ingresosMensuales\": 1000,\r\n  \"rol\": \"CLIENT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "USUARIO POR ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU1ZWM5ODlkYjc2MGI4YzU2MjdiYTUiLCJpYXQiOjE3NTA0OTAyMTEsImV4cCI6MTc1MDQ5MzgxMX0.Xquvhmm-B535YN1s0cp1AIz-aa60qrc8KVwtTIeOQMo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/users/6855ec989db760b8c5627ba5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"users",
+								"6855ec989db760b8c5627ba5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTA USUARIOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU1ZWM5ODlkYjc2MGI4YzU2MjdiYTUiLCJpYXQiOjE3NTA0OTAyMTEsImV4cCI6MTc1MDQ5MzgxMX0.Xquvhmm-B535YN1s0cp1AIz-aa60qrc8KVwtTIeOQMo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ELIMINAR USUARIO(ADMIN)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU1ZWM5ODlkYjc2MGI4YzU2MjdiYTUiLCJpYXQiOjE3NTA0OTAyMTEsImV4cCI6MTc1MDQ5MzgxMX0.Xquvhmm-B535YN1s0cp1AIz-aa60qrc8KVwtTIeOQMo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/users/admin/6855ec989db760b8c5627ba5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"users",
+								"admin",
+								"6855ec989db760b8c5627ba5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR CONTRASEÑA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU1ZmE3OTM5MmRiNGQzZWQ0MTQxYzAiLCJpYXQiOjE3NTA0OTA5NjEsImV4cCI6MTc1MDQ5NDU2MX0.HhfUHBEtkF1mIguL7XphV85wmrzW0ljgHZJ4WOxmG7k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"newPassword\": \"NUEVAP\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/users/password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN CLIENT",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"JUANPZ\",\r\n    \"password\":\"JUANPZ\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR USUARIO(ADMIN)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU1ZmE3OTM5MmRiNGQzZWQ0MTQxYzAiLCJpYXQiOjE3NTA0OTA5NjEsImV4cCI6MTc1MDQ5NDU2MX0.HhfUHBEtkF1mIguL7XphV85wmrzW0ljgHZJ4WOxmG7k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Juan Gallardo\",\r\n  \"username\": \"JUANPZ\",\r\n  \"email\": \"juangallardo@email.com\",\r\n  \"direccion\": \"Zona 3, Ciudad Guatemala\",\r\n  \"celular\": \"12345678\",\r\n  \"nombreTrabajo\": \"Ingeniero\",\r\n  \"ingresosMensuales\": 2000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/users/admin/6855fa79392db4d3ed4141c0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"users",
+								"admin",
+								"6855fa79392db4d3ed4141c0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR ROL",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU1ZmE3OTM5MmRiNGQzZWQ0MTQxYzAiLCJpYXQiOjE3NTA0OTA5NjEsImV4cCI6MTc1MDQ5NDU2MX0.HhfUHBEtkF1mIguL7XphV85wmrzW0ljgHZJ4WOxmG7k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"newRole\": \"CLIENT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/users/role/6855fa79392db4d3ed4141c0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"users",
+								"role",
+								"6855fa79392db4d3ed4141c0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
