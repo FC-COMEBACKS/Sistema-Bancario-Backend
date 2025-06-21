@@ -42,3 +42,10 @@ export const dpiExists = async (dpi = "") => {
         throw new Error(`El DPI ${dpi} ya está registrado`);
     }
 }
+
+export const usernameExists = async (username = "") => {
+    const existe = await User.findOne({ username });
+    if (existe) {
+        throw new Error(`The username ${username} is already registered`);
+    }
+}

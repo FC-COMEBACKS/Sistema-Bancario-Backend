@@ -25,41 +25,39 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
-        const { email, password } = req.body;
-        const acces = await User.findOne({ email: email, status: true });
-        if (!acces) {
+        const { username, password } = req.body;
+        const user = await User.findOne({ username: username, estado: "ACTIVO"});
+        if (!user) {
             return res.status(400).json({
                 success: false,
                 message: "Invalid credential",
-                error: "There is no user with the entered email"
-            })
+                error: "There is no user with the entered username"
+            });
         }
-        const validatorPassword = await verify(acces.password, password)
-        if (!validatorPassword) {
+        const isPasswordValid = await verify(user.password, password);
+        if (!isPasswordValid) {
             return res.status(400).json({
                 success: false,
                 message: "Invalid credentials",
                 error: "The password is incorrect"
-            })
+            });
         }
-        const webToken = await generateJWT(acces.id)
+        const token = await generateJWT(user.id);
         return res.status(200).json({
             success: true,
-            message: "login successful",
+            message: "Login successful",
             userDetails: {
-                _id: acces._id,
-                name: acces.name,
-                email: acces.email,
-                role: acces.role,
-                token: webToken
+                _id: user._id,
+                username: user.username,
+                rol: user.rol,
+                token: token
             }
-        })
+        });
     } catch (err) {
         return res.status(500).json({
             success: false,
-            message: "login failed, server error",
+            message: "Login failed, server error",
             error: err.message
-
-        })
+        });
     }
 }

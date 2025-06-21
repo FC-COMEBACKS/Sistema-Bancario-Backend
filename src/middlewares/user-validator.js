@@ -12,12 +12,9 @@ export const validatorRegister = [
   body("password")
     .notEmpty().withMessage("La contraseña es obligatoria")
     .isStrongPassword({
-      minLength: 8,
-      minLowercase: 1,
-      minUppercase: 1,
-      minNumbers: 1,
-      minSymbols: 1
-    }).withMessage("La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y símbolos"),
+      minLength: 6,
+      minUppercase: 6,
+    }).withMessage("La contraseña debe tener al menos 6 caracteres, incluyendo mayúsculas"),
   body("dpi")
     .notEmpty().withMessage("El DPI es obligatorio")
     .custom(dpiExists),
@@ -36,18 +33,13 @@ export const validatorRegister = [
   handleErrors
 ];
 
-// Validador para login de usuario
+
 export const validatorLogin = [
   body("username").notEmpty().withMessage("El username es obligatorio"),
   body("password")
     .notEmpty().withMessage("La contraseña es obligatoria")
-    .isStrongPassword({
-      minLength: 8,
-      minLowercase: 1,
-      minUppercase: 1,
-      minNumbers: 1,
-      minSymbols: 1
-    }).withMessage("La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y símbolos"),
+    .isLength({ min: 6 }).withMessage("La contraseña debe tener al menos 6 caracteres")
+    .matches(/^(?:.*[A-Z]){6,}$/).withMessage("La contraseña debe contener al menos 6 letras mayúsculas"),
   validateField,
   handleErrors
 ];
