@@ -9,31 +9,32 @@ import {
     updateUserUser,
     updateRole
 } from "./user.controler.js";
+import {
+    getUserByIdValidator,
+    updateUserValidatorAdmin,
+    updateUserValidatorClient,
+    deleteUserValidatorAdmin,
+    deleteUserValidatorClient,
+    updatePasswordValidator,
+    updateRoleValidator
+} from "../middlewares/user-validator.js";
 
 const router = Router();
 
-// Obtener usuario por ID
-router.get("/:uid", /* validateJWT, someValidator, */ getUserById);
+router.get("/:uid", getUserByIdValidator, getUserById);
 
-// Obtener todos los usuarios
-router.get("/", /* validateJWT, someValidator, */ getUsers);
+router.get("/", getUsers);
 
-// Eliminar usuario por admin
-router.delete("/admin/:uid", /* validateJWT, someValidator, */ deleteUserAdmin);
+router.delete("/admin/:uid", deleteUserValidatorAdmin, deleteUserAdmin);
 
-// Eliminar usuario por cliente autenticado
-router.delete("/client", /* validateJWT, someValidator, */ deleteUserClient);
+router.delete("/client", deleteUserValidatorClient, deleteUserClient);
 
-// Actualizar contraseña usuario autenticado
-router.patch("/password", /* validateJWT, someValidator, */ updatePassword);
+router.patch("/password", updatePasswordValidator, updatePassword);
 
-// Actualizar usuario por admin
-router.put("/admin/:uid", /* validateJWT, someValidator, */ updateUserAdmin);
+router.put("/admin/:uid", updateUserValidatorAdmin, updateUserAdmin);
 
-// Actualizar usuario por usuario autenticado
-router.put("/client", /* validateJWT, someValidator, */ updateUserUser);
+router.put("/client", updateUserValidatorClient, updateUserUser);
 
-// Actualizar rol de usuario (admin)
-router.patch("/role/:uid", /* validateJWT, someValidator, */ updateRole);
+router.patch("/role/:uid", updateRoleValidator, updateRole);
 
 export default router;
