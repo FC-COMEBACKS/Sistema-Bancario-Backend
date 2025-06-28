@@ -10,6 +10,7 @@ import  apiLimiter from "../src/middlewares/rate-limit-validator.js";
 import authRoutes from "../src/auth/auth.routes.js";
 import userRoutes from "../src/user/user.routes.js";
 import cuentaRoutes from "../src/Cuenta/cuenta.routes.js";
+import movimientoRoutes from "../src/Movimiento/movimiento.routes.js";
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
@@ -25,6 +26,7 @@ const routes = (app) => {
     app.use("/HRB/v1/auth", authRoutes);
     app.use("/HRB/v1/users", userRoutes);
     app.use("/HRB/v1/cuentas", cuentaRoutes);
+    app.use("/HRB/v1/movimientos", movimientoRoutes);
 }
 
 const conectarDB = async () => {
