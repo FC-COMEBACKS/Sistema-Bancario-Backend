@@ -49,3 +49,48 @@ export const usernameExists = async (username = "") => {
         throw new Error(`The username ${username} is already registered`);
     }
 }
+
+export const cuentaExists = async (cid = " ") => {
+    const existe = await Cuenta.findById(cid);
+    if (!existe) {
+        throw new Error("La cuenta no existe");
+    }
+}
+
+export const cuentaExistsByNumeroCuenta = async (numeroCuenta = "") => {
+    const existe = await Cuenta.findOne({ numeroCuenta });
+    if (!existe) {
+        throw new Error(`La cuenta número ${numeroCuenta} no existe`);
+    }
+    return existe;
+}
+
+export const numeroCuentaExists = async (numeroCuenta = "") => {
+    const existe = await Cuenta.findOne({ numeroCuenta });
+    if (existe) {
+        throw new Error(`El número de cuenta ${numeroCuenta} ya está registrado`);
+    }
+}
+
+export const validateSaldoSuficiente = async (saldo = 0, monto = 0) => {
+    if (saldo < monto) {
+        throw new Error("Saldo insuficiente para realizar esta operación");
+    }
+}
+
+export const validateMontoTransferencia = async (monto = 0) => {
+    if (monto <= 0) {
+        throw new Error("El monto debe ser mayor a 0");
+    }
+    if (monto > 2000) {
+        throw new Error("No puede transferir más de Q2000 por transacción");
+    }
+}
+
+export const usuarioTieneCuenta = async (uid = " ") => {
+    const existe = await Cuenta.findOne({ usuario: uid });
+    if (existe) {
+        throw new Error(`El usuario ya tiene una cuenta y solo puede tener una`);
+    }
+    return true;
+}

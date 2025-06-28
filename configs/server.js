@@ -9,7 +9,7 @@ import { swaggerDocs, swaggerUi } from "./swagger.js";
 import  apiLimiter from "../src/middlewares/rate-limit-validator.js";
 import authRoutes from "../src/auth/auth.routes.js";
 import userRoutes from "../src/user/user.routes.js";
-
+import cuentaRoutes from "../src/Cuenta/cuenta.routes.js";
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
@@ -24,6 +24,7 @@ const routes = (app) => {
     app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
     app.use("/HRB/v1/auth", authRoutes);
     app.use("/HRB/v1/users", userRoutes);
+    app.use("/HRB/v1/cuentas", cuentaRoutes);
 }
 
 const conectarDB = async () => {
