@@ -1,4 +1,6 @@
 import User from "../user/user.model.js";
+import Cuenta from "../Cuenta/cuenta.model.js";
+import Movimiento from "../Movimiento/movimiento.model.js";
 
 export const emailExists = async (email = "") => {
     const existe = await User.findOne({email})
@@ -7,32 +9,26 @@ export const emailExists = async (email = "") => {
     }
 }
 
-export const userExists = async (uid = " ") => {
-    const existe = await User.findById(uid)
-    console.log(existe)
-    if(!existe){
-        throw new Error("The user does not exist")
+export const userExists = async (uid) => {
+    if (!uid) {
+        throw new Error("User ID is required");
+    }
+    const existe = await User.findById(uid);
+    if (!existe) {
+        throw new Error("The user does not exist");
     }
 }
 
-export const isClient = async (uid = " ") =>{
-    const existe = await User.findById(uid)
+export const isClient = async (uid) =>{
+    if (!uid) {
+        throw new Error("User ID is required");
+    }
+    const existe = await User.findById(uid);
     if(!existe){
-        throw new Error("The client does not exist")
+        throw new Error("The client does not exist");
     }
-    if(existe.rol !== "CLIENT" && existe.rol !== "ADMIN" && existe.rol !== "ADMIN"){
-        throw new Error("Is not a client")
-    }
-}
-
-export const isAdmin = async (uid = " ") =>{
-    const existe = await User.findById(uid)
-    console.log(existe)
-    if(!existe){
-        throw new Error("The admin does not exist")
-    }
-    if(existe.rol !== "ADMIN" ){
-        throw new Error("Is not a admin")
+    if(existe.rol !== "CLIENT" && existe.rol !== "ADMIN"){
+        throw new Error("User is not a client");
     }
 }
 
@@ -93,4 +89,32 @@ export const usuarioTieneCuenta = async (uid = " ") => {
         throw new Error(`El usuario ya tiene una cuenta y solo puede tener una`);
     }
     return true;
+}
+
+export const validateLimiteTransferenciaDiaria = async (uid = " ", monto = 0) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    const cuentaUsuario = await Cuenta.findOne({ usuario: uid });
+      if (!cuentaUsuario) {
+        throw new Error("El usuario no tiene cuenta");
+    }
+    
+    const transferenciasHoy = await Movimiento.find({
+        cuentaOrigen: cuentaUsuario._id,
+        tipo: 'TRANSFERENCIA',
+        fechaHora: { $gte: today, $lt: tomorrow }
+    });
+    
+    let totalTransferidoHoy = 0;
+    transferenciasHoy.forEach(t => {
+        totalTransferidoHoy += t.monto;
+    });
+    
+    if (totalTransferidoHoy + monto > 10000) {
+        throw new Error("Ha alcanzado el límite de transferencia diario de Q10,000");
+    }
 }
