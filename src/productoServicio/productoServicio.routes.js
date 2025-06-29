@@ -1,20 +1,6 @@
 import { Router } from "express";
-import {
-  crearProductoServicio,
-  getProductosServicios,
-  getProductoServicioById,
-  updateProductoServicio,
-  cambiarDisponibilidad,
-  deleteProductoServicio,
-} from "./productoServicio.controller.js";
-import {
-  crearProductoServicioValidator,
-  getProductosServiciosValidator,
-  getProductoServicioByIdValidator,
-  updateProductoServicioValidator,
-  cambiarDisponibilidadValidator,
-  deleteProductoServicioValidator,
-} from "../middlewares/productoServicio-validator.js";
+import { crearProductoServicio, getProductosServicios, getProductoServicioById, updateProductoServicio, cambiarDisponibilidad, deleteProductoServicio } from "./productoServicio.controller.js";
+import { crearProductoServicioValidator, getProductosServiciosValidator, getProductoServicioByIdValidator, updateProductoServicioValidator, cambiarDisponibilidadValidator, deleteProductoServicioValidator } from "../middlewares/productoServicio-validator.js";
 
 const router = Router();
 
@@ -214,11 +200,7 @@ const router = Router();
  *             example:
  *               error: "Error interno del servidor"
  */
-router.post(
-  "/agregarProductoOServicio",
-  crearProductoServicioValidator,
-  crearProductoServicio
-);
+router.post("/agregarProductoOServicio", crearProductoServicioValidator, crearProductoServicio);
 
 /**
  * @swagger
@@ -341,11 +323,7 @@ router.post(
  *             example:
  *               error: "Error interno del servidor"
  */
-router.get(
-  "/listarProductoOServicio",
-  getProductosServiciosValidator,
-  getProductosServicios
-);
+router.get("/listarProductoOServicio", getProductosServiciosValidator, getProductosServicios);
 
 /**
  * @swagger
@@ -414,11 +392,7 @@ router.get(
  *             example:
  *               error: "Error interno del servidor"
  */
-router.get(
-  "/listarProductoOServicio/:id",
-  getProductoServicioByIdValidator,
-  getProductoServicioById
-);
+router.get("/listarProductoOServicio/:id", getProductoServicioByIdValidator, getProductoServicioById);
 
 /**
  * @swagger
@@ -514,11 +488,7 @@ router.get(
  *             example:
  *               error: "Error interno del servidor"
  */
-router.put(
-  "/actualizarProductoOServicio/:id",
-  updateProductoServicioValidator,
-  updateProductoServicio
-);
+router.put("/actualizarProductoOServicio/:id", updateProductoServicioValidator, updateProductoServicio);
 
 /**
  * @swagger
@@ -610,11 +580,7 @@ router.put(
  *             example:
  *               error: "Error interno del servidor"
  */
-router.patch(
-  "/disponibilidad/:id",
-  cambiarDisponibilidadValidator,
-  cambiarDisponibilidad
-);
+router.patch("/disponibilidad/:id", cambiarDisponibilidadValidator, cambiarDisponibilidad);
 
 /**
  * @swagger
@@ -706,10 +672,7 @@ router.patch(
  *             example:
  *               error: "Error interno del servidor"
  */
-router.delete(
-  "/eliminarProductoOServicio/:id",
-  deleteProductoServicioValidator,
-  deleteProductoServicio
-);
+router.delete("/eliminarProductoOServicio/:id", deleteProductoServicioValidator, deleteProductoServicio);
 
 export default router;
+

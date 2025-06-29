@@ -1,20 +1,6 @@
 import { Router } from "express";
-import {
-  getDivisas,
-  convertirMonto,
-  convertirSaldoCuenta,
-  actualizarTasas,
-  agregarDivisa,
-  restaurarTasasOficiales,
-} from "./divisa.controller.js";
-import {
-  getDivisasValidator,
-  convertirMontoValidator,
-  convertirSaldoCuentaValidator,
-  actualizarTasasValidator,
-  agregarDivisaValidator,
-  restaurarTasasOficialesValidator,
-} from "../middlewares/divisa-validator.js";
+import { getDivisas, convertirMonto, convertirSaldoCuenta, actualizarTasas, agregarDivisa, restaurarTasasOficiales } from "./divisa.controller.js";
+import { getDivisasValidator, convertirMontoValidator, convertirSaldoCuentaValidator, actualizarTasasValidator, agregarDivisaValidator, restaurarTasasOficialesValidator } from "../middlewares/divisa-validator.js";
 
 const router = Router();
 
@@ -134,7 +120,7 @@ router.post("/convertir", convertirMontoValidator, convertirMonto);
  *       - user
  *     x-validation: true
  */
-router.post( "/convertir-saldo", convertirSaldoCuenta);
+router.post("/convertir-saldo", convertirSaldoCuentaValidator, convertirSaldoCuenta);
 
 /**
  * @swagger
@@ -231,6 +217,6 @@ router.post("/agregar", agregarDivisaValidator, agregarDivisa);
  *       - admin
  *     x-validation: true
  */
-router.post( "/restaurar-tasas-oficiales", restaurarTasasOficialesValidator, restaurarTasasOficiales);
+router.post("/restaurar-tasas-oficiales", restaurarTasasOficialesValidator, restaurarTasasOficiales);
 
 export default router;

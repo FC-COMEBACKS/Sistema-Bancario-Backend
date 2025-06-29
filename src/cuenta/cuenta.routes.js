@@ -1,20 +1,6 @@
 import { Router } from "express";
-import {
-  crearCuenta,
-  editarCuenta,
-  getDetallesCuenta,
-  getMovimientosCuenta,
-  getCuentas,
-  getCuentasConMasMovimientos,
-} from "./cuenta.controller.js";
-import {
-  crearCuentaValidator,
-  editarCuentaValidator,
-  getCuentaByIdValidator,
-  getMovimientosCuentaValidator,
-  getCuentasValidator,
-  getCuentasConMasMovimientosValidator,
-} from "../middlewares/cuenta-validator.js";
+import { crearCuenta, editarCuenta, getDetallesCuenta, getMovimientosCuenta, getCuentas, getCuentasConMasMovimientos } from "./cuenta.controller.js";
+import { crearCuentaValidator, editarCuentaValidator, getCuentaByIdValidator, getMovimientosCuentaValidator, getCuentasValidator, getCuentasConMasMovimientosValidator } from "../middlewares/cuenta-validator.js";
 
 const router = Router();
 
@@ -496,11 +482,7 @@ router.get("/detallesCuenta/:cid", getCuentaByIdValidator, getDetallesCuenta);
  *     security:
  *       - bearerAuth: []
  */
-router.get(
-  "/movimientosCuenta/:cid",
-  getMovimientosCuentaValidator,
-  getMovimientosCuenta
-);
+router.get("/movimientosCuenta/:cid", getMovimientosCuentaValidator, getMovimientosCuenta);
 
 /**
  * @swagger
@@ -695,10 +677,6 @@ router.get("/", getCuentasValidator, getCuentas);
  *     security:
  *       - bearerAuth: []
  */
-router.get(
-  "/estadisticas/mas-movimientos",
-  getCuentasConMasMovimientosValidator,
-  getCuentasConMasMovimientos
-);
+router.get("/estadisticas/mas-movimientos", getCuentasConMasMovimientosValidator, getCuentasConMasMovimientos);
 
 export default router;

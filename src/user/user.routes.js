@@ -1,24 +1,6 @@
 import { Router } from "express";
-import {
-  getUserById,
-  getUsers,
-  deleteUserAdmin,
-  deleteUserClient,
-  updatePassword,
-  updateUserAdmin,
-  updateUserUser,
-  updateRole,
-} from "./user.controller.js";
-import {
-  getUserByIdValidator,
-  getUsersValidator,
-  updateUserValidatorAdmin,
-  updateUserValidatorClient,
-  deleteUserValidatorAdmin,
-  deleteUserValidatorClient,
-  updatePasswordValidator,
-  updateRoleValidator,
-} from "../middlewares/user-validator.js";
+import { getUserById, getUsers, deleteUserAdmin, deleteUserClient, updatePassword, updateUserAdmin, updateUserUser, updateRole } from "./user.controller.js";
+import { getUserByIdValidator, getUsersValidator, updateUserValidatorAdmin, updateUserValidatorClient, deleteUserValidatorAdmin, deleteUserValidatorClient, updatePasswordValidator, updateRoleValidator } from "../middlewares/user-validator.js";
 
 const router = Router();
 

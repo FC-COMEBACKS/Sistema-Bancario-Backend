@@ -1,22 +1,6 @@
 import { Router } from "express";
-import {
-  getMovimientos,
-  getMovimientoById,
-  realizarTransferencia,
-  realizarDeposito,
-  revertirDeposito,
-  comprarProducto,
-  getHistorialCuenta,
-} from "./movimiento.controller.js";
-import {
-  getMovimientosValidator,
-  getMovimientoByIdValidator,
-  realizarTransferenciaValidator,
-  realizarDepositoValidator,
-  revertirDepositoValidator,
-  comprarProductoValidator,
-  getHistorialCuentaValidator,
-} from "../middlewares/movimiento-validator.js";
+import { getMovimientos, getMovimientoById, realizarTransferencia, realizarDeposito, revertirDeposito, comprarProducto, getHistorialCuenta } from "./movimiento.controller.js";
+import { getMovimientosValidator, getMovimientoByIdValidator, realizarTransferenciaValidator, realizarDepositoValidator, revertirDepositoValidator, comprarProductoValidator, getHistorialCuentaValidator } from "../middlewares/movimiento-validator.js";
 
 const router = Router();
 
@@ -266,11 +250,7 @@ router.get("/", getMovimientosValidator, getMovimientos);
  *     security:
  *       - bearerAuth: []
  */
-router.post(
-  "/transferencia",
-  realizarTransferenciaValidator,
-  realizarTransferencia
-);
+router.post("/transferencia", realizarTransferenciaValidator, realizarTransferencia);
 
 /**
  * @swagger
@@ -490,11 +470,7 @@ router.post("/deposito", realizarDepositoValidator, realizarDeposito);
  *     security:
  *       - bearerAuth: []
  */
-router.post(
-  "/deposito/:id/revertir",
-  revertirDepositoValidator,
-  revertirDeposito
-);
+router.post("/deposito/:id/revertir", revertirDepositoValidator, revertirDeposito);
 
 /**
  * @swagger
@@ -760,11 +736,7 @@ router.post("/realizar-compra", comprarProductoValidator, comprarProducto);
  *     security:
  *       - bearerAuth: []
  */
-router.get(
-  "/cuenta/:cuentaId",
-  getHistorialCuentaValidator,
-  getHistorialCuenta
-);
+router.get("/cuenta/:cuentaId", getHistorialCuentaValidator, getHistorialCuenta);
 
 /**
  * @swagger
@@ -885,3 +857,4 @@ router.get(
 router.get("/:id", getMovimientoByIdValidator, getMovimientoById);
 
 export default router;
+

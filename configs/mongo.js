@@ -33,3 +33,4 @@ export const dbConnection = async () => {
         console.log(`Database connection failed: ${err}`)
     }
 }
+

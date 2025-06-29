@@ -1,40 +1,37 @@
 import { Schema, model } from "mongoose";
 
-const DivisaSchema = new Schema(
-  {
+const DivisaSchema = new Schema({
     codigo: {
-      type: String,
-      required: true,
-      unique: true,
+        type: String, 
+        required: true, 
+        unique: true
     },
     nombre: {
-      type: String,
-      required: true,
+        type: String,
+        required: true
     },
     tasaEnQuetzales: {
-      type: Number,
-      required: true,
-      min: 0.0001,
+        type: Number,
+        required: true,
+        min: 0.0001
     },
     activo: {
-      type: Boolean,
-      default: true,
+        type: Boolean,
+        default: true
     },
     fechaActualizacion: {
-      type: Date,
-      default: Date.now,
-    },
-  },
-  {
+        type: Date,
+        default: Date.now
+    }
+}, {
     versionKey: false,
-    timestamps: true,
-  }
-);
+    timestamps: true
+});
 
-DivisaSchema.methods.toJSON = function () {
-  const { _id, ...divisa } = this.toObject();
-  divisa.did = _id;
-  return divisa;
+DivisaSchema.methods.toJSON = function() {
+    const { _id, ...divisa } = this.toObject();
+    divisa.did = _id;
+    return divisa;
 };
 
-export default model("Divisa", DivisaSchema);
+export default model('Divisa', DivisaSchema);

@@ -1,18 +1,6 @@
 import { Router } from "express";
-import {
-  agregarFavorito,
-  getFavoritos,
-  updateFavorito,
-  deleteFavorito,
-  transferirAFavorito,
-} from "./favorito.controller.js";
-import {
-  agregarFavoritoValidator,
-  getFavoritosValidator,
-  updateFavoritoValidator,
-  deleteFavoritoValidator,
-  transferirAFavoritoValidator,
-} from "../middlewares/favorito-validator.js";
+import { agregarFavorito, getFavoritos, updateFavorito, deleteFavorito, transferirAFavorito } from "./favorito.controller.js";
+import { agregarFavoritoValidator, getFavoritosValidator, updateFavoritoValidator, deleteFavoritoValidator, transferirAFavoritoValidator } from "../middlewares/favorito-validator.js";
 
 const router = Router();
 
@@ -493,3 +481,4 @@ router.delete("/eliminarFavorito/:id", deleteFavoritoValidator, deleteFavorito);
 router.post("/transferir", transferirAFavoritoValidator, transferirAFavorito);
 
 export default router;
+
