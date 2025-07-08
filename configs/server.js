@@ -14,6 +14,7 @@ import productoServicioRoutes from "../src/ProductoServicio/productoServicio.rou
 import favoritoRoutes from "../src/Favorito/favorito.routes.js";
 import movimientoRoutes from "../src/Movimiento/movimiento.routes.js";
 import divisaRoutes from "../src/divisas/divisa.routes.js";
+import estadisticasRoutes from "../src/estadisticas/estadisticas.routes.js";
 import { programarActualizacionDivisas } from "../src/divisas/divisa.controller.js";
 
 
@@ -35,6 +36,7 @@ const routes = (app) => {
     app.use("/HRB/v1/favoritos", favoritoRoutes);
     app.use("/HRB/v1/movimientos", movimientoRoutes);
     app.use("/HRB/v1/divisas", divisaRoutes);
+    app.use("/HRB/v1/estadisticas", estadisticasRoutes);
 
 }
 

@@ -6,182 +6,7 @@ const router = Router();
 
 /**
  * @swagger
- * components:
- *   schemas:
- *     User:
- *       type: object
- *       properties:
- *         id:
- *           type: string
- *           description: ID único del usuario
- *           example: "60b5d8f5c8a2c20015a8b1a1"
- *         nombre:
- *           type: string
- *           description: Nombre del usuario
- *           example: "Juan Carlos"
- *         apellido:
- *           type: string
- *           description: Apellido del usuario
- *           example: "Pérez García"
- *         username:
- *           type: string
- *           description: Nombre de usuario único
- *           example: "jperez123"
- *         email:
- *           type: string
- *           format: email
- *           description: Correo electrónico único
- *           example: "juan.perez@email.com"
- *         telefono:
- *           type: string
- *           description: Número de teléfono
- *           example: "+502 5555-1234"
- *         direccion:
- *           type: string
- *           description: Dirección de residencia
- *           example: "Zona 1, Ciudad de Guatemala"
- *         dpi:
- *           type: string
- *           description: Número de DPI (Documento Personal de Identificación)
- *           example: "1234567890101"
- *         fechaNacimiento:
- *           type: string
- *           format: date
- *           description: Fecha de nacimiento
- *           example: "1990-05-15"
- *         role:
- *           type: string
- *           enum: [ADMIN, EMPLEADO, CLIENTE]
- *           description: Rol del usuario en el sistema
- *           example: "CLIENTE"
- *         estado:
- *           type: boolean
- *           description: Estado activo/inactivo del usuario
- *           example: true
- *         fechaCreacion:
- *           type: string
- *           format: date-time
- *           description: Fecha de creación del usuario
- *         fechaActualizacion:
- *           type: string
- *           format: date-time
- *           description: Fecha de última actualización
- *     UserUpdateAdmin:
- *       type: object
- *       properties:
- *         nombre:
- *           type: string
- *           minLength: 2
- *           maxLength: 50
- *           description: Nombre del usuario
- *           example: "Juan Carlos"
- *         apellido:
- *           type: string
- *           minLength: 2
- *           maxLength: 50
- *           description: Apellido del usuario
- *           example: "Pérez García"
- *         email:
- *           type: string
- *           format: email
- *           description: Correo electrónico
- *           example: "juan.perez@email.com"
- *         telefono:
- *           type: string
- *           pattern: '^[\+]?[0-9\s\-]{8,20}$'
- *           description: Número de teléfono
- *           example: "+502 5555-1234"
- *         direccion:
- *           type: string
- *           minLength: 10
- *           maxLength: 200
- *           description: Dirección de residencia
- *           example: "Zona 1, Ciudad de Guatemala"
- *         estado:
- *           type: boolean
- *           description: Estado del usuario
- *           example: true
- *     UserUpdateClient:
- *       type: object
- *       properties:
- *         nombre:
- *           type: string
- *           minLength: 2
- *           maxLength: 50
- *           description: Nombre del usuario
- *           example: "Juan Carlos"
- *         apellido:
- *           type: string
- *           minLength: 2
- *           maxLength: 50
- *           description: Apellido del usuario
- *           example: "Pérez García"
- *         telefono:
- *           type: string
- *           pattern: '^[\+]?[0-9\s\-]{8,20}$'
- *           description: Número de teléfono
- *           example: "+502 5555-1234"
- *         direccion:
- *           type: string
- *           minLength: 10
- *           maxLength: 200
- *           description: Dirección de residencia
- *           example: "Zona 1, Ciudad de Guatemala"
- *     PasswordUpdate:
- *       type: object
- *       required:
- *         - passwordActual
- *         - passwordNuevo
- *         - confirmarPassword
- *       properties:
- *         passwordActual:
- *           type: string
- *           description: Contraseña actual del usuario
- *           example: "password123"
- *         passwordNuevo:
- *           type: string
- *           minLength: 8
- *           description: Nueva contraseña (mínimo 8 caracteres)
- *           example: "newPassword456"
- *         confirmarPassword:
- *           type: string
- *           description: Confirmación de la nueva contraseña
- *           example: "newPassword456"
- *     RoleUpdate:
- *       type: object
- *       required:
- *         - role
- *       properties:
- *         role:
- *           type: string
- *           enum: [ADMIN, EMPLEADO, CLIENTE]
- *           description: Nuevo rol para el usuario
- *           example: "EMPLEADO"
- *     Error:
- *       type: object
- *       properties:
- *         error:
- *           type: string
- *           description: Mensaje de error
- *         details:
- *           type: array
- *           items:
- *             type: object
- *             properties:
- *               field:
- *                 type: string
- *               message:
- *                 type: string
- *   securitySchemes:
- *     bearerAuth:
- *       type: http
- *       scheme: bearer
- *       bearerFormat: JWT
- */
-
-/**
- * @swagger
- * /api/users/{uid}:
+ * /HRB/v1/users/{uid}:
  *   get:
  *     summary: Obtener usuario por ID
  *     description: Permite obtener la información de un usuario específico. Los clientes solo pueden ver su propia información, mientras que administradores y empleados pueden ver cualquier usuario.
@@ -258,7 +83,7 @@ router.get("/:uid", getUserByIdValidator, getUserById);
 
 /**
  * @swagger
- * /api/users:
+ * /HRB/v1/users:
  *   get:
  *     summary: Obtener lista de usuarios
  *     description: Permite a administradores y empleados obtener la lista de usuarios con filtros opcionales. Los clientes no tienen acceso a este endpoint.
@@ -381,7 +206,7 @@ router.get("/", getUsersValidator, getUsers);
 
 /**
  * @swagger
- * /api/users/admin/{uid}:
+ * /HRB/v1/users/admin/{uid}:
  *   delete:
  *     summary: Eliminar usuario (Administrador)
  *     description: Permite únicamente a administradores eliminar cualquier usuario del sistema. No se puede eliminar el último administrador activo.
@@ -481,7 +306,7 @@ router.delete("/admin/:uid", deleteUserValidatorAdmin, deleteUserAdmin);
 
 /**
  * @swagger
- * /api/users/client:
+ * /HRB/v1/users/client:
  *   delete:
  *     summary: Eliminar cuenta propia (Cliente)
  *     description: Permite a clientes eliminar su propia cuenta del sistema. Requiere confirmación de contraseña por seguridad.
@@ -576,7 +401,7 @@ router.delete("/client", deleteUserValidatorClient, deleteUserClient);
 
 /**
  * @swagger
- * /api/users/password:
+ * /HRB/v1/users/password:
  *   patch:
  *     summary: Cambiar contraseña propia
  *     description: Permite a cualquier usuario autenticado cambiar su propia contraseña proporcionando la contraseña actual y la nueva.
@@ -658,7 +483,7 @@ router.patch("/password", updatePasswordValidator, updatePassword);
 
 /**
  * @swagger
- * /api/users/admin/{uid}:
+ * /HRB/v1/users/admin/{uid}:
  *   put:
  *     summary: Actualizar usuario (Administrador)
  *     description: Permite a administradores actualizar completamente la información de cualquier usuario, incluyendo cambios de estado y datos sensibles.
@@ -758,7 +583,7 @@ router.put("/admin/:uid", updateUserValidatorAdmin, updateUserAdmin);
 
 /**
  * @swagger
- * /api/users/client:
+ * /HRB/v1/users/client:
  *   put:
  *     summary: Actualizar perfil propio (Cliente)
  *     description: Permite a cualquier usuario autenticado actualizar su propia información personal. No puede cambiar email, username, role o estado.
@@ -823,7 +648,7 @@ router.put("/client", updateUserValidatorClient, updateUserUser);
 
 /**
  * @swagger
- * /api/users/role/{uid}:
+ * /HRB/v1/users/role/{uid}:
  *   patch:
  *     summary: Cambiar rol de usuario
  *     description: Permite únicamente a administradores cambiar el rol de cualquier usuario en el sistema. No se puede cambiar el rol del último administrador activo.

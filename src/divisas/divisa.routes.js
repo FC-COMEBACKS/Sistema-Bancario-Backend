@@ -6,7 +6,7 @@ const router = Router();
 
 /**
  * @swagger
- * /divisas:
+ * /HRB/v1/divisas:
  *   get:
  *     summary: Obtiene la lista de divisas disponibles
  *     tags: [Divisas]
@@ -39,7 +39,7 @@ router.get("/", getDivisasValidator, getDivisas);
 
 /**
  * @swagger
- * /divisas/convertir:
+ * /HRB/v1/divisas/convertir:
  *   post:
  *     summary: Convierte un monto de una divisa a otra
  *     tags: [Divisas]
@@ -83,7 +83,7 @@ router.post("/convertir", convertirMontoValidator, convertirMonto);
 
 /**
  * @swagger
- * /divisas/convertir-saldo:
+ * /HRB/v1/divisas/convertir-saldo:
  *   post:
  *     summary: Convierte el saldo de una cuenta a otra divisa
  *     tags: [Divisas]
@@ -124,7 +124,7 @@ router.post("/convertir-saldo", convertirSaldoCuentaValidator, convertirSaldoCue
 
 /**
  * @swagger
- * /divisas/actualizar-tasas:
+ * /HRB/v1/divisas/actualizar-tasas:
  *   post:
  *     summary: Actualiza las tasas de cambio de las divisas
  *     tags: [Divisas]
@@ -166,7 +166,7 @@ router.post("/actualizar-tasas", actualizarTasasValidator, actualizarTasas);
 
 /**
  * @swagger
- * /divisas/agregar:
+ * /HRB/v1/divisas/agregar:
  *   post:
  *     summary: Agrega una nueva divisa al sistema
  *     tags: [Divisas]
@@ -202,7 +202,7 @@ router.post("/agregar", agregarDivisaValidator, agregarDivisa);
 
 /**
  * @swagger
- * /divisas/restaurar-tasas-oficiales:
+ * /HRB/v1/divisas/restaurar-tasas-oficiales:
  *   post:
  *     summary: Restaura las tasas de cambio a los valores oficiales desde la API externa
  *     tags: [Divisas]

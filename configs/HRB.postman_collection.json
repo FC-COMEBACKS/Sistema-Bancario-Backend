@@ -1511,6 +1511,147 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Estadisticas",
+			"item": [
+				{
+					"name": "ESTADISTICAS GENERALES",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTE5NTM2OTMsImV4cCI6MTc1MjAyNTY5M30.etmOe8lFduu6grxsBvh5CFqrAO-fsMo-TWDgv58bhj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/estadisticas/estadisticasgenerales",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"estadisticas",
+								"estadisticasgenerales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ESTADISTICAS USUARIOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTE5NTM2OTMsImV4cCI6MTc1MjAyNTY5M30.etmOe8lFduu6grxsBvh5CFqrAO-fsMo-TWDgv58bhj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/estadisticas/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"estadisticas",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MOVIMIENTOS RECIENTES",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTE5NTM2OTMsImV4cCI6MTc1MjAyNTY5M30.etmOe8lFduu6grxsBvh5CFqrAO-fsMo-TWDgv58bhj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/estadisticas/movimientos/recientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"estadisticas",
+								"movimientos",
+								"recientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ESTADISTICAS PRODUCTOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTE5NTM2OTMsImV4cCI6MTc1MjAyNTY5M30.etmOe8lFduu6grxsBvh5CFqrAO-fsMo-TWDgv58bhj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/estadisticas/productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"estadisticas",
+								"productos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

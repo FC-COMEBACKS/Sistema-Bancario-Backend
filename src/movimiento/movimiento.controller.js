@@ -532,11 +532,11 @@ export const getHistorialCuenta = async (req, res) => {
                 .skip(Number(desde))
         ]);
 
-        // Procesamos cada movimiento para incluir información detallada de las cuentas
+        
         const movimientosEnriquecidos = movimientos.map(mov => {
             const movData = mov.toObject();
             
-            // Enriquecemos el objeto con información de cuentas
+        
             return {
                 ...movData,
                 cuentaOrigenDetalle: mov.cuentaOrigen ? {
@@ -552,18 +552,14 @@ export const getHistorialCuenta = async (req, res) => {
             };
         });
         
-        // Obtenemos los datos completos de la cuenta para la respuesta
         const cuentaData = cuenta.toObject();
         
-        // Si la cuenta tiene un usuario asociado, lo populamos con su información
         const cuentaUsuario = await Cuenta.findById(cuenta._id).populate('usuario', 'nombre username email');
         
-        // Actualizamos los datos de la cuenta con la información del usuario si existe
         if (cuentaUsuario && cuentaUsuario.usuario) {
             cuentaData.usuario = cuentaUsuario.usuario;
         }
         
-        // Estructura de respuesta mejorada
         res.json({
             success: true,
             total,

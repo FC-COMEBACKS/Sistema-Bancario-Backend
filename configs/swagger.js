@@ -27,6 +27,7 @@ const options ={
         "./src/Movimiento/movimiento.routes.js",
         "./src/ProductoServicio/productoServicio.routes.js",
         "./src/divisas/divisa.routes.js",
+        "./src/estadisticas/estadisticas.routes.js"
     ]
 }
 

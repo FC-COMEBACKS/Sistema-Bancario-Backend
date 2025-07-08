@@ -113,7 +113,7 @@ const router = Router();
 
 /**
  * @swagger
- * /api/productosServicios/agregarProductoOServicio:
+ * /HRB/v1/productosOServicios/agregarProductoOServicio:
  *   post:
  *     summary: Crear un nuevo producto o servicio
  *     description: Permite a administradores y empleados crear nuevos productos o servicios bancarios
@@ -204,7 +204,7 @@ router.post("/agregarProductoOServicio", crearProductoServicioValidator, crearPr
 
 /**
  * @swagger
- * /api/productosServicios/listarProductoOServicio:
+ * /HRB/v1/productosOServicios/listarProductoOServicio:
  *   get:
  *     summary: Obtener lista de productos y servicios
  *     description: Permite a todos los roles obtener la lista de productos y servicios disponibles con filtros opcionales
@@ -327,7 +327,7 @@ router.get("/listarProductoOServicio", getProductosServiciosValidator, getProduc
 
 /**
  * @swagger
- * /api/productosServicios/listarProductoOServicio/{id}:
+ * /HRB/v1/productosOServicios/listarProductoOServicio/{id}:
  *   get:
  *     summary: Obtener un producto o servicio por ID
  *     description: Permite a todos los roles obtener los detalles de un producto o servicio específico
@@ -396,7 +396,7 @@ router.get("/listarProductoOServicio/:id", getProductoServicioByIdValidator, get
 
 /**
  * @swagger
- * /api/productosServicios/actualizarProductoOServicio/{id}:
+ * /HRB/v1/productosOServicios/actualizarProductoOServicio/{id}:
  *   put:
  *     summary: Actualizar un producto o servicio completo
  *     description: Permite a administradores y empleados actualizar completamente un producto o servicio existente
@@ -492,7 +492,7 @@ router.put("/actualizarProductoOServicio/:id", updateProductoServicioValidator, 
 
 /**
  * @swagger
- * /api/productosServicios/disponibilidad/{id}:
+ * /HRB/v1/productosOServicios/disponibilidad/{id}:
  *   patch:
  *     summary: Cambiar disponibilidad de un producto o servicio
  *     description: Permite a administradores y empleados cambiar únicamente el estado de disponibilidad de un producto o servicio
@@ -584,7 +584,7 @@ router.patch("/disponibilidad/:id", cambiarDisponibilidadValidator, cambiarDispo
 
 /**
  * @swagger
- * /api/productosServicios/eliminarProductoOServicio/{id}:
+ * /HRB/v1/productosOServicios/eliminarProductoOServicio/{id}:
  *   delete:
  *     summary: Eliminar un producto o servicio
  *     description: Permite únicamente a administradores eliminar permanentemente un producto o servicio del sistema
