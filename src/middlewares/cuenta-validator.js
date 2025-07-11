@@ -64,3 +64,12 @@ export const getCuentaPorNumeroValidator = [
     validateField,
     handleErrors
 ];
+
+export const eliminarCuentaValidator = [
+    validateJWT,
+    hasRoles("ADMIN"),
+    param("cid").isMongoId().withMessage("El ID de cuenta no es válido"),
+    param("cid").custom(cuentaExists),
+    validateField,
+    handleErrors
+];

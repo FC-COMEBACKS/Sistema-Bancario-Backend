@@ -1,6 +1,23 @@
 import { Router } from "express";
-import { crearCuenta, editarCuenta, getDetallesCuenta, getCuentas, getCuentaByUsuario, getCuentaById, getCuentaPorNumero } from "./cuenta.controller.js";
-import { crearCuentaValidator, editarCuentaValidator, getCuentaByIdValidator, getCuentasValidator, getCuentaByUsuarioValidator, getCuentaPorNumeroValidator } from "../middlewares/cuenta-validator.js";
+import {
+  crearCuenta,
+  editarCuenta,
+  getDetallesCuenta,
+  getCuentas,
+  getCuentaByUsuario,
+  getCuentaById,
+  getCuentaPorNumero,
+  eliminarCuenta,
+} from "./cuenta.controller.js";
+import {
+  crearCuentaValidator,
+  editarCuentaValidator,
+  getCuentaByIdValidator,
+  getCuentasValidator,
+  getCuentaByUsuarioValidator,
+  getCuentaPorNumeroValidator,
+  eliminarCuentaValidator,
+} from "../middlewares/cuenta-validator.js";
 
 const router = Router();
 
@@ -420,7 +437,11 @@ router.get("/:cid", getCuentaByIdValidator, getCuentaById);
  *     security:
  *       - bearerAuth: []
  */
-router.get("/numero/:numeroCuenta", getCuentaPorNumeroValidator, getCuentaPorNumero);
+router.get(
+  "/numero/:numeroCuenta",
+  getCuentaPorNumeroValidator,
+  getCuentaPorNumero
+);
 
 /**
  * @swagger
@@ -459,7 +480,11 @@ router.get("/numero/:numeroCuenta", getCuentaPorNumeroValidator, getCuentaPorNum
  *     security:
  *       - bearerAuth: []
  */
-router.get("/cuentaUsuario/:uid", getCuentaByUsuarioValidator, getCuentaByUsuario);
+router.get(
+  "/cuentaUsuario/:uid",
+  getCuentaByUsuarioValidator,
+  getCuentaByUsuario
+);
 
 /**
  * @swagger
@@ -563,5 +588,84 @@ router.get("/cuentaUsuario/:uid", getCuentaByUsuarioValidator, getCuentaByUsuari
  */
 router.get("/", getCuentasValidator, getCuentas);
 
+/**
+ * @swagger
+ * /HRB/v1/cuentas/eliminarCuenta/{cid}:
+ *   delete:
+ *     summary: Elimina una cuenta por ID
+ *     tags: [Cuentas]
+ *     description: Elimina una cuenta bancaria por su ID (requiere rol ADMIN)
+ *     parameters:
+ *       - in: path
+ *         name: cid
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID de la cuenta a eliminar
+ *     responses:
+ *       200:
+ *         description: Cuenta eliminada exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "Cuenta eliminada con éxito"
+ *       400:
+ *         description: ID de cuenta inválido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "El ID de cuenta no es válido"
+ *       401:
+ *         description: No autorizado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "Token no válido"
+ *       403:
+ *         description: Prohibido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "No tienes permisos para realizar esta acción"
+ *       404:
+ *         description: Cuenta no encontrada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "Cuenta no encontrada"
+ *       500:
+ *         description: Error del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "Error al eliminar la cuenta"
+ *     security:
+ *       - bearerAuth: []
+ */
+router.delete("/eliminarCuenta/:cid", eliminarCuentaValidator, eliminarCuenta);
 
 export default router;

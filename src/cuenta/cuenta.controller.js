@@ -243,3 +243,34 @@ export const getCuentaByUsuario = async (req, res) => {
         });
     }
 };
+
+export const eliminarCuenta = async (req, res) => {
+    try {
+        const { cid } = req.params;
+        const usuario = req.usuario;
+        if (usuario.rol !== 'ADMIN') {
+            return res.status(403).json({
+                success: false,
+                msg: "No tiene autorización para eliminar cuentas. Solo el administrador puede hacerlo."
+            });
+        }
+        const cuenta = await Cuenta.findByIdAndDelete(cid);
+        if (!cuenta) {
+            return res.status(404).json({
+                success: false,
+                msg: "Cuenta no encontrada"
+            });
+        }
+        res.json({
+            success: true,
+            msg: "Cuenta eliminada correctamente",
+            cuenta
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            msg: "Error al eliminar la cuenta",
+            error: error.message
+        });
+    }
+};
