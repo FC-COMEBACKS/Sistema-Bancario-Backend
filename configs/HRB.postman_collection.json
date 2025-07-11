@@ -557,8 +557,40 @@
 				{
 					"name": "LISTAR CUENTA USUARIO ID",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTIxOTUxNDIsImV4cCI6MTc1MjI2NzE0Mn0.-S5D3qx6F2nNrad8tkmHjBdLi5oTlw1vgHIcMBIwnSc",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/cuentaUsuario/685a3363f0dfbb3ade4a62ad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"cuentaUsuario",
+								"685a3363f0dfbb3ade4a62ad"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
 					},
 					"response": []
 				}
