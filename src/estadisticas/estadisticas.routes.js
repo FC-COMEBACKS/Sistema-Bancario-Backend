@@ -1,18 +1,6 @@
 import { Router } from 'express';
-import {
-    getEstadisticasGenerales,
-    getMovimientosRecientes,
-    getEstadisticasMovimientos,
-    getEstadisticasUsuarios,
-    getEstadisticasProductos
-} from './estadisticas.controller.js';
-import {
-    validarEstadisticasGenerales,
-    validarMovimientosRecientes,
-    validarEstadisticasMovimientos,
-    validarEstadisticasUsuarios,
-    validarEstadisticasProductos
-} from '../middlewares/estadisticas-validator.js';
+import { getEstadisticasGenerales, getMovimientosRecientes, getEstadisticasMovimientos, getEstadisticasUsuarios, getEstadisticasProductos, getCuentasConMasMovimientos } from './estadisticas.controller.js';
+import { validarEstadisticasGenerales, validarMovimientosRecientes, validarEstadisticasMovimientos, validarEstadisticasUsuarios, validarEstadisticasProductos, validarCuentasConMasMovimientos } from '../middlewares/estadisticas-validator.js';
 
 const router = Router();
 
@@ -157,5 +145,73 @@ router.get('/usuarios', validarEstadisticasUsuarios, getEstadisticasUsuarios);
  *         description: Error interno del servidor
  */
 router.get('/productos', validarEstadisticasProductos, getEstadisticasProductos);
+
+/**
+ * @swagger
+ * /HRB/v1/estadisticas/cuentas-mas-movimientos:
+ *   get:
+ *     summary: Obtiene las cuentas con más movimientos
+ *     tags: [Estadísticas]
+ *     description: Retorna un listado de cuentas ordenadas por cantidad de movimientos (requiere rol ADMIN)
+ *     parameters:
+ *       - in: query
+ *         name: limite
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *         description: Número máximo de cuentas a retornar (por defecto 10)
+ *       - in: query
+ *         name: orden
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *         description: Orden de los resultados (asc=ascendente, desc=descendente) (por defecto desc)
+ *     responses:
+ *       200:
+ *         description: Estadísticas obtenidas exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 cuentas:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       _id:
+ *                         type: string
+ *                       numeroCuenta:
+ *                         type: string
+ *                       tipo:
+ *                         type: string
+ *                       saldo:
+ *                         type: number
+ *                       usuario:
+ *                         type: object
+ *                         properties:
+ *                           nombre:
+ *                             type: string
+ *                           username:
+ *                             type: string
+ *                           email:
+ *                             type: string
+ *                       movimientos:
+ *                         type: array
+ *                 message:
+ *                   type: string
+ *       401:
+ *         description: Token de autenticación faltante o inválido
+ *       403:
+ *         description: No tiene permisos para acceder a esta información
+ *       500:
+ *         description: Error interno del servidor
+ *     security:
+ *       - bearerAuth: []
+ */
+router.get('/cuentas-mas-movimientos', validarCuentasConMasMovimientos, getCuentasConMasMovimientos);
 
 export default router;

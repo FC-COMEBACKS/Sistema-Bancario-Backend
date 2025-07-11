@@ -46,3 +46,18 @@ export const validarEstadisticasProductos = [
     validateField,
     handleErrors
 ];
+
+export const validarCuentasConMasMovimientos = [
+    validateJWT,
+    hasRoles("ADMIN"),
+    query('orden')
+        .optional()
+        .isIn(['asc', 'desc'])
+        .withMessage('El orden debe ser asc o desc'),
+    query('limite')
+        .optional()
+        .isInt({ min: 1, max: 100 })
+        .withMessage('El límite debe ser un número entre 1 y 100'),
+    validateField,
+    handleErrors
+];

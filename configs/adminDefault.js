@@ -31,4 +31,3 @@ export const crearAdmin = async () => {
         console.error("Error al crear el administrador:", err.message);
     }
 }
-

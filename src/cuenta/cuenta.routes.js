@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { crearCuenta, editarCuenta, getDetallesCuenta, getMovimientosCuenta, getCuentas, getCuentasConMasMovimientos } from "./cuenta.controller.js";
-import { crearCuentaValidator, editarCuentaValidator, getCuentaByIdValidator, getMovimientosCuentaValidator, getCuentasValidator, getCuentasConMasMovimientosValidator } from "../middlewares/cuenta-validator.js";
+import { crearCuenta, editarCuenta, getDetallesCuenta, getCuentas, getCuentaByUsuario, getCuentaById, getCuentaPorNumero } from "./cuenta.controller.js";
+import { crearCuentaValidator, editarCuentaValidator, getCuentaByIdValidator, getCuentasValidator, getCuentaByUsuarioValidator, getCuentaPorNumeroValidator } from "../middlewares/cuenta-validator.js";
 
 const router = Router();
 
@@ -350,11 +350,11 @@ router.get("/detallesCuenta/:cid", getCuentaByIdValidator, getDetallesCuenta);
 
 /**
  * @swagger
- * /HRB/v1/cuentas/movimientosCuenta/{cid}:
+ * /HRB/v1/cuentas/{cid}:
  *   get:
- *     summary: Obtiene los movimientos de una cuenta
+ *     summary: Obtiene una cuenta por ID
  *     tags: [Cuentas]
- *     description: Retorna el historial de movimientos de una cuenta bancaria (el usuario debe ser propietario o administrador)
+ *     description: Retorna los datos básicos de una cuenta por su ID
  *     parameters:
  *       - in: path
  *         name: cid
@@ -362,103 +362,51 @@ router.get("/detallesCuenta/:cid", getCuentaByIdValidator, getDetallesCuenta);
  *           type: string
  *         required: true
  *         description: ID de la cuenta a consultar
- *       - in: query
- *         name: limite
- *         schema:
- *           type: integer
- *           minimum: 1
- *         description: Número máximo de movimientos a retornar (por defecto 10)
- *       - in: query
- *         name: pagina
- *         schema:
- *           type: integer
- *           minimum: 1
- *         description: Número de página a retornar (por defecto 1)
- *       - in: query
- *         name: tipo
- *         schema:
- *           type: string
- *           enum: [TRANSFERENCIA, DEPOSITO, COMPRA]
- *         description: Filtrar movimientos por tipo
  *     responses:
  *       200:
- *         description: Movimientos obtenidos exitosamente
+ *         description: Cuenta encontrada exitosamente
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 movimientos:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       mid:
- *                         type: string
- *                       tipo:
- *                         type: string
- *                       monto:
- *                         type: number
- *                       fechaHora:
- *                         type: string
- *                         format: date-time
- *                       descripcion:
- *                         type: string
- *                       cuentaOrigen:
- *                         type: object
- *                         properties:
- *                           cid:
- *                             type: string
- *                           numeroCuenta:
- *                             type: string
- *                       cuentaDestino:
- *                         type: object
- *                         properties:
- *                           cid:
- *                             type: string
- *                           numeroCuenta:
- *                             type: string
- *                 paginacion:
+ *                 success:
+ *                   type: boolean
+ *                 cuenta:
  *                   type: object
- *                   properties:
- *                     total:
- *                       type: integer
- *                     pagina:
- *                       type: integer
- *                     paginas:
- *                       type: integer
- *                     limite:
- *                       type: integer
- *       400:
- *         description: Formato de ID o parámetros inválidos
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 msg:
- *                   type: string
- *                   example: "El ID de cuenta no es válido"
- *       401:
- *         description: No autorizado
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 msg:
- *                   type: string
- *                   example: "Token no válido"
+ *       404:
+ *         description: Cuenta no encontrada
  *       403:
- *         description: Prohibido
+ *         description: Sin autorización
+ *     security:
+ *       - bearerAuth: []
+ */
+router.get("/:cid", getCuentaByIdValidator, getCuentaById);
+
+/**
+ * @swagger
+ * /HRB/v1/cuentas/numero/{numeroCuenta}:
+ *   get:
+ *     summary: Obtiene una cuenta por número de cuenta
+ *     tags: [Cuentas]
+ *     description: Retorna los datos de una cuenta por su número
+ *     parameters:
+ *       - in: path
+ *         name: numeroCuenta
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Número de cuenta a consultar
+ *     responses:
+ *       200:
+ *         description: Cuenta encontrada exitosamente
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 msg:
- *                   type: string
- *                   example: "No tienes permisos para acceder a esta cuenta"
+ *                 cuenta:
+ *                   type: object
  *       404:
  *         description: Cuenta no encontrada
  *         content:
@@ -469,8 +417,37 @@ router.get("/detallesCuenta/:cid", getCuentaByIdValidator, getDetallesCuenta);
  *                 msg:
  *                   type: string
  *                   example: "Cuenta no encontrada"
- *       500:
- *         description: Error del servidor
+ *     security:
+ *       - bearerAuth: []
+ */
+router.get("/numero/:numeroCuenta", getCuentaPorNumeroValidator, getCuentaPorNumero);
+
+/**
+ * @swagger
+ * /HRB/v1/cuentas/usuario/{uid}:
+ *   get:
+ *     summary: Obtiene la cuenta de un usuario por su UID
+ *     tags: [Cuentas]
+ *     description: Retorna la cuenta asociada al usuario especificado
+ *     parameters:
+ *       - in: path
+ *         name: uid
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: UID del usuario
+ *     responses:
+ *       200:
+ *         description: Cuenta encontrada exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 cuenta:
+ *                   type: object
+ *       404:
+ *         description: Usuario no tiene cuenta asociada
  *         content:
  *           application/json:
  *             schema:
@@ -478,11 +455,11 @@ router.get("/detallesCuenta/:cid", getCuentaByIdValidator, getDetallesCuenta);
  *               properties:
  *                 msg:
  *                   type: string
- *                   example: "Error al obtener los movimientos de la cuenta"
+ *                   example: "Usuario no tiene cuenta asociada"
  *     security:
  *       - bearerAuth: []
  */
-router.get("/movimientosCuenta/:cid", getMovimientosCuentaValidator, getMovimientosCuenta);
+router.get("/cuentaUsuario/:uid", getCuentaByUsuarioValidator, getCuentaByUsuario);
 
 /**
  * @swagger
@@ -586,97 +563,5 @@ router.get("/movimientosCuenta/:cid", getMovimientosCuentaValidator, getMovimien
  */
 router.get("/", getCuentasValidator, getCuentas);
 
-/**
- * @swagger
- * /HRB/v1/cuentas/estadisticas/mas-movimientos:
- *   get:
- *     summary: Obtiene las cuentas con más movimientos
- *     tags: [Cuentas]
- *     description: Retorna un listado de cuentas ordenadas por cantidad de movimientos (requiere rol ADMIN)
- *     parameters:
- *       - in: query
- *         name: limite
- *         schema:
- *           type: integer
- *           minimum: 1
- *         description: Número máximo de cuentas a retornar (por defecto 10)
- *       - in: query
- *         name: orden
- *         schema:
- *           type: string
- *           enum: [asc, desc]
- *         description: Orden de los resultados (asc=ascendente, desc=descendente) (por defecto desc)
- *       - in: query
- *         name: tipoMovimiento
- *         schema:
- *           type: string
- *           enum: [TRANSFERENCIA, DEPOSITO, COMPRA]
- *         description: Filtrar por tipo de movimiento
- *     responses:
- *       200:
- *         description: Estadísticas obtenidas exitosamente
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 cuentas:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       cid:
- *                         type: string
- *                       numeroCuenta:
- *                         type: string
- *                       tipo:
- *                         type: string
- *                       totalMovimientos:
- *                         type: integer
- *                       saldo:
- *                         type: number
- *                       usuario:
- *                         type: object
- *                         properties:
- *                           uid:
- *                             type: string
- *                           nombre:
- *                             type: string
- *                           username:
- *                             type: string
- *       401:
- *         description: No autorizado
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 msg:
- *                   type: string
- *                   example: "Token no válido"
- *       403:
- *         description: Prohibido
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 msg:
- *                   type: string
- *                   example: "No tienes permisos para realizar esta acción"
- *       500:
- *         description: Error del servidor
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 msg:
- *                   type: string
- *                   example: "Error al obtener las estadísticas"
- *     security:
- *       - bearerAuth: []
- */
-router.get("/estadisticas/mas-movimientos", getCuentasConMasMovimientosValidator, getCuentasConMasMovimientos);
 
 export default router;

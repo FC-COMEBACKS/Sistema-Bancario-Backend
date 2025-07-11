@@ -524,39 +524,6 @@
 					"response": []
 				},
 				{
-					"name": "movimientosCuenta ID",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMjBkNmYyODM2YzgxMGVhZTdjZTQiLCJpYXQiOjE3NTA3NDE1NDcsImV4cCI6MTc1MDc0NTE0N30.Sq3eyoSnxSsAT4G1wDHfsr3PVa_NZGV_gDsnV0xYOKQ",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/HRB/v1/cuentas/movimientosCuenta/685a229af9e095e558b94b54",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"HRB",
-								"v1",
-								"cuentas",
-								"movimientosCuenta",
-								"685a229af9e095e558b94b54"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "ListarCuentas",
 					"request": {
 						"auth": {
@@ -588,35 +555,10 @@
 					"response": []
 				},
 				{
-					"name": "CUENTAS CON MAS MOVIMIENTOS ESTADISTICAS",
+					"name": "LISTAR CUENTA USUARIO ID",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTA3NDgxNzQsImV4cCI6MTc1MDgyMDE3NH0.yzrAXotzgvvZtZRGlne_K7AJIINTt8qbWbZS6kJ6DOM",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/HRB/v1/cuentas/estadisticas/mas-movimientos",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"HRB",
-								"v1",
-								"cuentas",
-								"estadisticas",
-								"mas-movimientos"
-							]
-						}
+						"header": []
 					},
 					"response": []
 				}
@@ -1065,6 +1007,39 @@
 								"v1",
 								"movimientos",
 								"cuenta",
+								"685a229af9e095e558b94b54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movimientosCuenta ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMjBkNmYyODM2YzgxMGVhZTdjZTQiLCJpYXQiOjE3NTA3NDE1NDcsImV4cCI6MTc1MDc0NTE0N30.Sq3eyoSnxSsAT4G1wDHfsr3PVa_NZGV_gDsnV0xYOKQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/movimientosCuenta/685a229af9e095e558b94b54",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"movimientosCuenta",
 								"685a229af9e095e558b94b54"
 							]
 						}
@@ -1646,6 +1621,39 @@
 								"v1",
 								"estadisticas",
 								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CUENTAS CON MAS MOVIMIENTOS ESTADISTICAS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTA3NDgxNzQsImV4cCI6MTc1MDgyMDE3NH0.yzrAXotzgvvZtZRGlne_K7AJIINTt8qbWbZS6kJ6DOM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/estadisticas/mas-movimientos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"estadisticas",
+								"mas-movimientos"
 							]
 						}
 					},

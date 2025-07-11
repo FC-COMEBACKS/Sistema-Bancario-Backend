@@ -329,3 +329,44 @@ export const getEstadisticasProductos = async (req, res) => {
         });
     }
 };
+
+export const getCuentasConMasMovimientos = async (req, res) => {
+    try {
+        const usuario = req.usuario; 
+        
+        if (usuario.rol !== 'ADMIN') {
+            return res.status(403).json({
+                success: false,
+                message: "No tiene autorización para acceder a las estadísticas de cuentas. Esta función está limitada a administradores."
+            });
+        }
+        
+        const { orden = 'desc', limite = 10 } = req.query;
+        
+        const cuentas = await Cuenta.find()
+            .populate('usuario', 'nombre username email')
+            .populate('movimientos');
+        
+        cuentas.sort((a, b) => {
+            if (orden === 'asc') {
+                return a.movimientos.length - b.movimientos.length;
+            } else {
+                return b.movimientos.length - a.movimientos.length;
+            }
+        });
+
+        const cuentasLimitadas = cuentas.slice(0, Number(limite));
+        
+        return res.status(200).json({
+            success: true,
+            cuentas: cuentasLimitadas,
+            message: "Estadísticas de cuentas con más movimientos obtenidas correctamente"
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Error al obtener las estadísticas de cuentas",
+            error: error.message
+        });
+    }
+};

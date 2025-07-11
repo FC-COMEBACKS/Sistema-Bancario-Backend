@@ -30,10 +30,7 @@ const router = Router();
  *         description: Error de validación en los parámetros
  *     security:
  *       - bearerAuth: []
- *     x-roles:
- *       - admin
- *       - user
- *     x-validation: true
+ *     description: Este endpoint es accesible para todos los usuarios autenticados (ADMIN y CLIENT)
  */
 router.get("/", getDivisasValidator, getDivisas);
 
@@ -74,10 +71,7 @@ router.get("/", getDivisasValidator, getDivisas);
  *         description: Error de validación o parámetros incorrectos
  *     security:
  *       - bearerAuth: []
- *     x-roles:
- *       - admin
- *       - user
- *     x-validation: true
+ *     description: Este endpoint es accesible para todos los usuarios autenticados (ADMIN y CLIENT)
  */
 router.post("/convertir", convertirMontoValidator, convertirMonto);
 
@@ -115,10 +109,7 @@ router.post("/convertir", convertirMontoValidator, convertirMonto);
  *         description: Error de validación o parámetros incorrectos
  *     security:
  *       - bearerAuth: []
- *     x-roles:
- *       - admin
- *       - user
- *     x-validation: true
+ *     description: Este endpoint es accesible para todos los usuarios autenticados (ADMIN y CLIENT)
  */
 router.post("/convertir-saldo", convertirSaldoCuentaValidator, convertirSaldoCuenta);
 
@@ -158,9 +149,7 @@ router.post("/convertir-saldo", convertirSaldoCuentaValidator, convertirSaldoCue
  *         description: Error de validación o parámetros incorrectos
  *     security:
  *       - bearerAuth: []
- *     x-roles:
- *       - admin
- *     x-validation: true
+ *     description: Este endpoint es accesible solo para administradores (ADMIN)
  */
 router.post("/actualizar-tasas", actualizarTasasValidator, actualizarTasas);
 
@@ -177,16 +166,19 @@ router.post("/actualizar-tasas", actualizarTasasValidator, actualizarTasas);
  *           schema:
  *             type: object
  *             properties:
+ *               codigo:
+ *                 type: string
+ *                 description: Código de la divisa (USD, EUR, etc.)
  *               nombre:
  *                 type: string
- *               simbolo:
- *                 type: string
- *               tasa:
+ *                 description: Nombre completo de la divisa
+ *               tasaEnQuetzales:
  *                 type: number
+ *                 description: Tasa de cambio en relación al quetzal (GTQ)
  *             required:
+ *               - codigo
  *               - nombre
- *               - simbolo
- *               - tasa
+ *               - tasaEnQuetzales
  *     responses:
  *       201:
  *         description: Divisa agregada correctamente
@@ -194,9 +186,7 @@ router.post("/actualizar-tasas", actualizarTasasValidator, actualizarTasas);
  *         description: Error de validación o parámetros incorrectos
  *     security:
  *       - bearerAuth: []
- *     x-roles:
- *       - admin
- *     x-validation: true
+ *     description: Este endpoint es accesible solo para administradores (ADMIN)
  */
 router.post("/agregar", agregarDivisaValidator, agregarDivisa);
 
@@ -213,9 +203,7 @@ router.post("/agregar", agregarDivisaValidator, agregarDivisa);
  *         description: Error al restaurar las tasas oficiales
  *     security:
  *       - bearerAuth: []
- *     x-roles:
- *       - admin
- *     x-validation: true
+ *     description: Este endpoint es accesible solo para administradores (ADMIN)
  */
 router.post("/restaurar-tasas-oficiales", restaurarTasasOficialesValidator, restaurarTasasOficiales);
 

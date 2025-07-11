@@ -34,4 +34,3 @@ const options ={
 const swaggerDocs = swaggerJSDoc(options)
 
 export { swaggerDocs, swaggerUi}
-

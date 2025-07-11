@@ -20,6 +20,10 @@ const CuentaSchema = new Schema({
     type: Number, 
     default: 0 
   },
+  activa: { 
+    type: Boolean, 
+    default: true 
+  },
   ingresos: { 
     type: Number, 
     default: 0 
