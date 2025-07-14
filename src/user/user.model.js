@@ -56,7 +56,11 @@ const UsuarioSchema = new Schema({
   fechaRegistro: { 
     type: Date, 
     default: Date.now 
-  }
+  },
+    cuentasAgregadas: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Cuenta'
+  }]
 }, {
   versionKey: false,
   timestamps: true

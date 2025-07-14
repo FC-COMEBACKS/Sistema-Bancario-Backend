@@ -1,4 +1,5 @@
 import Cuenta from "./cuenta.model.js";
+import Usuario from "../user/user.model.js";
 
 const generarNumeroCuenta = () => {
     const timestamp = Date.now().toString();
@@ -44,6 +45,77 @@ export const crearCuenta = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             msg: "Error al crear la cuenta"
+        });
+    }
+};
+
+
+export const agregarCuentaDeUsuario = async (req, res) => {
+    try {
+        const usuarioActual = req.usuario._id;
+        const { numeroCuenta } = req.body;
+
+        const cuentaDestino = await Cuenta.findOne({ numeroCuenta });
+        if (!cuentaDestino) {
+            return res.status(404).json({
+                msg: "La cuenta destino no existe o el usuario no tiene cuenta creada"
+            });
+        }
+
+        const usuarioDueno = await Usuario.findById(cuentaDestino.usuario);
+        if (!usuarioDueno) {
+            return res.status(404).json({
+                msg: "El usuario dueño de la cuenta no existe"
+            });
+        }
+
+        if (cuentaDestino.usuario.toString() === usuarioActual.toString()) {
+            return res.status(400).json({
+                msg: "No puedes agregar tu propia cuenta"
+            });
+        }
+
+        const usuario = await Usuario.findById(usuarioActual);
+        if (usuario.cuentasAgregadas.includes(cuentaDestino._id)) {
+            return res.status(400).json({
+                msg: "Esta cuenta ya está agregada"
+            });
+        }
+
+        usuario.cuentasAgregadas.push(cuentaDestino._id);
+        await usuario.save();
+
+        res.status(201).json({
+            msg: "Cuenta agregada correctamente",
+            cuentaAgregada: cuentaDestino
+        });
+    } catch (error) {
+        res.status(500).json({
+            msg: "Error al agregar la cuenta",
+            error: error.message
+        });
+    }
+};
+
+export const listarCuentasAgregadas = async (req, res) => {
+    try {
+        const usuarioId = req.usuario._id;
+        const usuario = await Usuario.findById(usuarioId).populate({
+            path: 'cuentasAgregadas',
+            populate: { path: 'usuario', select: 'nombre username email' }
+        });
+        if (!usuario) {
+            return res.status(404).json({
+                msg: 'Usuario no encontrado'
+            });
+        }
+        res.json({
+            cuentasAgregadas: usuario.cuentasAgregadas
+        });
+    } catch (error) {
+        res.status(500).json({
+            msg: 'Error al obtener las cuentas agregadas',
+            error: error.message
         });
     }
 };
@@ -215,23 +287,22 @@ export const getCuentaByUsuario = async (req, res) => {
     try {
         const { uid } = req.params;
         
-        console.log("Buscando cuenta para usuario:", uid);
-        
         const cuenta = await Cuenta.findOne({ usuario: uid })
             .populate('usuario', 'nombre username email')
             .populate({
                 path: 'movimientos',
                 options: { sort: { fechaCreacion: -1 }, limit: 5 }
-            });
-            
-        console.log("Cuenta encontrada:", cuenta);
-            
+            })
+            .lean(); 
+
         if (!cuenta) {
             return res.status(404).json({
                 msg: "No tienes una cuenta asociada"
             });
         }
-        
+
+        cuenta.cid = cuenta._id;
+
         res.json({
             cuenta
         });

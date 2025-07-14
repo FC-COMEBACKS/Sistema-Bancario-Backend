@@ -8,6 +8,8 @@ import {
   getCuentaById,
   getCuentaPorNumero,
   eliminarCuenta,
+  agregarCuentaDeUsuario,
+  listarCuentasAgregadas
 } from "./cuenta.controller.js";
 import {
   crearCuentaValidator,
@@ -17,6 +19,8 @@ import {
   getCuentaByUsuarioValidator,
   getCuentaPorNumeroValidator,
   eliminarCuentaValidator,
+  agregarCuentaDeUsuarioValidator,
+  listarCuentasAgregadasValidator
 } from "../middlewares/cuenta-validator.js";
 
 const router = Router();
@@ -133,6 +137,74 @@ const router = Router();
  *       - bearerAuth: []
  */
 router.post("/crearCuenta", crearCuentaValidator, crearCuenta);
+
+/**
+ * @swagger
+ * /HRB/v1/cuentas/agregarCuentaDeUsuario:
+ *   post:
+ *     summary: Agrega una cuenta de otro usuario a la lista de cuentas agregadas del usuario autenticado
+ *     tags: [Cuentas]
+ *     description: Permite a un usuario agregar una cuenta existente (por número de cuenta) a su lista de cuentas agregadas. No puede agregar su propia cuenta ni cuentas ya agregadas.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - numeroCuenta
+ *             properties:
+ *               numeroCuenta:
+ *                 type: string
+ *                 description: Número de cuenta a agregar
+ *                 example: "3379947796"
+ *     responses:
+ *       201:
+ *         description: Cuenta agregada correctamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "Cuenta agregada correctamente"
+ *                 cuentaAgregada:
+ *                   type: object
+ *       400:
+ *         description: Error de validación o lógica
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "No puedes agregar tu propia cuenta"
+ *       404:
+ *         description: Cuenta destino no encontrada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "La cuenta destino no existe o el usuario no tiene cuenta creada"
+ *       500:
+ *         description: Error del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "Error al agregar la cuenta"
+ *     security:
+ *       - bearerAuth: []
+ */
+router.post("/agregarCuentaDeUsuario", agregarCuentaDeUsuarioValidator, agregarCuentaDeUsuario);
 
 /**
  * @swagger
@@ -364,6 +436,8 @@ router.put("/editarCuenta/:cid", editarCuentaValidator, editarCuenta);
  *       - bearerAuth: []
  */
 router.get("/detallesCuenta/:cid", getCuentaByIdValidator, getDetallesCuenta);
+
+router.get("/listarCuentasAgregadas", listarCuentasAgregadasValidator, listarCuentasAgregadas);
 
 /**
  * @swagger
@@ -667,5 +741,6 @@ router.get("/", getCuentasValidator, getCuentas);
  *       - bearerAuth: []
  */
 router.delete("/eliminarCuenta/:cid", eliminarCuentaValidator, eliminarCuenta);
+
 
 export default router;

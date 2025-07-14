@@ -66,16 +66,22 @@ export const getEstadisticasGenerales = async (req, res) => {
 export const getMovimientosRecientes = async (req, res) => {
     try {
         const { usuario } = req;
-        if (usuario.rol !== 'ADMIN') {
-            return res.status(403).json({
-                success: false,
-                message: "No tiene autorización para acceder a la información de movimientos"
-            });
-        }
-
         const { limit = 10 } = req.query;
 
-        const movimientosRecientes = await Movimiento.find({ reversed: false })
+        let filtro = { reversed: false };
+
+        if (usuario.rol === 'CLIENT') {
+            // Buscar las cuentas del usuario
+            const cuentasUsuario = await Cuenta.find({ usuario: usuario._id }).select('_id');
+            const cuentasIds = cuentasUsuario.map(c => c._id);
+
+            filtro.$or = [
+                { cuentaOrigen: { $in: cuentasIds } },
+                { cuentaDestino: { $in: cuentasIds } }
+            ];
+        }
+
+        const movimientosRecientes = await Movimiento.find(filtro)
             .sort({ fechaHora: -1 })
             .limit(parseInt(limit))
             .populate('cuentaOrigen', 'numeroCuenta')

@@ -415,7 +415,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTEwMTY0NjcsImV4cCI6MTc1MTA4ODQ2N30.oClBmD9OCRpW9Kq3ZaRQoj-n_VNlyN6DNxraw2uYx5M",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTIzODY2NTMsImV4cCI6MTc1MjQ1ODY1M30.SzCGaB6_K7cXImUwqSlIK74HWgI2rtXR5UEAJCIWHgk",
 									"type": "string"
 								}
 							]
@@ -424,7 +424,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"usuario\": \"685a3363f0dfbb3ade4a62ad\",\r\n  \"tipo\": \"AHORROS\",\r\n  \"divisa\": \"USD\"\r\n}",
+							"raw": "{\r\n  \"usuario\": \"6870ba9cd7dc514e641afd7a\",\r\n  \"tipo\": \"AHORROS\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -498,7 +498,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTEwNjE1MjUsImV4cCI6MTc1MTEzMzUyNX0.tTQRlf6MjYqIBuduIu11IXrbd5zFFWXie0Vyuo_bw9A",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTIxMTA0NjYsImV4cCI6MTc1MjE4MjQ2Nn0.GNMvBwc7nwVJubFqDOCoG8UpNyVhnLnK-M5pcR5qDpU",
 									"type": "string"
 								}
 							]
@@ -506,7 +506,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/HRB/v1/cuentas/detallesCuenta/685a33d1f0dfbb3ade4a62ba",
+							"raw": "http://localhost:3000/HRB/v1/cuentas/detallesCuenta/686f183358ff785ff45b33b9",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -517,7 +517,7 @@
 								"v1",
 								"cuentas",
 								"detallesCuenta",
-								"685a33d1f0dfbb3ade4a62ba"
+								"686f183358ff785ff45b33b9"
 							]
 						}
 					},
@@ -531,7 +531,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTA3NDgxNzQsImV4cCI6MTc1MDgyMDE3NH0.yzrAXotzgvvZtZRGlne_K7AJIINTt8qbWbZS6kJ6DOM",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTIzODY2NTMsImV4cCI6MTc1MjQ1ODY1M30.SzCGaB6_K7cXImUwqSlIK74HWgI2rtXR5UEAJCIWHgk",
 									"type": "string"
 								}
 							]
@@ -562,7 +562,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTIxOTUxNDIsImV4cCI6MTc1MjI2NzE0Mn0.-S5D3qx6F2nNrad8tkmHjBdLi5oTlw1vgHIcMBIwnSc",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTIzODYxODIsImV4cCI6MTc1MjQ1ODE4Mn0.UAztDpa4UiktVobainsXMmC_QQB7yZdu8PhsksN0sNU",
 									"type": "string"
 								}
 							]
@@ -589,6 +589,112 @@
 									"value": null,
 									"disabled": true
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ELIMINAR CUENTA ADMIN",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTIzODY2NTMsImV4cCI6MTc1MjQ1ODY1M30.SzCGaB6_K7cXImUwqSlIK74HWgI2rtXR5UEAJCIWHgk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/eliminarCuenta/68734b216e2e525fd7f15fa0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"eliminarCuenta",
+								"68734b216e2e525fd7f15fa0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AGREGAR CUENTA USUARIO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTIzODYxODIsImV4cCI6MTc1MjQ1ODE4Mn0.UAztDpa4UiktVobainsXMmC_QQB7yZdu8PhsksN0sNU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"numeroCuenta\": \"3379947796\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/agregarCuentaDeUsuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"agregarCuentaDeUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR CUENTAS USUARIOS AGREGADOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTIzODYxODIsImV4cCI6MTc1MjQ1ODE4Mn0.UAztDpa4UiktVobainsXMmC_QQB7yZdu8PhsksN0sNU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/listarCuentasAgregadas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"listarCuentasAgregadas"
 							]
 						}
 					},
@@ -800,7 +906,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTA3NDgxNzQsImV4cCI6MTc1MDgyMDE3NH0.yzrAXotzgvvZtZRGlne_K7AJIINTt8qbWbZS6kJ6DOM",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTIzODYxODIsImV4cCI6MTc1MjQ1ODE4Mn0.UAztDpa4UiktVobainsXMmC_QQB7yZdu8PhsksN0sNU",
 									"type": "string"
 								}
 							]
@@ -831,7 +937,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTA3NDg2NDcsImV4cCI6MTc1MDgyMDY0N30.Q5dK3pnRKlWFgLiwmVrVdxHeAd9xmCySoX2dEuxUT94",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTIzODYxODIsImV4cCI6MTc1MjQ1ODE4Mn0.UAztDpa4UiktVobainsXMmC_QQB7yZdu8PhsksN0sNU",
 									"type": "string"
 								}
 							]
@@ -839,7 +945,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/HRB/v1/movimientos/685a36804bb417ed42886426",
+							"raw": "http://localhost:3000/HRB/v1/movimientos/6874380f04abd5cb9e760274",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -849,7 +955,7 @@
 								"HRB",
 								"v1",
 								"movimientos",
-								"685a36804bb417ed42886426"
+								"6874380f04abd5cb9e760274"
 							]
 						}
 					},
@@ -863,7 +969,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMjBkNmYyODM2YzgxMGVhZTdjZTQiLCJpYXQiOjE3NTA3NDE1NDcsImV4cCI6MTc1MDc0NTE0N30.Sq3eyoSnxSsAT4G1wDHfsr3PVa_NZGV_gDsnV0xYOKQ",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTIzODYxODIsImV4cCI6MTc1MjQ1ODE4Mn0.UAztDpa4UiktVobainsXMmC_QQB7yZdu8PhsksN0sNU",
 									"type": "string"
 								}
 							]
@@ -872,7 +978,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"cuentaOrigen\": \"5627863035\",    // Número de cuenta origen\r\n  \"cuentaDestino\": \"9698599992\",    // Número de cuenta destino\r\n  \"monto\": 500,\r\n  \"descripcion\": \"Pago de factura\"\r\n}",
+							"raw": "{\r\n  \"cuentaOrigen\": \"0502124615\",    \r\n  \"cuentaDestino\": \"8243541347\",    \r\n  \"monto\": 100,\r\n  \"descripcion\": \"Pago de factura\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -904,7 +1010,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTA3NDE5NTMsImV4cCI6MTc1MDc0NTU1M30.YTyKhIaFYz8BLgS5_YzwIG1pdM0sxdkfA5XMzOPutWs",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTIzODY2NTMsImV4cCI6MTc1MjQ1ODY1M30.SzCGaB6_K7cXImUwqSlIK74HWgI2rtXR5UEAJCIWHgk",
 									"type": "string"
 								}
 							]
@@ -913,7 +1019,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"cuentaDestino\": \"5627863035\",\r\n  \"monto\": 1000,\r\n  \"descripcion\": \"Depósito inicial\"\r\n}",
+							"raw": "{\r\n  \"cuentaDestino\": \"0502124615\",\r\n  \"monto\": 100,\r\n  \"descripcion\": \"Depósito inicial\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -945,7 +1051,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTA3NDMwNTAsImV4cCI6MTc1MDc0NjY1MH0.a1mFduByIhl8B9_3hXU3JlChT3jdRrue67IB4o81d-A",
+									"value": "685f202c2c802216581539a2",
 									"type": "string"
 								}
 							]
@@ -953,7 +1059,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/HRB/v1/movimientos/deposito/685a36804bb417ed42886426/revertir",
+							"raw": "http://localhost:3000/HRB/v1/movimientos/deposito/685f202c2c802216581539a2/revertir",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -964,8 +1070,49 @@
 								"v1",
 								"movimientos",
 								"deposito",
-								"685a36804bb417ed42886426",
+								"685f202c2c802216581539a2",
 								"revertir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREDITO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTIzODY2NTMsImV4cCI6MTc1MjQ1ODY1M30.SzCGaB6_K7cXImUwqSlIK74HWgI2rtXR5UEAJCIWHgk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cuentaDestino\": \"8243541347\",\r\n  \"monto\": 1000,\r\n  \"descripcion\": \"PRUEBA CREDITO\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/movimientos/credito",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"movimientos",
+								"credito"
 							]
 						}
 					},
@@ -1666,7 +1813,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTA3NDgxNzQsImV4cCI6MTc1MDgyMDE3NH0.yzrAXotzgvvZtZRGlne_K7AJIINTt8qbWbZS6kJ6DOM",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTEwNjE1MjUsImV4cCI6MTc1MTEzMzUyNX0.tTQRlf6MjYqIBuduIu11IXrbd5zFFWXie0Vyuo_bw9A",
 									"type": "string"
 								}
 							]

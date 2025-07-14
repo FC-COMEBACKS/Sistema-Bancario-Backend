@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { getMovimientos, getMovimientoById, realizarTransferencia, realizarDeposito, revertirDeposito, comprarProducto, getHistorialCuenta } from "./movimiento.controller.js";
-import { getMovimientosValidator, getMovimientoByIdValidator, realizarTransferenciaValidator, realizarDepositoValidator, revertirDepositoValidator, comprarProductoValidator, getHistorialCuentaValidator } from "../middlewares/movimiento-validator.js";
+import { getMovimientos, getMovimientoById, realizarTransferencia, realizarDeposito, revertirDeposito, comprarProducto, getHistorialCuenta, realizarCredito } from "./movimiento.controller.js";
+import { getMovimientosValidator, getMovimientoByIdValidator, realizarTransferenciaValidator, realizarDepositoValidator, revertirDepositoValidator, comprarProductoValidator, getHistorialCuentaValidator, realizarCreditoValidator } from "../middlewares/movimiento-validator.js";
 
 const router = Router();
 
@@ -251,6 +251,114 @@ router.get("/", getMovimientosValidator, getMovimientos);
  *       - bearerAuth: []
  */
 router.post("/transferencia", realizarTransferenciaValidator, realizarTransferencia);
+
+/**
+ * @swagger
+ * /HRB/v1/movimientos/credito:
+ *   post:
+ *     summary: Realiza un abono de crédito a una cuenta
+ *     tags: [Movimientos]
+ *     description: Permite a un administrador abonar saldo a una cuenta como movimiento tipo CREDITO.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - cuentaDestino
+ *               - monto
+ *             properties:
+ *               cuentaDestino:
+ *                 type: string
+ *                 description: Número de cuenta a la que se abonará el crédito
+ *                 example: "0502124615"
+ *               monto:
+ *                 type: number
+ *                 description: Monto a acreditar (debe ser mayor a 0)
+ *                 example: 1000
+ *               descripcion:
+ *                 type: string
+ *                 description: Descripción del crédito
+ *                 example: "Crédito por ajuste manual"
+ *     responses:
+ *       200:
+ *         description: Crédito realizado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "Crédito realizado con éxito"
+ *                 movimiento:
+ *                   type: object
+ *                 cuentaDestino:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: string
+ *                     numeroCuenta:
+ *                       type: string
+ *                     titular:
+ *                       type: string
+ *                     saldoActual:
+ *                       type: number
+ *       400:
+ *         description: Datos inválidos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "El monto debe ser mayor a 0"
+ *       401:
+ *         description: No autorizado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "Token no válido"
+ *       403:
+ *         description: Prohibido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "No tiene autorización para realizar créditos"
+ *       404:
+ *         description: Cuenta no encontrada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "Cuenta de destino no encontrada"
+ *       500:
+ *         description: Error del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 msg:
+ *                   type: string
+ *                   example: "Error al realizar el crédito"
+ *     security:
+ *       - bearerAuth: []
+ */
+router.post("/credito", realizarCreditoValidator, realizarCredito);
 
 /**
  * @swagger

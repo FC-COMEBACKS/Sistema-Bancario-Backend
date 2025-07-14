@@ -13,7 +13,7 @@ export const validarEstadisticasGenerales = [
 
 export const validarMovimientosRecientes = [
     validateJWT,
-    hasRoles("ADMIN"),
+    hasRoles("ADMIN", "CLIENT"),
     query('limit')
         .optional()
         .isInt({ min: 1, max: 100 })
@@ -22,16 +22,16 @@ export const validarMovimientosRecientes = [
     handleErrors
 ];
 
-export const validarEstadisticasMovimientos = [
-    validateJWT,
-    hasRoles("ADMIN"),
-    query('periodo')
-        .optional()
-        .isIn(['semanal', 'mensual', 'anual'])
-        .withMessage('El período debe ser semanal, mensual o anual'),
-    validateField,
-    handleErrors
-];
+    export const validarEstadisticasMovimientos = [
+        validateJWT,
+        hasRoles("ADMIN", "CLIENT"),
+        query('periodo')
+            .optional()
+            .isIn(['semanal', 'mensual', 'anual'])
+            .withMessage('El período debe ser semanal, mensual o anual'),
+        validateField,
+        handleErrors
+    ];
 
 export const validarEstadisticasUsuarios = [
     validateJWT,

@@ -6,7 +6,7 @@ import { hasRoles } from "./validate-roles.js";
 
 export const getMovimientosValidator = [
     validateJWT,
-    hasRoles("ADMIN"),
+    hasRoles("ADMIN", "CLIENT"),
     validateField,
     handleErrors
 ];
@@ -37,12 +37,25 @@ export const realizarTransferenciaValidator = [
     handleErrors
 ];
 
+export const realizarCreditoValidator = [
+    validateJWT,
+    hasRoles("ADMIN"),
+    body("cuentaDestino")
+        .notEmpty().withMessage("El número de cuenta de destino es obligatorio"),
+    body("monto")
+        .notEmpty().withMessage("El monto es obligatorio")
+        .isFloat({ min: 0.01 }).withMessage("El monto debe ser mayor a 0"),
+    body("descripcion")
+        .optional(),
+    validateField,
+    handleErrors
+];
+
 export const realizarDepositoValidator = [
     validateJWT,
     hasRoles("ADMIN"),
-    body("cuentaDestinoId")
-        .notEmpty().withMessage("La cuenta de destino es obligatoria")
-        .isMongoId().withMessage("El ID de la cuenta de destino no es válido"),
+    body("cuentaDestino")
+        .notEmpty().withMessage("El número de cuenta de destino es obligatorio"),
     body("monto")
         .notEmpty().withMessage("El monto es obligatorio")
         .isFloat({ min: 0.01 }).withMessage("El monto debe ser mayor a 0"),

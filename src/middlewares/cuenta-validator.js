@@ -33,6 +33,14 @@ export const editarCuentaValidator = [
     handleErrors
 ]
 
+
+export const listarCuentasAgregadasValidator = [
+    validateJWT,
+    hasRoles("CLIENT", "ADMIN"),
+    validateField,
+    handleErrors
+];
+
 export const getCuentaByIdValidator = [
     validateJWT,
     hasRoles("ADMIN", "CLIENT"),
@@ -63,7 +71,7 @@ export const getCuentaPorNumeroValidator = [
     param("numeroCuenta").notEmpty().withMessage("El número de cuenta es obligatorio"),
     validateField,
     handleErrors
-];
+]
 
 export const eliminarCuentaValidator = [
     validateJWT,
@@ -72,4 +80,12 @@ export const eliminarCuentaValidator = [
     param("cid").custom(cuentaExists),
     validateField,
     handleErrors
-];
+]
+
+export const agregarCuentaDeUsuarioValidator = [
+    validateJWT,
+    hasRoles("CLIENT", "ADMIN"),
+    body("numeroCuenta").notEmpty().withMessage("El número de cuenta es obligatorio"),
+    validateField,
+    handleErrors
+]

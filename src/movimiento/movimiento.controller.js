@@ -15,18 +15,27 @@ export const crearMovimiento = async (datosMovimiento) => {
 export const getMovimientos = async (req, res) => {
     try {
         const { desde = 0, tipo, cuenta } = req.query;
-        
         let filtro = {};
+
         if (tipo) {
             filtro.tipo = tipo;
         }
-        if (cuenta) {
+
+        if (req.usuario.rol === "CLIENT") {
+            const cuentasUsuario = await Cuenta.find({ usuario: req.usuario._id }).select('_id');
+            const cuentasIds = cuentasUsuario.map(c => c._id);
+
+            filtro.$or = [
+                { cuentaOrigen: { $in: cuentasIds } },
+                { cuentaDestino: { $in: cuentasIds } }
+            ];
+        } else if (cuenta) {
             filtro.$or = [
                 { cuentaOrigen: cuenta },
                 { cuentaDestino: cuenta }
             ];
         }
-        
+
         const [total, movimientos] = await Promise.all([
             Movimiento.countDocuments(filtro),
             Movimiento.find(filtro)
@@ -50,10 +59,10 @@ export const getMovimientos = async (req, res) => {
                 .sort({ fechaHora: -1 })
                 .skip(Number(desde))
         ]);
-        
+
         const movimientosEnriquecidos = movimientos.map(mov => {
             const movData = mov.toObject();
-            
+
             return {
                 ...movData,
                 cuentaOrigen: mov.cuentaOrigen ? {
@@ -68,7 +77,7 @@ export const getMovimientos = async (req, res) => {
                 } : null
             };
         });
-        
+
         res.json({
             total,
             movimientos: movimientosEnriquecidos
@@ -146,7 +155,8 @@ export const realizarTransferencia = async (req, res) => {
     try {
         const { cuentaOrigen, cuentaDestino, monto, descripcion = "Transferencia" } = req.body;
         const usuario = req.usuario;
-        
+        const montoNumber = Number(monto);
+
         const cuentaOrigenObj = await Cuenta.findOne({ numeroCuenta: cuentaOrigen }).populate('usuario', 'nombre');
         if (!cuentaOrigenObj) {
             return res.status(404).json({
@@ -154,7 +164,7 @@ export const realizarTransferencia = async (req, res) => {
                 msg: "Cuenta de origen no encontrada"
             });
         }
-        
+
         const usuarioOrigenId = cuentaOrigenObj.usuario._id ? cuentaOrigenObj.usuario._id.toString() : cuentaOrigenObj.usuario.toString();
         if (usuarioOrigenId !== usuario._id.toString() && usuario.rol !== 'ADMIN') {
             return res.status(403).json({
@@ -162,79 +172,78 @@ export const realizarTransferencia = async (req, res) => {
                 msg: "No tiene autorización para realizar transferencias desde esta cuenta"
             });
         }
-        
+
         const cuentaDestinoObj = await Cuenta.findOne({ numeroCuenta: cuentaDestino }).populate('usuario', 'nombre');
         if (!cuentaDestinoObj) {
             return res.status(404).json({
                 msg: "Cuenta de destino no encontrada"
             });
         }
-        
+
         if (cuentaOrigenObj.numeroCuenta === cuentaDestinoObj.numeroCuenta) {
             return res.status(400).json({
                 msg: "No se puede transferir a la misma cuenta"
             });
         }
 
-        if (cuentaOrigenObj.saldo < monto) {
+        if (cuentaOrigenObj.saldo < montoNumber) {
             return res.status(400).json({
                 msg: "Saldo insuficiente para realizar esta transferencia"
             });
         }
-        
-        if (monto > 2000) {
+
+        if (montoNumber > 2000) {
             return res.status(400).json({
                 msg: "No se puede transferir más de Q2000 por transferencia"
             });
         }
-        
+
         const today = new Date();
         today.setHours(0, 0, 0, 0);
-        
+
         const tomorrow = new Date(today);
         tomorrow.setDate(tomorrow.getDate() + 1);
-        
+
         const transferenciasHoy = await Movimiento.find({
             cuentaOrigen: cuentaOrigenObj._id,
             tipo: "TRANSFERENCIA",
             fechaHora: { $gte: today, $lt: tomorrow },
             reversed: false
         });
-        
+
         let totalTransferidoHoy = 0;
         transferenciasHoy.forEach(t => {
-            totalTransferidoHoy += t.monto;
+            totalTransferidoHoy += Number(t.monto) || 0;
         });
-        
-        if (totalTransferidoHoy + monto > 10000) {
+
+        if (totalTransferidoHoy + montoNumber > 10000) {
             return res.status(400).json({
-                msg: "Ha alcanzado el límite de transferencia diario de Q10,000"
+                msg: "Has superado el límite diario de Q10,000 en transferencias"
             });
         }
-        
-        cuentaOrigenObj.saldo -= monto;
-        cuentaOrigenObj.egresos += monto;
-        
-        cuentaDestinoObj.saldo += monto;
-        cuentaDestinoObj.ingresos += monto;
-        
+
+        cuentaOrigenObj.saldo -= montoNumber;
+        cuentaOrigenObj.egresos += montoNumber;
+        cuentaDestinoObj.saldo += montoNumber;
+        cuentaDestinoObj.ingresos += montoNumber;
+
         const movimiento = await crearMovimiento({
             cuentaOrigen: cuentaOrigenObj._id,
             cuentaDestino: cuentaDestinoObj._id,
-            monto,
+            monto: montoNumber,
             tipo: "TRANSFERENCIA",
             fechaHora: new Date(),
             descripcion
         });
-        
+
         cuentaOrigenObj.movimientos.push(movimiento._id);
         cuentaDestinoObj.movimientos.push(movimiento._id);
-        
+
         await Promise.all([
             cuentaOrigenObj.save(),
             cuentaDestinoObj.save()
         ]);
-        
+
         const movimientoSimplificado = {
             cuentaOrigen: movimiento.cuentaOrigen,
             cuentaDestino: movimiento.cuentaDestino,
@@ -258,6 +267,8 @@ export const realizarTransferencia = async (req, res) => {
             },
             saldoActual: cuentaOrigenObj.saldo
         };
+
+        res.json(resultado);
         
         res.json(resultado);
     } catch (error) {
@@ -267,9 +278,61 @@ export const realizarTransferencia = async (req, res) => {
     }
 };
 
+export const realizarCredito = async (req, res) => {
+    try {
+        const { cuentaDestino, monto, descripcion = "Crédito" } = req.body;
+        const montoNumber = Number(monto);
+        
+        if (req.usuario.rol !== 'ADMIN') {
+            return res.status(403).json({
+                msg: "No tiene autorización para realizar créditos"
+            });
+        }
+
+        const cuentaDestinoObj = await Cuenta.findOne({ numeroCuenta: cuentaDestino }).populate('usuario', 'nombre');
+        if (!cuentaDestinoObj) {
+            return res.status(404).json({
+                msg: "Cuenta de destino no encontrada"
+            });
+        }
+
+        cuentaDestinoObj.saldo += montoNumber;
+        cuentaDestinoObj.ingresos += montoNumber;
+
+        const movimiento = await crearMovimiento({
+            cuentaDestino: cuentaDestinoObj._id,
+            monto: montoNumber,
+            tipo: "CREDITO",
+            fechaHora: new Date(),
+            descripcion: `${descripcion} (realizado por: ${req.usuario.nombre})`
+        });
+
+        cuentaDestinoObj.movimientos.push(movimiento._id);
+        await cuentaDestinoObj.save();
+
+        const movimientoSimplificado = movimiento.toObject();
+
+        res.json({
+            msg: "Crédito realizado con éxito",
+            movimiento: movimientoSimplificado,
+            cuentaDestino: {
+                id: cuentaDestinoObj._id,
+                numeroCuenta: cuentaDestinoObj.numeroCuenta,
+                titular: cuentaDestinoObj.usuario ? cuentaDestinoObj.usuario.nombre : 'No especificado'
+            },
+            saldoActual: cuentaDestinoObj.saldo
+        });
+    } catch (error) {
+        res.status(500).json({
+            msg: "Error al realizar el crédito"
+        });
+    }
+};
+
 export const realizarDeposito = async (req, res) => {
     try {
         const { cuentaDestino, monto, descripcion = "Depósito" } = req.body;
+        const montoNumber = Number(monto);
         
         const cuentaDestinoObj = await Cuenta.findOne({ numeroCuenta: cuentaDestino }).populate('usuario', 'nombre');
         if (!cuentaDestinoObj) {
@@ -278,12 +341,12 @@ export const realizarDeposito = async (req, res) => {
             });
         }
         
-        cuentaDestinoObj.saldo += monto;
-        cuentaDestinoObj.ingresos += monto;
+        cuentaDestinoObj.saldo += montoNumber;
+        cuentaDestinoObj.ingresos += montoNumber;
         
         const movimiento = await crearMovimiento({
             cuentaDestino: cuentaDestinoObj._id,
-            monto,
+            monto: montoNumber,
             tipo: "DEPOSITO",
             fechaHora: new Date(),
             descripcion: `${descripcion} (realizado por: ${req.usuario.nombre})`
