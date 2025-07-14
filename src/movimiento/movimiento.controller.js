@@ -14,7 +14,8 @@ export const crearMovimiento = async (datosMovimiento) => {
 
 export const getMovimientos = async (req, res) => {
     try {
-        const { desde = 0, tipo, cuenta } = req.query;
+        const {tipo, cuenta, fechaDesde, fechaHasta, montoMinimo, montoMaximo, limite = 10, pagina = 1 } = req.query;
+
         let filtro = {};
 
         if (tipo) {
@@ -35,6 +36,20 @@ export const getMovimientos = async (req, res) => {
                 { cuentaDestino: cuenta }
             ];
         }
+
+        if (fechaDesde || fechaHasta) {
+            filtro.fechaHora = {};
+            if (fechaDesde) filtro.fechaHora.$gte = new Date(fechaDesde);
+            if (fechaHasta) filtro.fechaHora.$lte = new Date(fechaHasta);
+        }
+
+        if (montoMinimo || montoMaximo) {
+            filtro.monto = {};
+            if (montoMinimo) filtro.monto.$gte = Number(montoMinimo);
+            if (montoMaximo) filtro.monto.$lte = Number(montoMaximo);
+        }
+
+        const skip = (Number(pagina) - 1) * Number(limite);
 
         const [total, movimientos] = await Promise.all([
             Movimiento.countDocuments(filtro),
@@ -57,7 +72,8 @@ export const getMovimientos = async (req, res) => {
                 })
                 .populate('productoServicio', 'nombre precio')
                 .sort({ fechaHora: -1 })
-                .skip(Number(desde))
+                .skip(skip)
+                .limit(Number(limite))
         ]);
 
         const movimientosEnriquecidos = movimientos.map(mov => {
@@ -268,9 +284,7 @@ export const realizarTransferencia = async (req, res) => {
             saldoActual: cuentaOrigenObj.saldo
         };
 
-        res.json(resultado);
-        
-        res.json(resultado);
+        res.json(resultado); 
     } catch (error) {
         res.status(500).json({
             msg: "Error al realizar la transferencia"
