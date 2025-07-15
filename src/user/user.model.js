@@ -12,8 +12,7 @@ const UsuarioSchema = new Schema({
   },
   password: { 
     type: String, 
-    required: true, 
-    immutable: true 
+    required: true
   },
   rol: { 
     type: String, 

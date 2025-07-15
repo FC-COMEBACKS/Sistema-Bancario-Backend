@@ -70,10 +70,7 @@ export const deleteUserValidatorClient = [
 export const updatePasswordValidator = [
   validateJWT,
   hasRoles("ADMIN", "CLIENT"),
-  body("newPassword")
-    .notEmpty().withMessage("La nueva contraseña es obligatoria")
-    .isLength({ min: 8 }).withMessage("La contraseña debe tener al menos 8 caracteres")
-    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*$/).withMessage("La contraseña debe contener al menos una mayúscula, una minúscula y un número"),
+  body("newPassword").notEmpty().withMessage("La nueva contraseña es obligatoria"),
   validateField,
   handleErrors
 ];
