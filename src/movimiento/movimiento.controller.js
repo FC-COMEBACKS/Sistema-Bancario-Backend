@@ -363,7 +363,7 @@ export const realizarDeposito = async (req, res) => {
             monto: montoNumber,
             tipo: "DEPOSITO",
             fechaHora: new Date(),
-            descripcion: `${descripcion} (realizado por: ${req.usuario.nombre})`
+            descripcion: descripcion 
         });
         
         cuentaDestinoObj.movimientos.push(movimiento._id);
