@@ -484,17 +484,10 @@ export const revertirDeposito = async (req, res) => {
 
 export const comprarProducto = async (req, res) => {
     try {
-        const { numeroCuenta, productoId, descripcion = "Compra de producto/servicio" } = req.body;
+        const { productoId, descripcion = "Compra de producto/servicio", cantidad = 1 } = req.body;
+        const usuario = req.usuario;
         
-        const cuenta = await Cuenta.findOne({ numeroCuenta }).populate('usuario', 'nombre');
         const producto = await ProductoServicio.findById(productoId);
-        
-        if (!cuenta) {
-            return res.status(404).json({
-                msg: "Cuenta no encontrada"
-            });
-        }
-        
         if (!producto) {
             return res.status(404).json({
                 msg: "Producto o servicio no encontrado"
@@ -506,43 +499,73 @@ export const comprarProducto = async (req, res) => {
                 msg: "El producto o servicio no está disponible"
             });
         }
-        
-        if (cuenta.saldo < producto.precio) {
+    
+        if (producto.stock < cantidad) {
             return res.status(400).json({
-                msg: "Saldo insuficiente para realizar esta compra"
+                msg: `Stock insuficiente. Stock disponible: ${producto.stock}`
             });
         }
         
-        cuenta.saldo -= producto.precio;
-        cuenta.egresos += producto.precio;
+        const cuenta = await Cuenta.findOne({ usuario: usuario._id });
+        if (!cuenta) {
+            return res.status(404).json({
+                msg: "Cuenta no encontrada"
+            });
+        }
+        
+        const montoTotal = producto.precio * cantidad;
+        
+        if (cuenta.saldo < montoTotal) {
+            return res.status(400).json({
+                msg: "Saldo insuficiente para realizar la compra"
+            });
+        }
+        
+        cuenta.saldo -= montoTotal;
+        cuenta.egresos += montoTotal;
+        
+        producto.stock -= cantidad;
         
         const movimiento = await crearMovimiento({
             cuentaOrigen: cuenta._id,
-            monto: producto.precio,
+            monto: montoTotal,
             tipo: "COMPRA",
+            productoServicio: producto._id,
             fechaHora: new Date(),
-            descripcion: `${descripcion}: ${producto.nombre}`,
-            productoServicio: productoId
+            descripcion: `${descripcion} - ${producto.nombre} (Cantidad: ${cantidad})`
         });
         
         cuenta.movimientos.push(movimiento._id);
-        await cuenta.save();
         
-        const movimientoSimplificado = movimiento.toObject();
+        await Promise.all([
+            cuenta.save(),
+            producto.save()
+        ]);
         
         res.json({
-            msg: "Compra realizada con éxito",
-            movimiento: movimientoSimplificado,
-            cuentaOrigen: {
-                id: cuenta._id,
-                numeroCuenta: cuenta.numeroCuenta,
-                titular: cuenta.usuario ? cuenta.usuario.nombre : 'No especificado'
+            msg: "Compra realizada exitosamente",
+            compra: {
+                producto: {
+                    id: producto._id,
+                    nombre: producto.nombre,
+                    precio: producto.precio,
+                    stockRestante: producto.stock
+                },
+                cantidad,
+                montoTotal,
+                saldoRestante: cuenta.saldo
             },
-            producto: producto.nombre,
-            precio: producto.precio,
-            saldoActual: cuenta.saldo
+            movimiento: {
+                id: movimiento._id,
+                tipo: movimiento.tipo,
+                monto: movimiento.monto,
+                descripcion: movimiento.descripcion,
+                fechaHora: movimiento.fechaHora
+            }
         });
+        
     } catch (error) {
+        console.error('Error al comprar producto:', error);
         res.status(500).json({
             msg: "Error al realizar la compra"
         });

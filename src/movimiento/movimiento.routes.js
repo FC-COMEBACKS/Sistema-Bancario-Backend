@@ -584,9 +584,9 @@ router.post("/deposito/:id/revertir", revertirDepositoValidator, revertirDeposit
  * @swagger
  * /HRB/v1/movimientos/realizar-compra:
  *   post:
- *     summary: Realiza la compra de un producto
+ *     summary: Realizar compra de producto/servicio
  *     tags: [Movimientos]
- *     description: Permite a un cliente comprar un producto o servicio ofrecido por el banco
+ *     description: Permite a un cliente comprar un producto o servicio usando su cuenta principal
  *     requestBody:
  *       required: true
  *       content:
@@ -594,107 +594,27 @@ router.post("/deposito/:id/revertir", revertirDepositoValidator, revertirDeposit
  *           schema:
  *             type: object
  *             required:
- *               - cuentaId
  *               - productoId
  *             properties:
- *               cuentaId:
- *                 type: string
- *                 description: ID de la cuenta desde la que se realiza la compra
- *                 example: "60d725b3e6b8a0c3f8b4567e"
  *               productoId:
  *                 type: string
- *                 description: ID del producto a comprar
- *                 example: "60d725b3e6b8a0c3f8b4567f"
+ *                 description: ID del producto/servicio a comprar
+ *               descripcion:
+ *                 type: string
+ *                 description: Descripción opcional de la compra
+ *               cantidad:
+ *                 type: integer
+ *                 minimum: 1
+ *                 description: Cantidad a comprar (por defecto 1)
  *     responses:
  *       200:
  *         description: Compra realizada exitosamente
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 msg:
- *                   type: string
- *                   example: "Compra realizada con éxito"
- *                 movimiento:
- *                   type: object
- *                   properties:
- *                     mid:
- *                       type: string
- *                     tipo:
- *                       type: string
- *                       example: "COMPRA"
- *                     monto:
- *                       type: number
- *                     fechaHora:
- *                       type: string
- *                       format: date-time
- *                     descripcion:
- *                       type: string
- *                 cuenta:
- *                   type: object
- *                   properties:
- *                     numeroCuenta:
- *                       type: string
- *                     saldo:
- *                       type: number
- *                 producto:
- *                   type: object
- *                   properties:
- *                     nombre:
- *                       type: string
- *                     precio:
- *                       type: number
  *       400:
- *         description: Datos inválidos o restricciones de negocio
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 msg:
- *                   type: string
- *                   example: "Saldo insuficiente para realizar esta compra"
- *       401:
- *         description: No autorizado
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 msg:
- *                   type: string
- *                   example: "Token no válido"
- *       403:
- *         description: Prohibido
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 msg:
- *                   type: string
- *                   example: "No tienes permisos para realizar esta acción"
+ *         description: Datos inválidos o saldo insuficiente
  *       404:
- *         description: Cuenta o producto no encontrado
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 msg:
- *                   type: string
- *                   example: "Producto no encontrado o no disponible"
+ *         description: Producto no encontrado o sin cuentas activas
  *       500:
  *         description: Error del servidor
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 msg:
- *                   type: string
- *                   example: "Error al realizar la compra"
  *     security:
  *       - bearerAuth: []
  */

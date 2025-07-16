@@ -14,6 +14,17 @@ const ProductoServicioSchema = new Schema({
     required: true, 
     min: 0 
   },
+  stock: {
+    type: Number,
+    required: true,
+    min: 0,
+    default: 0
+  },
+  stockMinimo: {
+    type: Number,
+    default: 5,
+    min: 0
+  },
   disponible: { 
     type: Boolean, 
     default: true 
@@ -30,4 +41,3 @@ ProductoServicioSchema.methods.toJSON = function() {
 };
 
 export default model('ProductoServicio', ProductoServicioSchema);
-

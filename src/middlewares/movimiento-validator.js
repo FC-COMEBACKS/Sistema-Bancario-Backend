@@ -77,14 +77,14 @@ export const revertirDepositoValidator = [
 export const comprarProductoValidator = [
     validateJWT,
     hasRoles("CLIENT"),
-    body("cuentaId")
-        .notEmpty().withMessage("La cuenta es obligatoria")
-        .isMongoId().withMessage("El ID de la cuenta no es válido"),
     body("productoId")
         .notEmpty().withMessage("El producto es obligatorio")
         .isMongoId().withMessage("El ID del producto no es válido"),
     body("descripcion")
         .optional(),
+    body("cantidad")
+        .optional()
+        .isInt({ min: 1 }).withMessage("La cantidad debe ser un número entero mayor a 0"),
     validateField,
     handleErrors
 ];

@@ -1,6 +1,31 @@
 import { Router } from "express";
-import { crearProductoServicio, getProductosServicios, getProductoServicioById, updateProductoServicio, cambiarDisponibilidad, deleteProductoServicio } from "./productoServicio.controller.js";
-import { crearProductoServicioValidator, getProductosServiciosValidator, getProductoServicioByIdValidator, updateProductoServicioValidator, cambiarDisponibilidadValidator, deleteProductoServicioValidator } from "../middlewares/productoServicio-validator.js";
+import { crearProductoServicio, getProductosServicios, getProductoServicioById, updateProductoServicio, cambiarDisponibilidad, deleteProductoServicio, getEstadisticasProductos } from "./productoServicio.controller.js";
+import { crearProductoServicioValidator, getProductosServiciosValidator, getProductoServicioByIdValidator, updateProductoServicioValidator, cambiarDisponibilidadValidator, deleteProductoServicioValidator, getEstadisticasProductosValidator } from "../middlewares/productoServicio-validator.js";
+
+// ================== EJEMPLOS DE RUTAS PARA FILTROS ==================
+// Listar todos:
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio
+//
+// Filtro por disponibilidad:
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?disponible=true
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?disponible=false
+//
+// Filtro por nombre (búsqueda parcial, insensible a mayúsculas):
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?nombre=tarjeta
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?nombre=cuenta
+//
+// Filtro por precio mínimo y máximo:
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?precioMin=100
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?precioMax=500
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?precioMin=100&precioMax=500
+//
+// Paginación:
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?page=1&limit=10
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?page=2&limit=5
+//
+// Combinación de filtros:
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?disponible=true&nombre=cuenta&precioMin=50&precioMax=200&page=1&limit=10
+// ================================================================
 
 const router = Router();
 
@@ -566,6 +591,51 @@ router.patch("/disponibilidad/:id", cambiarDisponibilidadValidator, cambiarDispo
  *               error: "Error interno del servidor"
  */
 router.delete("/eliminarProductoOServicio/:id", deleteProductoServicioValidator, deleteProductoServicio);
+
+/**
+ * @swagger
+ * /HRB/v1/productosOServicios/estadisticas:
+ *   get:
+ *     summary: Obtener estadísticas de productos y servicios
+ *     description: Permite a administradores obtener estadísticas generales de productos y servicios
+ *     tags: [Productos y Servicios]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Estadísticas obtenidas exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 estadisticas:
+ *                   type: object
+ *                   properties:
+ *                     total:
+ *                       type: integer
+ *                       example: 25
+ *                     disponibles:
+ *                       type: integer
+ *                       example: 20
+ *                     noDisponibles:
+ *                       type: integer
+ *                       example: 5
+ *                     precioPromedio:
+ *                       type: number
+ *                       example: 150.75
+ *                     productoMasCaro:
+ *                       $ref: '#/components/schemas/ProductoServicio'
+ *                     productoMasBarato:
+ *                       $ref: '#/components/schemas/ProductoServicio'
+ *       401:
+ *         description: Token de autenticación faltante o inválido
+ *       403:
+ *         description: Permisos insuficientes (solo ADMIN)
+ *       500:
+ *         description: Error interno del servidor
+ */
+router.get("/estadisticas", getEstadisticasProductosValidator, getEstadisticasProductos);
 
 export default router;
 
