@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "c4d3fea4-0467-4518-a0ab-dabe76d7587a",
+		"_postman_id": "09a9ca17-a59e-4d5f-a9d5-77e64d399850",
 		"name": "HRB",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37636976"
+		"_exporter_id": "42000110"
 	},
 	"item": [
 		{
@@ -1449,7 +1449,10 @@
 					"name": "ELIMINAR PRODUCTO O SERVICIO",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -1624,7 +1627,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTEwMDQ4ODEsImV4cCI6MTc1MTA3Njg4MX0.dYf2QjGW_qGva7R490RjcXxjfA95-uYWkT-6WyIcV2M",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVmODQ0MGE2OTFmYjYzNDY2YjhhZDAiLCJpYXQiOjE3NTI3MTEzMjAsImV4cCI6MTc1Mjc4MzMyMH0.m4cSgHOASPOyeSrQbBFduJRJR7aUkuymPh5sqmphQcA",
 									"type": "string"
 								}
 							]
