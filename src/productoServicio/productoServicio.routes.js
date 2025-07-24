@@ -2,31 +2,6 @@ import { Router } from "express";
 import { crearProductoServicio, getProductosServicios, getProductoServicioById, updateProductoServicio, cambiarDisponibilidad, deleteProductoServicio, getEstadisticasProductos } from "./productoServicio.controller.js";
 import { crearProductoServicioValidator, getProductosServiciosValidator, getProductoServicioByIdValidator, updateProductoServicioValidator, cambiarDisponibilidadValidator, deleteProductoServicioValidator, getEstadisticasProductosValidator } from "../middlewares/productoServicio-validator.js";
 
-// ================== EJEMPLOS DE RUTAS PARA FILTROS ==================
-// Listar todos:
-//   GET /HRB/v1/productosOServicios/listarProductoOServicio
-//
-// Filtro por disponibilidad:
-//   GET /HRB/v1/productosOServicios/listarProductoOServicio?disponible=true
-//   GET /HRB/v1/productosOServicios/listarProductoOServicio?disponible=false
-//
-// Filtro por nombre (búsqueda parcial, insensible a mayúsculas):
-//   GET /HRB/v1/productosOServicios/listarProductoOServicio?nombre=tarjeta
-//   GET /HRB/v1/productosOServicios/listarProductoOServicio?nombre=cuenta
-//
-// Filtro por precio mínimo y máximo:
-//   GET /HRB/v1/productosOServicios/listarProductoOServicio?precioMin=100
-//   GET /HRB/v1/productosOServicios/listarProductoOServicio?precioMax=500
-//   GET /HRB/v1/productosOServicios/listarProductoOServicio?precioMin=100&precioMax=500
-//
-// Paginación:
-//   GET /HRB/v1/productosOServicios/listarProductoOServicio?page=1&limit=10
-//   GET /HRB/v1/productosOServicios/listarProductoOServicio?page=2&limit=5
-//
-// Combinación de filtros:
-//   GET /HRB/v1/productosOServicios/listarProductoOServicio?disponible=true&nombre=cuenta&precioMin=50&precioMax=200&page=1&limit=10
-// ================================================================
-
 const router = Router();
 
 /**

@@ -1,6 +1,6 @@
 import axios from "axios";
 import Divisa from "./divisa.model.js";
-import Cuenta from "../Cuenta/cuenta.model.js";
+import Cuenta from "../cuenta/cuenta.model.js";
 
 export const actualizarTasasDeCambio = async () => {
     try {
