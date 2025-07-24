@@ -1,0 +1,1942 @@
+{
+	"info": {
+		"_postman_id": "c4d3fea4-0467-4518-a0ab-dabe76d7587a",
+		"name": "HRB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37636976"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "LOGIN ADMIN",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTA3NDgxNzQsImV4cCI6MTc1MDgyMDE3NH0.yzrAXotzgvvZtZRGlne_K7AJIINTt8qbWbZS6kJ6DOM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"ADMINB\",\r\n    \"password\":\"ADMINB\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REGISTER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Juan Gallardo\",\r\n  \"username\": \"JUANPZ\",\r\n  \"password\": \"JUANPZ\",\r\n  \"dpi\": \"1234567890123\",\r\n  \"email\": \"juangallardo@email.com\",\r\n  \"direccion\": \"Zona 5, Ciudad de Guatemala\",\r\n  \"celular\": \"12345678\",\r\n  \"nombreTrabajo\": \"Ingeniero\",\r\n  \"ingresosMensuales\": 1000,\r\n  \"rol\": \"CLIENT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REGISTER Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Daniel Tuy\",\r\n  \"username\": \"DANITT\",\r\n  \"password\": \"DANITT\",\r\n  \"dpi\": \"123456789789\",\r\n  \"email\": \"danitt030@gmail.com\",\r\n  \"direccion\": \"Zona 5, Ciudad de Guatemala\",\r\n  \"celular\": \"12345678\",\r\n  \"nombreTrabajo\": \"Ingeniero\",\r\n  \"ingresosMensuales\": 1000,\r\n  \"rol\": \"CLIENT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "USUARIO POR ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU1ZWM5ODlkYjc2MGI4YzU2MjdiYTUiLCJpYXQiOjE3NTA0OTAyMTEsImV4cCI6MTc1MDQ5MzgxMX0.Xquvhmm-B535YN1s0cp1AIz-aa60qrc8KVwtTIeOQMo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/users/6855ec989db760b8c5627ba5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"users",
+								"6855ec989db760b8c5627ba5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTA USUARIOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU1ZWM5ODlkYjc2MGI4YzU2MjdiYTUiLCJpYXQiOjE3NTA0OTAyMTEsImV4cCI6MTc1MDQ5MzgxMX0.Xquvhmm-B535YN1s0cp1AIz-aa60qrc8KVwtTIeOQMo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ELIMINAR USUARIO(ADMIN)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU1ZWM5ODlkYjc2MGI4YzU2MjdiYTUiLCJpYXQiOjE3NTA0OTAyMTEsImV4cCI6MTc1MDQ5MzgxMX0.Xquvhmm-B535YN1s0cp1AIz-aa60qrc8KVwtTIeOQMo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/users/admin/6855ec989db760b8c5627ba5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"users",
+								"admin",
+								"6855ec989db760b8c5627ba5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR CONTRASEÑA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU1ZmE3OTM5MmRiNGQzZWQ0MTQxYzAiLCJpYXQiOjE3NTA0OTA5NjEsImV4cCI6MTc1MDQ5NDU2MX0.HhfUHBEtkF1mIguL7XphV85wmrzW0ljgHZJ4WOxmG7k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"newPassword\": \"NUEVAP\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/users/password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"users",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN CLIENT",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"JUANPZ\",\r\n    \"password\":\"JUANPZ\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN CLIENT Copy",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"DANITT\",\r\n    \"password\":\"DANITT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN CLIENT Copy 2",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"DANITT\",\r\n    \"password\":\"DANITT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR USUARIO(ADMIN)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU1ZmE3OTM5MmRiNGQzZWQ0MTQxYzAiLCJpYXQiOjE3NTA0OTA5NjEsImV4cCI6MTc1MDQ5NDU2MX0.HhfUHBEtkF1mIguL7XphV85wmrzW0ljgHZJ4WOxmG7k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Juan Gallardo\",\r\n  \"username\": \"JUANPZ\",\r\n  \"email\": \"juangallardo@email.com\",\r\n  \"direccion\": \"Zona 3, Ciudad Guatemala\",\r\n  \"celular\": \"12345678\",\r\n  \"nombreTrabajo\": \"Ingeniero\",\r\n  \"ingresosMensuales\": 2000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/users/admin/6855fa79392db4d3ed4141c0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"users",
+								"admin",
+								"6855fa79392db4d3ed4141c0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR ROL",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU1ZmE3OTM5MmRiNGQzZWQ0MTQxYzAiLCJpYXQiOjE3NTA0OTA5NjEsImV4cCI6MTc1MDQ5NDU2MX0.HhfUHBEtkF1mIguL7XphV85wmrzW0ljgHZJ4WOxmG7k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"newRole\": \"CLIENT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/users/role/6855fa79392db4d3ed4141c0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"users",
+								"role",
+								"6855fa79392db4d3ed4141c0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cuenta",
+			"item": [
+				{
+					"name": "CREAR CUENTA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTIzODY2NTMsImV4cCI6MTc1MjQ1ODY1M30.SzCGaB6_K7cXImUwqSlIK74HWgI2rtXR5UEAJCIWHgk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"usuario\": \"6870ba9cd7dc514e641afd7a\",\r\n  \"tipo\": \"AHORROS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/crearCuenta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"crearCuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDITAR CUENTA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMjBkNmYyODM2YzgxMGVhZTdjZTQiLCJpYXQiOjE3NTA3NDE1NDcsImV4cCI6MTc1MDc0NTE0N30.Sq3eyoSnxSsAT4G1wDHfsr3PVa_NZGV_gDsnV0xYOKQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tipo\": \"CORRIENTE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/editarCuenta/685a229af9e095e558b94b54",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"editarCuenta",
+								"685a229af9e095e558b94b54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DETALLES DE LA CUENTA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTIxMTA0NjYsImV4cCI6MTc1MjE4MjQ2Nn0.GNMvBwc7nwVJubFqDOCoG8UpNyVhnLnK-M5pcR5qDpU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/detallesCuenta/686f183358ff785ff45b33b9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"detallesCuenta",
+								"686f183358ff785ff45b33b9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarCuentas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTIzODY2NTMsImV4cCI6MTc1MjQ1ODY1M30.SzCGaB6_K7cXImUwqSlIK74HWgI2rtXR5UEAJCIWHgk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR CUENTA USUARIO ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTIzODYxODIsImV4cCI6MTc1MjQ1ODE4Mn0.UAztDpa4UiktVobainsXMmC_QQB7yZdu8PhsksN0sNU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/cuentaUsuario/685a3363f0dfbb3ade4a62ad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"cuentaUsuario",
+								"685a3363f0dfbb3ade4a62ad"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ELIMINAR CUENTA ADMIN",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTIzODY2NTMsImV4cCI6MTc1MjQ1ODY1M30.SzCGaB6_K7cXImUwqSlIK74HWgI2rtXR5UEAJCIWHgk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/eliminarCuenta/68734b216e2e525fd7f15fa0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"eliminarCuenta",
+								"68734b216e2e525fd7f15fa0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AGREGAR CUENTA USUARIO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTIzODYxODIsImV4cCI6MTc1MjQ1ODE4Mn0.UAztDpa4UiktVobainsXMmC_QQB7yZdu8PhsksN0sNU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"numeroCuenta\": \"3379947796\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/agregarCuentaDeUsuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"agregarCuentaDeUsuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR CUENTAS USUARIOS AGREGADOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTIzODYxODIsImV4cCI6MTc1MjQ1ODE4Mn0.UAztDpa4UiktVobainsXMmC_QQB7yZdu8PhsksN0sNU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/listarCuentasAgregadas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"listarCuentasAgregadas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR CUENTAS PROPIAS USUARIOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODc3NWUwZjYzMzBhNjIxNTUyNmIzMzQiLCJpYXQiOjE3NTMzNDc1MTgsImV4cCI6MTc1MzQxOTUxOH0.Ed18fZcHpHFzQShQ_fAOUoas8OVRlQj8NKtybzb9Lrg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/mis-cuentas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"mis-cuentas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FAVORITOS",
+			"item": [
+				{
+					"name": "AGREGAR CUENTA A FAVORITOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTA3NDg2NDcsImV4cCI6MTc1MDgyMDY0N30.Q5dK3pnRKlWFgLiwmVrVdxHeAd9xmCySoX2dEuxUT94",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"numeroCuenta\": \"5627863035\",  // Número de cuenta que se quiere agregar a favoritos\r\n  \"alias\": \"Juan juanito juan\"   // Nombre o alias para identificar esta cuenta\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/favoritos/agregarCuenta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"favoritos",
+								"agregarCuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR FAVORITOS CUENTA USUARIO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTA3NDg2NDcsImV4cCI6MTc1MDgyMDY0N30.Q5dK3pnRKlWFgLiwmVrVdxHeAd9xmCySoX2dEuxUT94",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/favoritos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"favoritos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR NOMBRE CUENTA FAVORITOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTA3NDg2NDcsImV4cCI6MTc1MDgyMDY0N30.Q5dK3pnRKlWFgLiwmVrVdxHeAd9xmCySoX2dEuxUT94",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": \"Juan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/favoritos/actualizarNombre/685a41721a097c13fffac772",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"favoritos",
+								"actualizarNombre",
+								"685a41721a097c13fffac772"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ELIMINAR FAVORITO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTA3NDg2NDcsImV4cCI6MTc1MDgyMDY0N30.Q5dK3pnRKlWFgLiwmVrVdxHeAd9xmCySoX2dEuxUT94",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/favoritos/eliminarFavorito/685a41721a097c13fffac772",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"favoritos",
+								"eliminarFavorito",
+								"685a41721a097c13fffac772"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TRANSFERIR CUENTA FAVORITA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTA3NDg2NDcsImV4cCI6MTc1MDgyMDY0N30.Q5dK3pnRKlWFgLiwmVrVdxHeAd9xmCySoX2dEuxUT94",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"favoritoId\": \"685a5064d00d39e728ca7d48\",\r\n  \"monto\": 50.75,\r\n  \"descripcion\": \"Pago de préstamo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/favoritos/transferir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"favoritos",
+								"transferir"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MOVIMIENTOS",
+			"item": [
+				{
+					"name": "LISTA MOVIMIENTOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTIzODYxODIsImV4cCI6MTc1MjQ1ODE4Mn0.UAztDpa4UiktVobainsXMmC_QQB7yZdu8PhsksN0sNU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/movimientos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"movimientos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTA MOVIMIENTO EN ESPECIFICO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTIzODYxODIsImV4cCI6MTc1MjQ1ODE4Mn0.UAztDpa4UiktVobainsXMmC_QQB7yZdu8PhsksN0sNU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/movimientos/6874380f04abd5cb9e760274",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"movimientos",
+								"6874380f04abd5cb9e760274"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TRANSFERENCIA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTIzODYxODIsImV4cCI6MTc1MjQ1ODE4Mn0.UAztDpa4UiktVobainsXMmC_QQB7yZdu8PhsksN0sNU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cuentaOrigen\": \"0502124615\",    \r\n  \"cuentaDestino\": \"8243541347\",    \r\n  \"monto\": 100,\r\n  \"descripcion\": \"Pago de factura\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/movimientos/transferencia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"movimientos",
+								"transferencia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DEPOSITO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTIzODY2NTMsImV4cCI6MTc1MjQ1ODY1M30.SzCGaB6_K7cXImUwqSlIK74HWgI2rtXR5UEAJCIWHgk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cuentaDestino\": \"0502124615\",\r\n  \"monto\": 100,\r\n  \"descripcion\": \"Depósito inicial\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/movimientos/deposito",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"movimientos",
+								"deposito"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REVERTIR DEPOSITO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTI1NTIxNzAsImV4cCI6MTc1MjYyNDE3MH0.crO19LcEGtmh79xdWWfqX3QPqAZOas0C-4baMfiFefY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/movimientos/deposito/6875d34f61e1f36a142200e7/revertir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"movimientos",
+								"deposito",
+								"6875d34f61e1f36a142200e7",
+								"revertir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREDITO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTIzODY2NTMsImV4cCI6MTc1MjQ1ODY1M30.SzCGaB6_K7cXImUwqSlIK74HWgI2rtXR5UEAJCIWHgk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cuentaDestino\": \"8243541347\",\r\n  \"monto\": 1000,\r\n  \"descripcion\": \"PRUEBA CREDITO\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/movimientos/credito",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"movimientos",
+								"credito"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "COMPRA DE SERVICIO O PRODUCTO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODc3NWUwZjYzMzBhNjIxNTUyNmIzMzQiLCJpYXQiOjE3NTMzNDc1MTgsImV4cCI6MTc1MzQxOTUxOH0.Ed18fZcHpHFzQShQ_fAOUoas8OVRlQj8NKtybzb9Lrg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productoId\": \"6881d386d93d2f8bdd7d83b0\",\r\n  \"numeroCuenta\": \"2905078895\",\r\n  \"cantidad\": 1,\r\n  \"descripcion\": \"Compra de tarjeta de crédito\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/movimientos/realizar-compra",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"movimientos",
+								"realizar-compra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HISTORIAL DE MOVIMIENTOS DE CUENTAS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMjBkNmYyODM2YzgxMGVhZTdjZTQiLCJpYXQiOjE3NTA3NTE2OTUsImV4cCI6MTc1MDgyMzY5NX0.unwkhT21pa-KoklJktD-Far-nCtEdDzaZJbMf4mgNt0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/movimientos/cuenta/685a229af9e095e558b94b54",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"movimientos",
+								"cuenta",
+								"685a229af9e095e558b94b54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "movimientosCuenta ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMjBkNmYyODM2YzgxMGVhZTdjZTQiLCJpYXQiOjE3NTA3NDE1NDcsImV4cCI6MTc1MDc0NTE0N30.Sq3eyoSnxSsAT4G1wDHfsr3PVa_NZGV_gDsnV0xYOKQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/movimientosCuenta/685a229af9e095e558b94b54",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"movimientosCuenta",
+								"685a229af9e095e558b94b54"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PRODUCTOS/SERVICIOS",
+			"item": [
+				{
+					"name": "AGREGAR PRODUCTOS O SERVICIOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTA3NDk2MjAsImV4cCI6MTc1MDgyMTYyMH0.ZvCrPU79Kye2UrSPMtFYt_ANDEaFu-r-RztFNiRVCOs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Curso de Educación Financiera Premium\",\r\n  \"descripcion\": \"Curso completo de educación financiera con certificado. 8 módulos de aprendizaje, Material didáctico digital, Acceso a simuladores de inversión y Certificado al completar el curso. Modalidad: Online con tutorías personalizadas.\",\r\n  \"precio\": 500,\r\n  \"disponible\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/productosOServicios/agregarProductoOServicio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"productosOServicios",
+								"agregarProductoOServicio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR PRODUCTOS O SERVICIOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTA3NDk2MjAsImV4cCI6MTc1MDgyMTYyMH0.ZvCrPU79Kye2UrSPMtFYt_ANDEaFu-r-RztFNiRVCOs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/productosOServicios/listarProductoOServicio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"productosOServicios",
+								"listarProductoOServicio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR PRODUCTOS O SERVICIOS ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTA3NDk2MjAsImV4cCI6MTc1MDgyMTYyMH0.ZvCrPU79Kye2UrSPMtFYt_ANDEaFu-r-RztFNiRVCOs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/productosOServicios/listarProductoOServicio/685a5e6c7574217efe20d9fb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"productosOServicios",
+								"listarProductoOServicio",
+								"685a5e6c7574217efe20d9fb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR PRODUCTOS O SERVICIOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTA3NDk2MjAsImV4cCI6MTc1MDgyMTYyMH0.ZvCrPU79Kye2UrSPMtFYt_ANDEaFu-r-RztFNiRVCOs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// Servicio financiero: Educación\r\n{\r\n  \"nombre\": \"Curso de Educación Financiera Premium\",\r\n  \"descripcion\": \"Curso completo de educación financiera con certificado.\",\r\n  \"precio\": 550,\r\n  \"disponible\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/productosOServicios/actualizarProductoOServicio/685a5e977574217efe20da17",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"productosOServicios",
+								"actualizarProductoOServicio",
+								"685a5e977574217efe20da17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR PRODUCTOS O SERVICIOS Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTA3NDk2MjAsImV4cCI6MTc1MDgyMTYyMH0.ZvCrPU79Kye2UrSPMtFYt_ANDEaFu-r-RztFNiRVCOs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/productosOServicios/disponibilidad/685a5e927574217efe20da13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"productosOServicios",
+								"disponibilidad",
+								"685a5e927574217efe20da13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ELIMINAR PRODUCTO O SERVICIO",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "ESTADISTICAS PRODUCTOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTI2Mzk3NjEsImV4cCI6MTc1MjcxMTc2MX0.tVt65FwkzhB0GhBxzmRUyqtvsdDh-M2EFlmIoJgJw1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/productosOServicios/estadisticas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"productosOServicios",
+								"estadisticas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DIVISAS",
+			"item": [
+				{
+					"name": "OBTENER DIVISAS",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTEwMDQ4ODEsImV4cCI6MTc1MTA3Njg4MX0.dYf2QjGW_qGva7R490RjcXxjfA95-uYWkT-6WyIcV2M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/divisas?filtro=USD",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"divisas"
+							],
+							"query": [
+								{
+									"key": "filtro",
+									"value": "USD"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CONVERTIR SALDO DIVISAS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMjBkNmYyODM2YzgxMGVhZTdjZTQiLCJpYXQiOjE3NTEwMTEzMjIsImV4cCI6MTc1MTA4MzMyMn0.Mt5-5oX4n-CxOuZINf8mxSNot3FQyV2mHJLasvF3Hww",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cuentaId\": \"685a229af9e095e558b94b54\",\r\n  \"divisaDestino\": \"USD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/divisas/convertir-saldo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"divisas",
+								"convertir-saldo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CONVERTIR DIVISAS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMjBkNmYyODM2YzgxMGVhZTdjZTQiLCJpYXQiOjE3NTEwMDUwNTEsImV4cCI6MTc1MTA3NzA1MX0.LOPJiQo8Zkraxb6AIowbYiVPsVPQ9YF3Y94guvF3i68",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"monto\": 100,\r\n  \"divisaOrigen\": \"GTQ\",\r\n  \"divisaDestino\": \"USD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/divisas/convertir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"divisas",
+								"convertir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACTUALIZAR TASAS DIVISAS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTEwMDQ4ODEsImV4cCI6MTc1MTA3Njg4MX0.dYf2QjGW_qGva7R490RjcXxjfA95-uYWkT-6WyIcV2M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tasas\": [\r\n    {\r\n      \"codigo\": \"USD\",\r\n      \"tasaEnQuetzales\": 6.7\r\n    },\r\n    {\r\n      \"codigo\": \"EUR\", \r\n      \"tasaEnQuetzales\": 8.5\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/divisas/actualizar-tasas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"divisas",
+								"actualizar-tasas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AGREGAR DIVISAS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTEwMDQ4ODEsImV4cCI6MTc1MTA3Njg4MX0.dYf2QjGW_qGva7R490RjcXxjfA95-uYWkT-6WyIcV2M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"codigo\": \"GBP\",\r\n  \"nombre\": \"Libra Esterlina\",\r\n  \"tasaEnQuetzales\": 0.1034\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/divisas/agregar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"divisas",
+								"agregar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RESTAURAR TASAS DE DIVISAS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTEwMDQ4ODEsImV4cCI6MTc1MTA3Njg4MX0.dYf2QjGW_qGva7R490RjcXxjfA95-uYWkT-6WyIcV2M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/divisas/restaurar-tasas-oficiales",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"divisas",
+								"restaurar-tasas-oficiales"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Estadisticas",
+			"item": [
+				{
+					"name": "ESTADISTICAS GENERALES",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTE5NTM2OTMsImV4cCI6MTc1MjAyNTY5M30.etmOe8lFduu6grxsBvh5CFqrAO-fsMo-TWDgv58bhj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/estadisticas/estadisticasgenerales",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"estadisticas",
+								"estadisticasgenerales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ESTADISTICAS USUARIOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTE5NTM2OTMsImV4cCI6MTc1MjAyNTY5M30.etmOe8lFduu6grxsBvh5CFqrAO-fsMo-TWDgv58bhj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/estadisticas/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"estadisticas",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MOVIMIENTOS RECIENTES",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTE5NTM2OTMsImV4cCI6MTc1MjAyNTY5M30.etmOe8lFduu6grxsBvh5CFqrAO-fsMo-TWDgv58bhj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/estadisticas/movimientos/recientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"estadisticas",
+								"movimientos",
+								"recientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ESTADISTICAS PRODUCTOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTE5NTM2OTMsImV4cCI6MTc1MjAyNTY5M30.etmOe8lFduu6grxsBvh5CFqrAO-fsMo-TWDgv58bhj8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/estadisticas/productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"estadisticas",
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CUENTAS CON MAS MOVIMIENTOS ESTADISTICAS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMzM2M2YwZGZiYjNhZGU0YTYyYWQiLCJpYXQiOjE3NTEwNjE1MjUsImV4cCI6MTc1MTEzMzUyNX0.tTQRlf6MjYqIBuduIu11IXrbd5zFFWXie0Vyuo_bw9A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/estadisticas/mas-movimientos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"estadisticas",
+								"mas-movimientos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

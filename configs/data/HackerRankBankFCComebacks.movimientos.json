@@ -1,0 +1,117 @@
+[{
+  "_id": {
+    "$oid": "68775e7c6330a6215526b7c9"
+  },
+  "cuentaDestino": {
+    "$oid": "68775e446330a6215526b3ee"
+  },
+  "monto": 5500,
+  "tipo": "DEPOSITO",
+  "fechaHora": {
+    "$date": "2025-07-16T08:10:36.636Z"
+  },
+  "reversed": false,
+  "descripcion": "PRUEBA",
+  "createdAt": {
+    "$date": "2025-07-16T08:10:36.637Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-16T08:10:36.637Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68775e906330a6215526b7eb"
+  },
+  "cuentaOrigen": {
+    "$oid": "68775e446330a6215526b3ee"
+  },
+  "monto": 1500,
+  "tipo": "COMPRA",
+  "productoServicio": {
+    "$oid": "68775bc5f1197dca8e3db2d6"
+  },
+  "fechaHora": {
+    "$date": "2025-07-16T08:10:56.930Z"
+  },
+  "reversed": false,
+  "descripcion": "Compra de: Membresia cremas - Membresia cremas (Cantidad: 1)",
+  "createdAt": {
+    "$date": "2025-07-16T08:10:56.930Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-16T08:10:56.930Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68788eeb7c29ce7817265634"
+  },
+  "cuentaOrigen": {
+    "$oid": "68775e446330a6215526b3ee"
+  },
+  "cuentaDestino": {
+    "$oid": "6878799bee695ae0d29e6bee"
+  },
+  "monto": 100,
+  "tipo": "TRANSFERENCIA",
+  "fechaHora": {
+    "$date": "2025-07-17T05:49:31.672Z"
+  },
+  "reversed": false,
+  "descripcion": "PAGO (a favorito: JUANPZ)",
+  "createdAt": {
+    "$date": "2025-07-17T05:49:31.674Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-17T05:49:31.674Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68788efd7c29ce781726563c"
+  },
+  "cuentaOrigen": {
+    "$oid": "68775e446330a6215526b3ee"
+  },
+  "cuentaDestino": {
+    "$oid": "6878799bee695ae0d29e6bee"
+  },
+  "monto": 1900,
+  "tipo": "TRANSFERENCIA",
+  "fechaHora": {
+    "$date": "2025-07-17T05:49:49.452Z"
+  },
+  "reversed": false,
+  "descripcion": "PAGO (a favorito: JUANPZ)",
+  "createdAt": {
+    "$date": "2025-07-17T05:49:49.453Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-17T05:49:49.453Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68818e19fdb91fa6d87bdc96"
+  },
+  "cuentaOrigen": {
+    "$oid": "68775e446330a6215526b3ee"
+  },
+  "cuentaDestino": {
+    "$oid": "6878799bee695ae0d29e6bee"
+  },
+  "monto": 100,
+  "tipo": "TRANSFERENCIA",
+  "fechaHora": {
+    "$date": "2025-07-24T01:36:25.514Z"
+  },
+  "reversed": false,
+  "descripcion": "prueba",
+  "createdAt": {
+    "$date": "2025-07-24T01:36:25.521Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T01:36:25.521Z"
+  }
+}]

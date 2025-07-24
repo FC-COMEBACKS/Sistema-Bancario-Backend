@@ -1,0 +1,641 @@
+import { Router } from "express";
+import { crearProductoServicio, getProductosServicios, getProductoServicioById, updateProductoServicio, cambiarDisponibilidad, deleteProductoServicio, getEstadisticasProductos } from "./productoServicio.controller.js";
+import { crearProductoServicioValidator, getProductosServiciosValidator, getProductoServicioByIdValidator, updateProductoServicioValidator, cambiarDisponibilidadValidator, deleteProductoServicioValidator, getEstadisticasProductosValidator } from "../middlewares/productoServicio-validator.js";
+
+// ================== EJEMPLOS DE RUTAS PARA FILTROS ==================
+// Listar todos:
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio
+//
+// Filtro por disponibilidad:
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?disponible=true
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?disponible=false
+//
+// Filtro por nombre (búsqueda parcial, insensible a mayúsculas):
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?nombre=tarjeta
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?nombre=cuenta
+//
+// Filtro por precio mínimo y máximo:
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?precioMin=100
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?precioMax=500
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?precioMin=100&precioMax=500
+//
+// Paginación:
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?page=1&limit=10
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?page=2&limit=5
+//
+// Combinación de filtros:
+//   GET /HRB/v1/productosOServicios/listarProductoOServicio?disponible=true&nombre=cuenta&precioMin=50&precioMax=200&page=1&limit=10
+// ================================================================
+
+const router = Router();
+
+/**
+ * @swagger
+ * /HRB/v1/productosOServicios/agregarProductoOServicio:
+ *   post:
+ *     summary: Crear un nuevo producto o servicio
+ *     description: Permite a administradores y empleados crear nuevos productos o servicios bancarios
+ *     tags: [Productos y Servicios]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ProductoServicioInput'
+ *           examples:
+ *             producto:
+ *               summary: Ejemplo de producto
+ *               value:
+ *                 nombre: "Tarjeta de Crédito Oro"
+ *                 tipo: "PRODUCTO"
+ *                 precio: 200.00
+ *                 descripcion: "Tarjeta de crédito con beneficios exclusivos y límite alto"
+ *             servicio:
+ *               summary: Ejemplo de servicio
+ *               value:
+ *                 nombre: "Asesoría Financiera Personal"
+ *                 tipo: "SERVICIO"
+ *                 precio: 75.00
+ *                 descripcion: "Consultoría personalizada para planificación financiera"
+ *     responses:
+ *       201:
+ *         description: Producto o servicio creado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Producto/Servicio creado exitosamente"
+ *                 data:
+ *                   $ref: '#/components/schemas/ProductoServicio'
+ *       400:
+ *         description: Datos de entrada inválidos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Datos de entrada inválidos"
+ *               details:
+ *                 - field: "nombre"
+ *                   message: "El nombre debe tener al menos 3 caracteres"
+ *                 - field: "precio"
+ *                   message: "El precio debe ser mayor a 0"
+ *       401:
+ *         description: Token de autenticación faltante o inválido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Token de acceso requerido"
+ *       403:
+ *         description: Permisos insuficientes (solo ADMIN y EMPLEADO)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Acceso denegado. Permisos insuficientes"
+ *       409:
+ *         description: Producto o servicio ya existe
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Ya existe un producto/servicio con ese nombre"
+ *       500:
+ *         description: Error interno del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Error interno del servidor"
+ */
+router.post("/agregarProductoOServicio", crearProductoServicioValidator, crearProductoServicio);
+
+/**
+ * @swagger
+ * /HRB/v1/productosOServicios/listarProductoOServicio:
+ *   get:
+ *     summary: Obtener lista de productos y servicios
+ *     description: Permite a todos los roles obtener la lista de productos y servicios disponibles con filtros opcionales
+ *     tags: [Productos y Servicios]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: tipo
+ *         schema:
+ *           type: string
+ *           enum: [PRODUCTO, SERVICIO]
+ *         description: Filtrar por tipo de elemento
+ *         example: "PRODUCTO"
+ *       - in: query
+ *         name: disponible
+ *         schema:
+ *           type: boolean
+ *         description: Filtrar por disponibilidad
+ *         example: true
+ *       - in: query
+ *         name: nombre
+ *         schema:
+ *           type: string
+ *         description: Buscar por nombre (búsqueda parcial)
+ *         example: "cuenta"
+ *       - in: query
+ *         name: precioMin
+ *         schema:
+ *           type: number
+ *           minimum: 0
+ *         description: Precio mínimo para filtrar
+ *         example: 50
+ *       - in: query
+ *         name: precioMax
+ *         schema:
+ *           type: number
+ *           minimum: 0
+ *         description: Precio máximo para filtrar
+ *         example: 500
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número de página para paginación
+ *         example: 1
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 10
+ *         description: Cantidad de elementos por página
+ *         example: 10
+ *     responses:
+ *       200:
+ *         description: Lista de productos y servicios obtenida exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Productos y servicios obtenidos exitosamente"
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/ProductoServicio'
+ *                 pagination:
+ *                   type: object
+ *                   properties:
+ *                     currentPage:
+ *                       type: integer
+ *                       example: 1
+ *                     totalPages:
+ *                       type: integer
+ *                       example: 5
+ *                     totalItems:
+ *                       type: integer
+ *                       example: 48
+ *                     hasNext:
+ *                       type: boolean
+ *                       example: true
+ *                     hasPrev:
+ *                       type: boolean
+ *                       example: false
+ *       400:
+ *         description: Parámetros de consulta inválidos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Parámetros de consulta inválidos"
+ *               details:
+ *                 - field: "precioMin"
+ *                   message: "El precio mínimo debe ser mayor o igual a 0"
+ *       401:
+ *         description: Token de autenticación faltante o inválido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Token de acceso requerido"
+ *       500:
+ *         description: Error interno del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Error interno del servidor"
+ */
+router.get("/listarProductoOServicio", getProductosServiciosValidator, getProductosServicios);
+
+/**
+ * @swagger
+ * /HRB/v1/productosOServicios/listarProductoOServicio/{id}:
+ *   get:
+ *     summary: Obtener un producto o servicio por ID
+ *     description: Permite a todos los roles obtener los detalles de un producto o servicio específico
+ *     tags: [Productos y Servicios]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           pattern: '^[0-9a-fA-F]{24}$'
+ *         description: ID único del producto o servicio (MongoDB ObjectId)
+ *         example: "60b5d8f5c8a2c20015a8b1a1"
+ *     responses:
+ *       200:
+ *         description: Producto o servicio encontrado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Producto/Servicio encontrado exitosamente"
+ *                 data:
+ *                   $ref: '#/components/schemas/ProductoServicio'
+ *       400:
+ *         description: ID inválido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "ID inválido"
+ *               details:
+ *                 - field: "id"
+ *                   message: "El ID debe ser un ObjectId válido de MongoDB"
+ *       401:
+ *         description: Token de autenticación faltante o inválido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Token de acceso requerido"
+ *       404:
+ *         description: Producto o servicio no encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Producto/Servicio no encontrado"
+ *       500:
+ *         description: Error interno del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Error interno del servidor"
+ */
+router.get("/listarProductoOServicio/:id", getProductoServicioByIdValidator, getProductoServicioById);
+
+/**
+ * @swagger
+ * /HRB/v1/productosOServicios/actualizarProductoOServicio/{id}:
+ *   put:
+ *     summary: Actualizar un producto o servicio completo
+ *     description: Permite a administradores y empleados actualizar completamente un producto o servicio existente
+ *     tags: [Productos y Servicios]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           pattern: '^[0-9a-fA-F]{24}$'
+ *         description: ID único del producto o servicio a actualizar
+ *         example: "60b5d8f5c8a2c20015a8b1a1"
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ProductoServicioInput'
+ *           example:
+ *             nombre: "Cuenta de Ahorros Premium Plus"
+ *             tipo: "PRODUCTO"
+ *             precio: 175.00
+ *             descripcion: "Cuenta de ahorros con beneficios premium mejorados y sin comisiones"
+ *     responses:
+ *       200:
+ *         description: Producto o servicio actualizado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Producto/Servicio actualizado exitosamente"
+ *                 data:
+ *                   $ref: '#/components/schemas/ProductoServicio'
+ *       400:
+ *         description: Datos de entrada o ID inválidos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Datos de entrada inválidos"
+ *               details:
+ *                 - field: "precio"
+ *                   message: "El precio debe ser mayor a 0"
+ *       401:
+ *         description: Token de autenticación faltante o inválido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Token de acceso requerido"
+ *       403:
+ *         description: Permisos insuficientes (solo ADMIN y EMPLEADO)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Acceso denegado. Permisos insuficientes"
+ *       404:
+ *         description: Producto o servicio no encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Producto/Servicio no encontrado"
+ *       409:
+ *         description: Conflicto con nombre existente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Ya existe otro producto/servicio con ese nombre"
+ *       500:
+ *         description: Error interno del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Error interno del servidor"
+ */
+router.put("/actualizarProductoOServicio/:id", updateProductoServicioValidator, updateProductoServicio);
+
+/**
+ * @swagger
+ * /HRB/v1/productosOServicios/disponibilidad/{id}:
+ *   patch:
+ *     summary: Cambiar disponibilidad de un producto o servicio
+ *     description: Permite a administradores y empleados cambiar únicamente el estado de disponibilidad de un producto o servicio
+ *     tags: [Productos y Servicios]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           pattern: '^[0-9a-fA-F]{24}$'
+ *         description: ID único del producto o servicio
+ *         example: "60b5d8f5c8a2c20015a8b1a1"
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/DisponibilidadInput'
+ *           examples:
+ *             activar:
+ *               summary: Activar producto/servicio
+ *               value:
+ *                 disponible: true
+ *             desactivar:
+ *               summary: Desactivar producto/servicio
+ *               value:
+ *                 disponible: false
+ *     responses:
+ *       200:
+ *         description: Disponibilidad actualizada exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Disponibilidad actualizada exitosamente"
+ *                 data:
+ *                   $ref: '#/components/schemas/ProductoServicio'
+ *       400:
+ *         description: Datos de entrada o ID inválidos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Datos de entrada inválidos"
+ *               details:
+ *                 - field: "disponible"
+ *                   message: "El campo disponible debe ser un valor booleano"
+ *       401:
+ *         description: Token de autenticación faltante o inválido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Token de acceso requerido"
+ *       403:
+ *         description: Permisos insuficientes (solo ADMIN y EMPLEADO)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Acceso denegado. Permisos insuficientes"
+ *       404:
+ *         description: Producto o servicio no encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Producto/Servicio no encontrado"
+ *       500:
+ *         description: Error interno del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Error interno del servidor"
+ */
+router.patch("/disponibilidad/:id", cambiarDisponibilidadValidator, cambiarDisponibilidad);
+
+/**
+ * @swagger
+ * /HRB/v1/productosOServicios/eliminarProductoOServicio/{id}:
+ *   delete:
+ *     summary: Eliminar un producto o servicio
+ *     description: Permite únicamente a administradores eliminar permanentemente un producto o servicio del sistema
+ *     tags: [Productos y Servicios]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           pattern: '^[0-9a-fA-F]{24}$'
+ *         description: ID único del producto o servicio a eliminar
+ *         example: "60b5d8f5c8a2c20015a8b1a1"
+ *     responses:
+ *       200:
+ *         description: Producto o servicio eliminado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Producto/Servicio eliminado exitosamente"
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: string
+ *                       example: "60b5d8f5c8a2c20015a8b1a1"
+ *                     nombre:
+ *                       type: string
+ *                       example: "Cuenta de Ahorros Premium"
+ *       400:
+ *         description: ID inválido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "ID inválido"
+ *               details:
+ *                 - field: "id"
+ *                   message: "El ID debe ser un ObjectId válido de MongoDB"
+ *       401:
+ *         description: Token de autenticación faltante o inválido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Token de acceso requerido"
+ *       403:
+ *         description: Permisos insuficientes (solo ADMIN)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Acceso denegado. Solo administradores pueden eliminar productos/servicios"
+ *       404:
+ *         description: Producto o servicio no encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Producto/Servicio no encontrado"
+ *       409:
+ *         description: No se puede eliminar por dependencias
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "No se puede eliminar. Existen transacciones asociadas a este producto/servicio"
+ *       500:
+ *         description: Error interno del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               error: "Error interno del servidor"
+ */
+router.delete("/eliminarProductoOServicio/:id", deleteProductoServicioValidator, deleteProductoServicio);
+
+/**
+ * @swagger
+ * /HRB/v1/productosOServicios/estadisticas:
+ *   get:
+ *     summary: Obtener estadísticas de productos y servicios
+ *     description: Permite a administradores obtener estadísticas generales de productos y servicios
+ *     tags: [Productos y Servicios]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Estadísticas obtenidas exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 estadisticas:
+ *                   type: object
+ *                   properties:
+ *                     total:
+ *                       type: integer
+ *                       example: 25
+ *                     disponibles:
+ *                       type: integer
+ *                       example: 20
+ *                     noDisponibles:
+ *                       type: integer
+ *                       example: 5
+ *                     precioPromedio:
+ *                       type: number
+ *                       example: 150.75
+ *                     productoMasCaro:
+ *                       $ref: '#/components/schemas/ProductoServicio'
+ *                     productoMasBarato:
+ *                       $ref: '#/components/schemas/ProductoServicio'
+ *       401:
+ *         description: Token de autenticación faltante o inválido
+ *       403:
+ *         description: Permisos insuficientes (solo ADMIN)
+ *       500:
+ *         description: Error interno del servidor
+ */
+router.get("/estadisticas", getEstadisticasProductosValidator, getEstadisticasProductos);
+
+export default router;
+

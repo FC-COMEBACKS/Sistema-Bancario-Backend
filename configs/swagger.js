@@ -22,6 +22,12 @@ const options ={
     apis:[
         "./src/auth/auth.routes.js",
         "./src/user/user.routes.js",
+        "./src/Cuenta/cuenta.routes.js",
+        "./src/Favorito/favorito.routes.js",
+        "./src/Movimiento/movimiento.routes.js",
+        "./src/ProductoServicio/productoServicio.routes.js",
+        "./src/divisas/divisa.routes.js",
+        "./src/estadisticas/estadisticas.routes.js"
     ]
 }
 

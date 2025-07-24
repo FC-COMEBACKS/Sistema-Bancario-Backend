@@ -1,0 +1,194 @@
+[{
+  "_id": {
+    "$oid": "68775e446330a6215526b3ee"
+  },
+  "usuario": {
+    "$oid": "68775e0f6330a6215526b334"
+  },
+  "numeroCuenta": "3801152089",
+  "tipo": "AHORROS",
+  "saldo": 1900,
+  "activa": true,
+  "ingresos": 5500,
+  "egresos": 3600,
+  "movimientos": [
+    {
+      "$oid": "68775e7c6330a6215526b7c9"
+    },
+    {
+      "$oid": "68775e906330a6215526b7eb"
+    },
+    {
+      "$oid": "68788eeb7c29ce7817265634"
+    },
+    {
+      "$oid": "68788efd7c29ce781726563c"
+    },
+    {
+      "$oid": "68818e19fdb91fa6d87bdc96"
+    }
+  ],
+  "fechaCreacion": {
+    "$date": "2025-07-16T08:09:40.118Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-16T08:09:40.119Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T01:36:25.586Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878799bee695ae0d29e6bee"
+  },
+  "usuario": {
+    "$oid": "68787973ee695ae0d29e6a2b"
+  },
+  "numeroCuenta": "9158055779",
+  "tipo": "AHORROS",
+  "saldo": 2100,
+  "activa": true,
+  "ingresos": 2100,
+  "egresos": 0,
+  "movimientos": [
+    {
+      "$oid": "68788eeb7c29ce7817265634"
+    },
+    {
+      "$oid": "68788efd7c29ce781726563c"
+    },
+    {
+      "$oid": "68818e19fdb91fa6d87bdc96"
+    }
+  ],
+  "fechaCreacion": {
+    "$date": "2025-07-17T04:18:35.808Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-17T04:18:35.809Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T01:36:25.588Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6881820463f82e12f3c7cbb3"
+  },
+  "usuario": {
+    "$oid": "68775e0f6330a6215526b334"
+  },
+  "numeroCuenta": "8924620068",
+  "tipo": "AHORROS",
+  "saldo": 0,
+  "activa": true,
+  "ingresos": 0,
+  "egresos": 0,
+  "movimientos": [],
+  "fechaCreacion": {
+    "$date": "2025-07-24T00:44:52.471Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-24T00:44:52.481Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T00:44:52.481Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6881821063f82e12f3c7cbb8"
+  },
+  "usuario": {
+    "$oid": "68775e0f6330a6215526b334"
+  },
+  "numeroCuenta": "9043732509",
+  "tipo": "AHORROS",
+  "saldo": 0,
+  "activa": true,
+  "ingresos": 0,
+  "egresos": 0,
+  "movimientos": [],
+  "fechaCreacion": {
+    "$date": "2025-07-24T00:45:04.377Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-24T00:45:04.378Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T00:45:04.378Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6881830463f82e12f3c7cbbd"
+  },
+  "usuario": {
+    "$oid": "68775e0f6330a6215526b334"
+  },
+  "numeroCuenta": "1489832936",
+  "tipo": "AHORROS",
+  "saldo": 0,
+  "activa": true,
+  "ingresos": 0,
+  "egresos": 0,
+  "movimientos": [],
+  "fechaCreacion": {
+    "$date": "2025-07-24T00:49:08.986Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-24T00:49:08.987Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T00:49:08.987Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6881831a5c2872c0ed700401"
+  },
+  "usuario": {
+    "$oid": "68775e0f6330a6215526b334"
+  },
+  "numeroCuenta": "1709046882",
+  "tipo": "AHORROS",
+  "saldo": 0,
+  "activa": true,
+  "ingresos": 0,
+  "egresos": 0,
+  "movimientos": [],
+  "fechaCreacion": {
+    "$date": "2025-07-24T00:49:30.920Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-24T00:49:30.939Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T00:49:30.939Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "688183925c2872c0ed700407"
+  },
+  "usuario": {
+    "$oid": "68775e0f6330a6215526b334"
+  },
+  "numeroCuenta": "2905078895",
+  "tipo": "AHORROS",
+  "saldo": 0,
+  "activa": true,
+  "ingresos": 0,
+  "egresos": 0,
+  "movimientos": [],
+  "fechaCreacion": {
+    "$date": "2025-07-24T00:51:30.514Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-24T00:51:30.517Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-24T00:51:30.517Z"
+  }
+}]

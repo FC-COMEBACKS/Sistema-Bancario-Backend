@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "68775bc5f1197dca8e3db2d6"
+  },
+  "nombre": "Membresia cremas",
+  "descripcion": "Membresia cremas 2.0",
+  "precio": 1500,
+  "stock": 100,
+  "stockMinimo": 10,
+  "disponible": true,
+  "createdAt": {
+    "$date": "2025-07-16T07:59:01.492Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-17T06:27:42.889Z"
+  }
+}]

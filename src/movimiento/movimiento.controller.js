@@ -1,0 +1,711 @@
+import Movimiento from "./movimiento.model.js";
+import Cuenta from "../Cuenta/cuenta.model.js";
+import ProductoServicio from "../ProductoServicio/productoServicio.model.js";
+
+export const crearMovimiento = async (datosMovimiento) => {
+    try {
+        const movimiento = new Movimiento(datosMovimiento);
+        await movimiento.save();
+        return movimiento;
+    } catch (error) {
+        throw new Error("Error al crear el movimiento");
+    }
+};
+
+export const getMovimientos = async (req, res) => {
+    try {
+        const {tipo, cuenta, fechaDesde, fechaHasta, montoMinimo, montoMaximo, limite = 10, pagina = 1 } = req.query;
+
+        let filtro = {};
+
+        if (tipo) {
+            filtro.tipo = tipo;
+        }
+
+        if (req.usuario.rol === "CLIENT") {
+            const cuentasUsuario = await Cuenta.find({ usuario: req.usuario._id }).select('_id');
+            const cuentasIds = cuentasUsuario.map(c => c._id);
+
+            filtro.$or = [
+                { cuentaOrigen: { $in: cuentasIds } },
+                { cuentaDestino: { $in: cuentasIds } }
+            ];
+        } else if (cuenta) {
+            filtro.$or = [
+                { cuentaOrigen: cuenta },
+                { cuentaDestino: cuenta }
+            ];
+        }
+
+        if (fechaDesde || fechaHasta) {
+            filtro.fechaHora = {};
+            if (fechaDesde) filtro.fechaHora.$gte = new Date(fechaDesde);
+            if (fechaHasta) filtro.fechaHora.$lte = new Date(fechaHasta);
+        }
+
+        if (montoMinimo || montoMaximo) {
+            filtro.monto = {};
+            if (montoMinimo) filtro.monto.$gte = Number(montoMinimo);
+            if (montoMaximo) filtro.monto.$lte = Number(montoMaximo);
+        }
+
+        const skip = (Number(pagina) - 1) * Number(limite);
+
+        const [total, movimientos] = await Promise.all([
+            Movimiento.countDocuments(filtro),
+            Movimiento.find(filtro)
+                .populate({
+                    path: 'cuentaOrigen',
+                    select: 'numeroCuenta usuario',
+                    populate: {
+                        path: 'usuario',
+                        select: 'nombre'
+                    }
+                })
+                .populate({
+                    path: 'cuentaDestino',
+                    select: 'numeroCuenta usuario',
+                    populate: {
+                        path: 'usuario',
+                        select: 'nombre'
+                    }
+                })
+                .populate('productoServicio', 'nombre precio')
+                .sort({ fechaHora: -1 })
+                .skip(skip)
+                .limit(Number(limite))
+        ]);
+
+        const movimientosEnriquecidos = movimientos.map(mov => {
+            const movData = mov.toObject();
+
+            return {
+                ...movData,
+                cuentaOrigen: mov.cuentaOrigen ? {
+                    id: mov.cuentaOrigen._id,
+                    numeroCuenta: mov.cuentaOrigen.numeroCuenta,
+                    titular: mov.cuentaOrigen.usuario ? mov.cuentaOrigen.usuario.nombre : 'No especificado'
+                } : null,
+                cuentaDestino: mov.cuentaDestino ? {
+                    id: mov.cuentaDestino._id,
+                    numeroCuenta: mov.cuentaDestino.numeroCuenta,
+                    titular: mov.cuentaDestino.usuario ? mov.cuentaDestino.usuario.nombre : 'No especificado'
+                } : null
+            };
+        });
+
+        res.json({
+            total,
+            movimientos: movimientosEnriquecidos
+        });
+    } catch (error) {
+        res.status(500).json({
+            msg: "Error al obtener los movimientos"
+        });
+    }
+};
+
+export const getMovimientoById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        
+        const movimiento = await Movimiento.findById(id)
+            .populate({
+                path: 'cuentaOrigen',
+                select: 'numeroCuenta usuario',
+                populate: {
+                    path: 'usuario',
+                    select: 'nombre'
+                }
+            })
+            .populate({
+                path: 'cuentaDestino',
+                select: 'numeroCuenta usuario',
+                populate: {
+                    path: 'usuario',
+                    select: 'nombre'
+                }
+            })
+            .populate('productoServicio', 'nombre precio');
+        
+        if (!movimiento) {
+            return res.status(404).json({
+                msg: "Movimiento no encontrado"
+            });
+        }
+        
+        const resultado = {
+            movimiento: {
+                _id: movimiento._id,
+                monto: movimiento.monto,
+                tipo: movimiento.tipo,
+                descripcion: movimiento.descripcion,
+                fechaHora: movimiento.fechaHora,
+                reversed: movimiento.reversed
+            },
+            cuentaOrigen: movimiento.cuentaOrigen ? {
+                id: movimiento.cuentaOrigen._id,
+                numeroCuenta: movimiento.cuentaOrigen.numeroCuenta,
+                titular: movimiento.cuentaOrigen.usuario ? movimiento.cuentaOrigen.usuario.nombre : 'No especificado'
+            } : null,
+            cuentaDestino: movimiento.cuentaDestino ? {
+                id: movimiento.cuentaDestino._id,
+                numeroCuenta: movimiento.cuentaDestino.numeroCuenta,
+                titular: movimiento.cuentaDestino.usuario ? movimiento.cuentaDestino.usuario.nombre : 'No especificado'
+            } : null
+        };
+        
+        if (movimiento.productoServicio) {
+            resultado.productoServicio = movimiento.productoServicio;
+        }
+        
+        res.json(resultado);
+    } catch (error) {
+        res.status(500).json({
+            msg: "Error al obtener el movimiento"
+        });
+    }
+};
+
+export const realizarTransferencia = async (req, res) => {
+    try {
+        const { cuentaOrigen, cuentaDestino, monto, descripcion = "Transferencia" } = req.body;
+        const usuario = req.usuario;
+        const montoNumber = Number(monto);
+
+        const cuentaOrigenObj = await Cuenta.findOne({ numeroCuenta: cuentaOrigen }).populate('usuario', 'nombre');
+        if (!cuentaOrigenObj) {
+            return res.status(404).json({
+                success: false,
+                msg: "Cuenta de origen no encontrada"
+            });
+        }
+
+        const usuarioOrigenId = cuentaOrigenObj.usuario._id ? cuentaOrigenObj.usuario._id.toString() : cuentaOrigenObj.usuario.toString();
+        if (usuarioOrigenId !== usuario._id.toString() && usuario.rol !== 'ADMIN') {
+            return res.status(403).json({
+                success: false,
+                msg: "No tiene autorización para realizar transferencias desde esta cuenta"
+            });
+        }
+
+        const cuentaDestinoObj = await Cuenta.findOne({ numeroCuenta: cuentaDestino }).populate('usuario', 'nombre');
+        if (!cuentaDestinoObj) {
+            return res.status(404).json({
+                msg: "Cuenta de destino no encontrada"
+            });
+        }
+
+        if (!cuentaOrigenObj.activa) {
+            return res.status(400).json({
+                msg: "La cuenta de origen está inactiva"
+            });
+        }
+
+        if (!cuentaDestinoObj.activa) {
+            return res.status(400).json({
+                msg: "La cuenta de destino está inactiva"
+            });
+        }
+
+        if (cuentaOrigenObj._id.toString() === cuentaDestinoObj._id.toString()) {
+            return res.status(400).json({
+                msg: "No se puede transferir a la misma cuenta de origen"
+            });
+        }
+
+        if (cuentaOrigenObj.saldo < montoNumber) {
+            return res.status(400).json({
+                msg: "Saldo insuficiente para realizar esta transferencia"
+            });
+        }
+
+        if (montoNumber > 2000) {
+            return res.status(400).json({
+                msg: "No se puede transferir más de Q2000 por transferencia"
+            });
+        }
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+
+        const transferenciasHoy = await Movimiento.find({
+            cuentaOrigen: cuentaOrigenObj._id,
+            tipo: "TRANSFERENCIA",
+            fechaHora: { $gte: today, $lt: tomorrow },
+            reversed: false
+        });
+
+        let totalTransferidoHoy = 0;
+        transferenciasHoy.forEach(t => {
+            totalTransferidoHoy += Number(t.monto) || 0;
+        });
+
+        if (totalTransferidoHoy + montoNumber > 10000) {
+            return res.status(400).json({
+                msg: "Has superado el límite diario de Q10,000 en transferencias"
+            });
+        }
+
+        cuentaOrigenObj.saldo -= montoNumber;
+        cuentaOrigenObj.egresos += montoNumber;
+        cuentaDestinoObj.saldo += montoNumber;
+        cuentaDestinoObj.ingresos += montoNumber;
+
+        const esTrasferenciaPropia = cuentaOrigenObj.usuario._id.toString() === cuentaDestinoObj.usuario._id.toString();
+        
+        let descripcionFinal = descripcion;
+        if (esTrasferenciaPropia) {
+            descripcionFinal = `${descripcion}`;
+        }
+
+        const movimiento = await crearMovimiento({
+            cuentaOrigen: cuentaOrigenObj._id,
+            cuentaDestino: cuentaDestinoObj._id,
+            monto: montoNumber,
+            tipo: "TRANSFERENCIA",
+            fechaHora: new Date(),
+            descripcion: descripcionFinal
+        });
+
+        cuentaOrigenObj.movimientos.push(movimiento._id);
+        cuentaDestinoObj.movimientos.push(movimiento._id);
+
+        await Promise.all([
+            cuentaOrigenObj.save(),
+            cuentaDestinoObj.save()
+        ]);
+
+        const movimientoSimplificado = {
+            cuentaOrigen: movimiento.cuentaOrigen,
+            cuentaDestino: movimiento.cuentaDestino,
+            monto: movimiento.monto,
+            tipo: movimiento.tipo,
+            descripcion: movimiento.descripcion
+        };
+
+        const resultado = {
+            msg: esTrasferenciaPropia ? 
+                "Transferencia entre cuentas propias realizada con éxito" : 
+                "Transferencia realizada con éxito",
+            esTransferenciaPropia: esTrasferenciaPropia,
+            movimiento: movimientoSimplificado,
+            cuentaOrigen: {
+                id: cuentaOrigenObj._id,
+                numeroCuenta: cuentaOrigenObj.numeroCuenta,
+                tipo: cuentaOrigenObj.tipo,
+                titular: cuentaOrigenObj.usuario ? cuentaOrigenObj.usuario.nombre : 'No especificado'
+            },
+            cuentaDestino: {
+                id: cuentaDestinoObj._id,
+                numeroCuenta: cuentaDestinoObj.numeroCuenta,
+                tipo: cuentaDestinoObj.tipo,
+                titular: cuentaDestinoObj.usuario ? cuentaDestinoObj.usuario.nombre : 'No especificado'
+            },
+            saldoActual: cuentaOrigenObj.saldo
+        };
+
+        res.json(resultado); 
+    } catch (error) {
+        res.status(500).json({
+            msg: "Error al realizar la transferencia"
+        });
+    }
+};
+
+export const realizarCredito = async (req, res) => {
+    try {
+        const { cuentaDestino, monto, descripcion = "Crédito" } = req.body;
+        const montoNumber = Number(monto);
+        
+        if (req.usuario.rol !== 'ADMIN') {
+            return res.status(403).json({
+                msg: "No tiene autorización para realizar créditos"
+            });
+        }
+
+        const cuentaDestinoObj = await Cuenta.findOne({ numeroCuenta: cuentaDestino }).populate('usuario', 'nombre');
+        if (!cuentaDestinoObj) {
+            return res.status(404).json({
+                msg: "Cuenta de destino no encontrada"
+            });
+        }
+
+        cuentaDestinoObj.saldo += montoNumber;
+        cuentaDestinoObj.ingresos += montoNumber;
+
+        const movimiento = await crearMovimiento({
+            cuentaDestino: cuentaDestinoObj._id,
+            monto: montoNumber,
+            tipo: "CREDITO",
+            fechaHora: new Date(),
+            descripcion: `${descripcion} (realizado por: ${req.usuario.nombre})`
+        });
+
+        cuentaDestinoObj.movimientos.push(movimiento._id);
+        await cuentaDestinoObj.save();
+
+        const movimientoSimplificado = movimiento.toObject();
+
+        res.json({
+            msg: "Crédito realizado con éxito",
+            movimiento: movimientoSimplificado,
+            cuentaDestino: {
+                id: cuentaDestinoObj._id,
+                numeroCuenta: cuentaDestinoObj.numeroCuenta,
+                titular: cuentaDestinoObj.usuario ? cuentaDestinoObj.usuario.nombre : 'No especificado'
+            },
+            saldoActual: cuentaDestinoObj.saldo
+        });
+    } catch (error) {
+        res.status(500).json({
+            msg: "Error al realizar el crédito"
+        });
+    }
+};
+
+export const realizarDeposito = async (req, res) => {
+    try {
+        const { cuentaDestino, monto, descripcion = "Depósito" } = req.body;
+        const montoNumber = Number(monto);
+        
+        const cuentaDestinoObj = await Cuenta.findOne({ numeroCuenta: cuentaDestino }).populate('usuario', 'nombre');
+        if (!cuentaDestinoObj) {
+            return res.status(404).json({
+                msg: "Cuenta de destino no encontrada"
+            });
+        }
+        
+        cuentaDestinoObj.saldo += montoNumber;
+        cuentaDestinoObj.ingresos += montoNumber;
+        
+        const movimiento = await crearMovimiento({
+            cuentaDestino: cuentaDestinoObj._id,
+            monto: montoNumber,
+            tipo: "DEPOSITO",
+            fechaHora: new Date(),
+            descripcion: descripcion 
+        });
+        
+        cuentaDestinoObj.movimientos.push(movimiento._id);
+        await cuentaDestinoObj.save();
+        
+        const movimientoSimplificado = movimiento.toObject();
+        
+        res.json({
+            msg: "Depósito realizado con éxito",
+            movimiento: movimientoSimplificado,
+            cuentaDestino: {
+                id: cuentaDestinoObj._id,
+                numeroCuenta: cuentaDestinoObj.numeroCuenta,
+                titular: cuentaDestinoObj.usuario ? cuentaDestinoObj.usuario.nombre : 'No especificado'
+            },
+            saldoActual: cuentaDestinoObj.saldo
+        });
+    } catch (error) {
+        res.status(500).json({
+            msg: "Error al realizar el depósito"
+        });
+    }
+};
+
+
+export const revertirDeposito = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const adminId = req.usuario._id; 
+        
+        const deposito = await Movimiento.findById(id);
+        
+        if (!deposito) {
+            return res.status(404).json({
+                msg: "Depósito no encontrado"
+            });
+        }
+        
+        if (deposito.tipo !== "DEPOSITO") {
+            return res.status(400).json({
+                msg: "Solo se pueden revertir depósitos"
+            });
+        }
+        
+        if (deposito.reversed) {
+            return res.status(400).json({
+                msg: "Este depósito ya fue revertido anteriormente"
+            });
+        }
+        
+        const ahora = new Date();
+        const tiempoTranscurrido = ahora - deposito.fechaHora;
+        
+        if (tiempoTranscurrido > 60000) {
+            return res.status(400).json({
+                msg: "No se puede revertir el depósito después de 1 minuto"
+            });
+        }
+        
+        const cuenta = await Cuenta.findById(deposito.cuentaDestino).populate('usuario', 'nombre');
+        
+        if (!cuenta) {
+            return res.status(404).json({
+                msg: "Cuenta no encontrada"
+            });
+        }
+
+        if (cuenta.saldo < deposito.monto) {
+            return res.status(400).json({
+                msg: "La cuenta no tiene saldo suficiente para revertir este depósito"
+            });
+        }
+        
+        cuenta.saldo -= deposito.monto;
+        cuenta.ingresos -= deposito.monto;
+        
+        deposito.reversed = true;
+        
+        const movimientoReversion = await crearMovimiento({
+            cuentaDestino: cuenta._id,
+            monto: deposito.monto,
+            tipo: "CANCELACION",
+            fechaHora: new Date(),
+            descripcion: `Reversión del depósito: ${id}`,
+            originalMovimiento: id
+        });
+        
+        cuenta.movimientos.push(movimientoReversion._id);
+        
+        await Promise.all([
+            cuenta.save(),
+            deposito.save()
+        ]);
+        
+        const movimientoReversionSimplificado = movimientoReversion.toObject();
+        
+        res.json({
+            msg: "Depósito revertido con éxito",
+            movimiento: movimientoReversionSimplificado,
+            cuentaDestino: {
+                id: cuenta._id,
+                numeroCuenta: cuenta.numeroCuenta,
+                titular: cuenta.usuario ? cuenta.usuario.nombre : 'No especificado'
+            },
+            depositoOriginal: {
+                id: deposito._id,
+                monto: deposito.monto,
+                fecha: deposito.fechaHora
+            },
+            saldoActual: cuenta.saldo
+        });
+    } catch (error) {
+        res.status(500).json({
+            msg: "Error al revertir el depósito"
+        });
+    }
+};
+
+export const comprarProducto = async (req, res) => {
+    try {
+        const { productoId, numeroCuenta, descripcion = "Compra de producto/servicio", cantidad = 1 } = req.body;
+        const usuario = req.usuario;
+        
+        if (!numeroCuenta) {
+            return res.status(400).json({
+                msg: "El número de cuenta es obligatorio"
+            });
+        }
+        
+        const producto = await ProductoServicio.findById(productoId);
+        if (!producto) {
+            return res.status(404).json({
+                msg: "Producto o servicio no encontrado"
+            });
+        }
+        
+        if (!producto.disponible) {
+            return res.status(400).json({
+                msg: "El producto o servicio no está disponible"
+            });
+        }
+    
+        if (producto.stock < cantidad) {
+            return res.status(400).json({
+                msg: `Stock insuficiente. Stock disponible: ${producto.stock}`
+            });
+        }
+        
+        const cuenta = await Cuenta.findOne({ 
+            numeroCuenta: numeroCuenta,
+            usuario: usuario._id 
+        });
+        if (!cuenta) {
+            return res.status(404).json({
+                msg: "Cuenta no encontrada o no te pertenece"
+            });
+        }
+        
+        const montoTotal = producto.precio * cantidad;
+        
+        if (cuenta.saldo < montoTotal) {
+            return res.status(400).json({
+                msg: "Saldo insuficiente para realizar la compra"
+            });
+        }
+        
+        cuenta.saldo -= montoTotal;
+        cuenta.egresos += montoTotal;
+        
+        producto.stock -= cantidad;
+        
+        const movimiento = await crearMovimiento({
+            cuentaOrigen: cuenta._id,
+            monto: montoTotal,
+            tipo: "COMPRA",
+            productoServicio: producto._id,
+            fechaHora: new Date(),
+            descripcion: `${descripcion} - ${producto.nombre} (Cantidad: ${cantidad})`
+        });
+        
+        cuenta.movimientos.push(movimiento._id);
+        
+        await Promise.all([
+            cuenta.save(),
+            producto.save()
+        ]);
+        
+        res.json({
+            msg: "Compra realizada exitosamente",
+            compra: {
+                producto: {
+                    id: producto._id,
+                    nombre: producto.nombre,
+                    precio: producto.precio,
+                    stockRestante: producto.stock
+                },
+                cantidad,
+                montoTotal,
+                saldoRestante: cuenta.saldo
+            },
+            movimiento: {
+                id: movimiento._id,
+                tipo: movimiento.tipo,
+                monto: movimiento.monto,
+                descripcion: movimiento.descripcion,
+                fechaHora: movimiento.fechaHora
+            }
+        });
+        
+    } catch (error) {
+        console.error('Error al comprar producto:', error);
+        res.status(500).json({
+            msg: "Error al realizar la compra"
+        });
+    }
+};
+
+export const getHistorialCuenta = async (req, res) => {
+    try {
+        const { numeroCuenta } = req.params;
+        const { desde = 0, tipo } = req.query;
+        const usuario = req.usuario; 
+        
+        const esAdmin = usuario.rol === 'ADMIN';
+    
+        const cuenta = await Cuenta.findOne({ numeroCuenta });
+        if (!cuenta) {
+            return res.status(404).json({
+                success: false,
+                msg: "Cuenta no encontrada"
+            });
+        }
+        
+        const esPropietario = cuenta.usuario.toString() === usuario._id.toString();
+        
+        if (!esAdmin && !esPropietario) {
+            return res.status(403).json({
+                success: false,
+                msg: "No tiene autorización para acceder al historial de esta cuenta"
+            });
+        }
+        
+        let filtro = {
+            $or: [
+                { cuentaOrigen: cuenta._id },
+                { cuentaDestino: cuenta._id }
+            ]
+        };
+        
+        if (tipo) {
+            filtro.tipo = tipo;
+        }
+        
+        const [total, movimientos] = await Promise.all([
+            Movimiento.countDocuments(filtro),
+            Movimiento.find(filtro)
+                .populate({
+                    path: 'cuentaOrigen',
+                    select: 'numeroCuenta usuario',
+                    populate: {
+                        path: 'usuario',
+                        select: 'nombre'
+                    }
+                })
+                .populate({
+                    path: 'cuentaDestino',
+                    select: 'numeroCuenta usuario',
+                    populate: {
+                        path: 'usuario',
+                        select: 'nombre'
+                    }
+                })
+                .populate('productoServicio', 'nombre precio')
+                .sort({ fechaHora: -1 })
+                .skip(Number(desde))
+        ]);
+
+        
+        const movimientosEnriquecidos = movimientos.map(mov => {
+            const movData = mov.toObject();
+            
+        
+            return {
+                ...movData,
+                cuentaOrigenDetalle: mov.cuentaOrigen ? {
+                    id: mov.cuentaOrigen._id,
+                    numeroCuenta: mov.cuentaOrigen.numeroCuenta,
+                    titular: mov.cuentaOrigen.usuario ? mov.cuentaOrigen.usuario.nombre : 'No especificado'
+                } : null,
+                cuentaDestinoDetalle: mov.cuentaDestino ? {
+                    id: mov.cuentaDestino._id,
+                    numeroCuenta: mov.cuentaDestino.numeroCuenta,
+                    titular: mov.cuentaDestino.usuario ? mov.cuentaDestino.usuario.nombre : 'No especificado'
+                } : null
+            };
+        });
+        
+        const cuentaData = cuenta.toObject();
+        
+        const cuentaUsuario = await Cuenta.findById(cuenta._id).populate('usuario', 'nombre username email');
+        
+        if (cuentaUsuario && cuentaUsuario.usuario) {
+            cuentaData.usuario = cuentaUsuario.usuario;
+        }
+        
+        res.json({
+            success: true,
+            total,
+            cuenta: {
+                ...cuentaData,
+                cid: cuenta._id
+            },
+            movimientos: movimientosEnriquecidos
+        });
+    } catch (error) {
+        res.status(500).json({
+            msg: "Error al obtener el historial de la cuenta"
+        });
+    }
+};
+

@@ -1,0 +1,22 @@
+[{
+  "_id": {
+    "$oid": "68788e6d7c29ce781726561f"
+  },
+  "usuario": {
+    "$oid": "68775e0f6330a6215526b334"
+  },
+  "cuentaFavorita": {
+    "$oid": "6878799bee695ae0d29e6bee"
+  },
+  "numeroCuenta": "9158055779",
+  "alias": "JUANPZ",
+  "fechaCreacion": {
+    "$date": "2025-07-17T05:47:25.804Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-17T05:47:25.805Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-17T05:47:25.805Z"
+  }
+}]
