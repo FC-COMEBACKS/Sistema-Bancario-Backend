@@ -25,7 +25,7 @@ export const validateJWT = async (req, res, next) => {
            }) 
         }
 
-        if(user.status === false){
+        if(user.estado === "INACTIVO"){
             return res.status(400).json({
                 success: false,
                 message: " Usuario desactivado previamente"

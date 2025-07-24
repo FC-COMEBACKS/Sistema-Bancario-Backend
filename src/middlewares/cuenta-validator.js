@@ -39,6 +39,13 @@ export const listarCuentasAgregadasValidator = [
     handleErrors
 ];
 
+export const getMisCuentasValidator = [
+    validateJWT,
+    hasRoles("CLIENT", "ADMIN"),
+    validateField,
+    handleErrors
+];
+
 export const getCuentaByIdValidator = [
     validateJWT,
     hasRoles("ADMIN", "CLIENT"),

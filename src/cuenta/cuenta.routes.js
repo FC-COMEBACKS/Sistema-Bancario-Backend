@@ -4,6 +4,7 @@ import {
   editarCuenta,
   getDetallesCuenta,
   getCuentas,
+  getMisCuentas,
   getCuentaByUsuario,
   getCuentaById,
   getCuentaPorNumero,
@@ -16,6 +17,7 @@ import {
   editarCuentaValidator,
   getCuentaByIdValidator,
   getCuentasValidator,
+  getMisCuentasValidator,
   getCuentaByUsuarioValidator,
   getCuentaPorNumeroValidator,
   eliminarCuentaValidator,
@@ -438,6 +440,57 @@ router.put("/editarCuenta/:cid", editarCuentaValidator, editarCuenta);
 router.get("/detallesCuenta/:cid", getCuentaByIdValidator, getDetallesCuenta);
 
 router.get("/listarCuentasAgregadas", listarCuentasAgregadasValidator, listarCuentasAgregadas);
+
+/**
+ * @swagger
+ * /HRB/v1/cuentas/mis-cuentas:
+ *   get:
+ *     summary: Obtiene las cuentas propias del usuario autenticado
+ *     tags: [Cuentas]
+ *     description: Retorna todas las cuentas activas que pertenecen al usuario autenticado
+ *     responses:
+ *       200:
+ *         description: Cuentas obtenidas exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 total:
+ *                   type: integer
+ *                   example: 2
+ *                 cuentas:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       _id:
+ *                         type: string
+ *                       numeroCuenta:
+ *                         type: string
+ *                         example: "1234567890"
+ *                       tipo:
+ *                         type: string
+ *                         enum: [AHORROS, CORRIENTE]
+ *                         example: "AHORROS"
+ *                       saldo:
+ *                         type: number
+ *                         example: 1500.50
+ *                       activa:
+ *                         type: boolean
+ *                         example: true
+ *                       fechaCreacion:
+ *                         type: string
+ *                         format: date-time
+ *       500:
+ *         description: Error del servidor
+ *     security:
+ *       - bearerAuth: []
+ */
+router.get("/mis-cuentas", getMisCuentasValidator, getMisCuentas);
 
 /**
  * @swagger

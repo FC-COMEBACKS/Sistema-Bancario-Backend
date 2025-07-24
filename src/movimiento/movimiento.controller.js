@@ -196,9 +196,21 @@ export const realizarTransferencia = async (req, res) => {
             });
         }
 
-        if (cuentaOrigenObj.numeroCuenta === cuentaDestinoObj.numeroCuenta) {
+        if (!cuentaOrigenObj.activa) {
             return res.status(400).json({
-                msg: "No se puede transferir a la misma cuenta"
+                msg: "La cuenta de origen está inactiva"
+            });
+        }
+
+        if (!cuentaDestinoObj.activa) {
+            return res.status(400).json({
+                msg: "La cuenta de destino está inactiva"
+            });
+        }
+
+        if (cuentaOrigenObj._id.toString() === cuentaDestinoObj._id.toString()) {
+            return res.status(400).json({
+                msg: "No se puede transferir a la misma cuenta de origen"
             });
         }
 
@@ -243,13 +255,20 @@ export const realizarTransferencia = async (req, res) => {
         cuentaDestinoObj.saldo += montoNumber;
         cuentaDestinoObj.ingresos += montoNumber;
 
+        const esTrasferenciaPropia = cuentaOrigenObj.usuario._id.toString() === cuentaDestinoObj.usuario._id.toString();
+        
+        let descripcionFinal = descripcion;
+        if (esTrasferenciaPropia) {
+            descripcionFinal = `${descripcion}`;
+        }
+
         const movimiento = await crearMovimiento({
             cuentaOrigen: cuentaOrigenObj._id,
             cuentaDestino: cuentaDestinoObj._id,
             monto: montoNumber,
             tipo: "TRANSFERENCIA",
             fechaHora: new Date(),
-            descripcion
+            descripcion: descripcionFinal
         });
 
         cuentaOrigenObj.movimientos.push(movimiento._id);
@@ -269,16 +288,21 @@ export const realizarTransferencia = async (req, res) => {
         };
 
         const resultado = {
-            msg: "Transferencia realizada con éxito",
+            msg: esTrasferenciaPropia ? 
+                "Transferencia entre cuentas propias realizada con éxito" : 
+                "Transferencia realizada con éxito",
+            esTransferenciaPropia: esTrasferenciaPropia,
             movimiento: movimientoSimplificado,
             cuentaOrigen: {
                 id: cuentaOrigenObj._id,
                 numeroCuenta: cuentaOrigenObj.numeroCuenta,
+                tipo: cuentaOrigenObj.tipo,
                 titular: cuentaOrigenObj.usuario ? cuentaOrigenObj.usuario.nombre : 'No especificado'
             },
             cuentaDestino: {
                 id: cuentaDestinoObj._id,
                 numeroCuenta: cuentaDestinoObj.numeroCuenta,
+                tipo: cuentaDestinoObj.tipo,
                 titular: cuentaDestinoObj.usuario ? cuentaDestinoObj.usuario.nombre : 'No especificado'
             },
             saldoActual: cuentaOrigenObj.saldo
@@ -484,8 +508,14 @@ export const revertirDeposito = async (req, res) => {
 
 export const comprarProducto = async (req, res) => {
     try {
-        const { productoId, descripcion = "Compra de producto/servicio", cantidad = 1 } = req.body;
+        const { productoId, numeroCuenta, descripcion = "Compra de producto/servicio", cantidad = 1 } = req.body;
         const usuario = req.usuario;
+        
+        if (!numeroCuenta) {
+            return res.status(400).json({
+                msg: "El número de cuenta es obligatorio"
+            });
+        }
         
         const producto = await ProductoServicio.findById(productoId);
         if (!producto) {
@@ -506,10 +536,13 @@ export const comprarProducto = async (req, res) => {
             });
         }
         
-        const cuenta = await Cuenta.findOne({ usuario: usuario._id });
+        const cuenta = await Cuenta.findOne({ 
+            numeroCuenta: numeroCuenta,
+            usuario: usuario._id 
+        });
         if (!cuenta) {
             return res.status(404).json({
-                msg: "Cuenta no encontrada"
+                msg: "Cuenta no encontrada o no te pertenece"
             });
         }
         

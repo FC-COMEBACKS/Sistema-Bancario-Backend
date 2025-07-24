@@ -277,6 +277,32 @@ export const getCuentas = async (req, res) => {
     }
 };
 
+export const getMisCuentas = async (req, res) => {
+    try {
+        const usuarioId = req.usuario._id;
+        
+        const cuentas = await Cuenta.find({ 
+            usuario: usuarioId,
+            activa: true 
+        })
+        .select('numeroCuenta tipo saldo activa fechaCreacion')
+        .sort({ fechaCreacion: -1 });
+        
+        res.json({
+            success: true,
+            total: cuentas.length,
+            cuentas
+        });
+    } catch (error) {
+        console.error('Error en getMisCuentas:', error);
+        res.status(500).json({
+            success: false,
+            msg: "Error al obtener tus cuentas",
+            error: error.message
+        });
+    }
+};
+
 export const getCuentaByUsuario = async (req, res) => {
     try {
         const { uid } = req.params;

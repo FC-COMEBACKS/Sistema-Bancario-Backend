@@ -80,6 +80,9 @@ export const comprarProductoValidator = [
     body("productoId")
         .notEmpty().withMessage("El producto es obligatorio")
         .isMongoId().withMessage("El ID del producto no es válido"),
+    body("numeroCuenta")
+        .notEmpty().withMessage("El número de cuenta es obligatorio")
+        .isLength({ min: 10, max: 20 }).withMessage("El número de cuenta debe tener entre 10 y 20 caracteres"),
     body("descripcion")
         .optional(),
     body("cantidad")

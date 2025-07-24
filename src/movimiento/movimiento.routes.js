@@ -586,7 +586,7 @@ router.post("/deposito/:id/revertir", revertirDepositoValidator, revertirDeposit
  *   post:
  *     summary: Realizar compra de producto/servicio
  *     tags: [Movimientos]
- *     description: Permite a un cliente comprar un producto o servicio usando su cuenta principal
+ *     description: Permite a un cliente comprar un producto o servicio especificando la cuenta de pago
  *     requestBody:
  *       required: true
  *       content:
@@ -595,10 +595,14 @@ router.post("/deposito/:id/revertir", revertirDepositoValidator, revertirDeposit
  *             type: object
  *             required:
  *               - productoId
+ *               - numeroCuenta
  *             properties:
  *               productoId:
  *                 type: string
  *                 description: ID del producto/servicio a comprar
+ *               numeroCuenta:
+ *                 type: string
+ *                 description: Número de cuenta desde la cual realizar el pago
  *               descripcion:
  *                 type: string
  *                 description: Descripción opcional de la compra
@@ -610,9 +614,9 @@ router.post("/deposito/:id/revertir", revertirDepositoValidator, revertirDeposit
  *       200:
  *         description: Compra realizada exitosamente
  *       400:
- *         description: Datos inválidos o saldo insuficiente
+ *         description: Datos inválidos, saldo insuficiente o cuenta no válida
  *       404:
- *         description: Producto no encontrado o sin cuentas activas
+ *         description: Producto no encontrado o cuenta no encontrada
  *       500:
  *         description: Error del servidor
  *     security:
