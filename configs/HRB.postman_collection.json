@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "09a9ca17-a59e-4d5f-a9d5-77e64d399850",
+		"_postman_id": "c4d3fea4-0467-4518-a0ab-dabe76d7587a",
 		"name": "HRB",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "42000110"
+		"_exporter_id": "37636976"
 	},
 	"item": [
 		{
@@ -733,6 +733,38 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "LISTAR CUENTAS PROPIAS USUARIOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODc3NWUwZjYzMzBhNjIxNTUyNmIzMzQiLCJpYXQiOjE3NTMzNDc1MTgsImV4cCI6MTc1MzQxOTUxOH0.Ed18fZcHpHFzQShQ_fAOUoas8OVRlQj8NKtybzb9Lrg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/HRB/v1/cuentas/mis-cuentas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"HRB",
+								"v1",
+								"cuentas",
+								"mis-cuentas"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1160,7 +1192,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVhMjBkNmYyODM2YzgxMGVhZTdjZTQiLCJpYXQiOjE3NTA3NTE2OTUsImV4cCI6MTc1MDgyMzY5NX0.unwkhT21pa-KoklJktD-Far-nCtEdDzaZJbMf4mgNt0",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODc3NWUwZjYzMzBhNjIxNTUyNmIzMzQiLCJpYXQiOjE3NTMzNDc1MTgsImV4cCI6MTc1MzQxOTUxOH0.Ed18fZcHpHFzQShQ_fAOUoas8OVRlQj8NKtybzb9Lrg",
 									"type": "string"
 								}
 							]
@@ -1169,7 +1201,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"cuentaId\": \"685a33d1f0dfbb3ade4a62ba\",\r\n  \"productoId\": \"685a5e6c7574217efe20d9fb\",\r\n  \"descripcion\": \"Compra de plan de ahorro premium\"\r\n}",
+							"raw": "{\r\n  \"productoId\": \"6881d386d93d2f8bdd7d83b0\",\r\n  \"numeroCuenta\": \"2905078895\",\r\n  \"cantidad\": 1,\r\n  \"descripcion\": \"Compra de tarjeta de crédito\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1449,10 +1481,7 @@
 					"name": "ELIMINAR PRODUCTO O SERVICIO",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": ""
-						}
+						"header": []
 					},
 					"response": []
 				},
@@ -1627,7 +1656,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODVmODQ0MGE2OTFmYjYzNDY2YjhhZDAiLCJpYXQiOjE3NTI3MTEzMjAsImV4cCI6MTc1Mjc4MzMyMH0.m4cSgHOASPOyeSrQbBFduJRJR7aUkuymPh5sqmphQcA",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODU5ZmU3MGE0NDA3NTliZDhlODA2NmIiLCJpYXQiOjE3NTEwMDQ4ODEsImV4cCI6MTc1MTA3Njg4MX0.dYf2QjGW_qGva7R490RjcXxjfA95-uYWkT-6WyIcV2M",
 									"type": "string"
 								}
 							]
