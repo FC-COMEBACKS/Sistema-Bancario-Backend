@@ -1,6 +1,6 @@
 import Favorito from "./favorito.model.js";
-import Cuenta from "../Cuenta/cuenta.model.js";
-import Movimiento from "../Movimiento/movimiento.model.js";
+import Cuenta from "../cuenta/cuenta.model.js";
+import Movimiento from "../movimiento/movimiento.model.js";
 
 export const agregarFavorito = async (req, res) => {
     try {

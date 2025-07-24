@@ -1,7 +1,7 @@
 import Usuario from '../user/user.model.js';
-import Cuenta from '../Cuenta/cuenta.model.js';      
-import Movimiento from '../Movimiento/movimiento.model.js'; 
-import ProductoServicio from '../ProductoServicio/productoServicio.model.js'; 
+import Cuenta from '../cuenta/cuenta.model.js';      
+import Movimiento from '../movimiento/movimiento.model.js'; 
+import ProductoServicio from '../productoServicio/productoServicio.model.js'; 
 
 export const getEstadisticasGenerales = async (req, res) => {
     try {

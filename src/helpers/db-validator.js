@@ -1,6 +1,6 @@
 import User from "../user/user.model.js";
-import Cuenta from "../Cuenta/cuenta.model.js";
-import Movimiento from "../Movimiento/movimiento.model.js";
+import Cuenta from "../cuenta/cuenta.model.js";
+import Movimiento from "../movimiento/movimiento.model.js";
 
 export const emailExists = async (email = "") => {
     const existe = await User.findOne({email})

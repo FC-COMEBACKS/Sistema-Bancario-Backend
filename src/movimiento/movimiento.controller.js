@@ -1,6 +1,6 @@
 import Movimiento from "./movimiento.model.js";
-import Cuenta from "../Cuenta/cuenta.model.js";
-import ProductoServicio from "../ProductoServicio/productoServicio.model.js";
+import Cuenta from "../cuenta/cuenta.model.js";
+import ProductoServicio from "../productoServicio/productoServicio.model.js"
 
 export const crearMovimiento = async (datosMovimiento) => {
     try {

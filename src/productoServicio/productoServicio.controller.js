@@ -1,5 +1,5 @@
 import ProductoServicio from "./productoServicio.model.js";
-import Movimiento from "../Movimiento/movimiento.model.js";
+import Movimiento from "../movimiento/movimiento.model.js";
 
 export const crearProductoServicio = async (req, res) => {
     try {

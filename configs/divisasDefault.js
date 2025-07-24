@@ -1,4 +1,4 @@
-import Divisa from "../src/divisas/divisa.model.js";
+import Divisa from "../src/divisa/divisa.model.js";
 
 export const inicializarDivisas = async () => {
     try {

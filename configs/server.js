@@ -9,13 +9,13 @@ import { swaggerDocs, swaggerUi } from "./swagger.js";
 import  apiLimiter from "../src/middlewares/rate-limit-validator.js";
 import authRoutes from "../src/auth/auth.routes.js";
 import userRoutes from "../src/user/user.routes.js";
-import cuentaRoutes from "../src/Cuenta/cuenta.routes.js";
-import productoServicioRoutes from "../src/ProductoServicio/productoServicio.routes.js";
-import favoritoRoutes from "../src/Favorito/favorito.routes.js";
-import movimientoRoutes from "../src/Movimiento/movimiento.routes.js";
-import divisaRoutes from "../src/divisas/divisa.routes.js";
+import cuentaRoutes from "../src/cuenta/cuenta.routes.js";
+import productoServicioRoutes from "../src/productoServicio/productoServicio.routes.js";
+import favoritoRoutes from "../src/favorito/favorito.routes.js";
+import movimientoRoutes from "../src/movimiento/movimiento.routes.js";
+import divisaRoutes from "../src/divisa/divisa.routes.js";
 import estadisticasRoutes from "../src/estadisticas/estadisticas.routes.js";
-import { programarActualizacionDivisas } from "../src/divisas/divisa.controller.js";
+import { programarActualizacionDivisas } from "../src/divisa/divisa.controller.js";
 
 
 const middlewares = (app) => {
