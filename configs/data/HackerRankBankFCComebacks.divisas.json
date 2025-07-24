@@ -1,0 +1,2916 @@
+[{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0a5"
+  },
+  "codigo": "AED",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.603Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.858Z"
+  },
+  "nombre": "AED",
+  "tasaEnQuetzales": 2.0903010033444818,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.859Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0a6"
+  },
+  "codigo": "AFN",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.679Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.865Z"
+  },
+  "nombre": "AFN",
+  "tasaEnQuetzales": 0.11122975618437446,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.866Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0a7"
+  },
+  "codigo": "ALL",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.687Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.868Z"
+  },
+  "nombre": "ALL",
+  "tasaEnQuetzales": 0.09230030828302967,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.868Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0a8"
+  },
+  "codigo": "AMD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.692Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.870Z"
+  },
+  "nombre": "AMD",
+  "tasaEnQuetzales": 0.020001920184337697,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.870Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0a9"
+  },
+  "codigo": "ANG",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.695Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.873Z"
+  },
+  "nombre": "ANG",
+  "tasaEnQuetzales": 4.288164665523157,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.873Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0aa"
+  },
+  "codigo": "AOA",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.699Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.875Z"
+  },
+  "nombre": "AOA",
+  "tasaEnQuetzales": 0.008354756320999763,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.875Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0ab"
+  },
+  "codigo": "ARS",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.702Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.877Z"
+  },
+  "nombre": "ARS",
+  "tasaEnQuetzales": 0.006094134882706186,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.878Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0ac"
+  },
+  "codigo": "AUD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.706Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.879Z"
+  },
+  "nombre": "AUD",
+  "tasaEnQuetzales": 5.053057099545225,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.880Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0ad"
+  },
+  "codigo": "AWG",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.711Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.881Z"
+  },
+  "nombre": "AWG",
+  "tasaEnQuetzales": 4.288164665523157,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.882Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0ae"
+  },
+  "codigo": "AZN",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.716Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.884Z"
+  },
+  "nombre": "AZN",
+  "tasaEnQuetzales": 4.512635379061372,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.884Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0af"
+  },
+  "codigo": "BAM",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.721Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.886Z"
+  },
+  "nombre": "BAM",
+  "tasaEnQuetzales": 4.601932811780948,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.886Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0b0"
+  },
+  "codigo": "BBD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.724Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.888Z"
+  },
+  "nombre": "BBD",
+  "tasaEnQuetzales": 3.838771593090211,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.888Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0b1"
+  },
+  "codigo": "BDT",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.727Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.890Z"
+  },
+  "nombre": "BDT",
+  "tasaEnQuetzales": 0.0630314337760241,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.890Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0b2"
+  },
+  "codigo": "BGN",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.731Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.892Z"
+  },
+  "nombre": "BGN",
+  "tasaEnQuetzales": 4.601932811780948,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.892Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0b3"
+  },
+  "codigo": "BHD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.735Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.895Z"
+  },
+  "nombre": "BHD",
+  "tasaEnQuetzales": 20.416496529195587,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.895Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0b4"
+  },
+  "codigo": "BIF",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.739Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.897Z"
+  },
+  "nombre": "BIF",
+  "tasaEnQuetzales": 0.0025725550565370426,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.897Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0b5"
+  },
+  "codigo": "BMD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.746Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.899Z"
+  },
+  "nombre": "BMD",
+  "tasaEnQuetzales": 7.674597083653108,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.899Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0b6"
+  },
+  "codigo": "BND",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.749Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.900Z"
+  },
+  "nombre": "BND",
+  "tasaEnQuetzales": 6.006006006006006,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.901Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0b7"
+  },
+  "codigo": "BOB",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.752Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.902Z"
+  },
+  "nombre": "BOB",
+  "tasaEnQuetzales": 1.1101243339253997,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.902Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0b8"
+  },
+  "codigo": "BRL",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.757Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.904Z"
+  },
+  "nombre": "BRL",
+  "tasaEnQuetzales": 1.3785497656465397,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.904Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0b9"
+  },
+  "codigo": "BSD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.764Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.906Z"
+  },
+  "nombre": "BSD",
+  "tasaEnQuetzales": 7.674597083653108,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.906Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0ba"
+  },
+  "codigo": "BTN",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.771Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.908Z"
+  },
+  "nombre": "BTN",
+  "tasaEnQuetzales": 0.0888209901763985,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.908Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0bb"
+  },
+  "codigo": "BWP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.778Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.910Z"
+  },
+  "nombre": "BWP",
+  "tasaEnQuetzales": 0.5636978579481398,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.910Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0bc"
+  },
+  "codigo": "BYN",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.780Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.911Z"
+  },
+  "nombre": "BYN",
+  "tasaEnQuetzales": 2.343566908835247,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.911Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0bd"
+  },
+  "codigo": "BZD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.783Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.913Z"
+  },
+  "nombre": "BZD",
+  "tasaEnQuetzales": 3.838771593090211,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.913Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0be"
+  },
+  "codigo": "CAD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.786Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.915Z"
+  },
+  "nombre": "Dólar Canadiense",
+  "tasaEnQuetzales": 5.64652738565782,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.915Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0bf"
+  },
+  "codigo": "CDF",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.788Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.917Z"
+  },
+  "nombre": "CDF",
+  "tasaEnQuetzales": 0.0026391707303297985,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.917Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0c0"
+  },
+  "codigo": "CHF",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.791Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.919Z"
+  },
+  "nombre": "CHF",
+  "tasaEnQuetzales": 9.671179883945841,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.919Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0c1"
+  },
+  "codigo": "CLP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.793Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.920Z"
+  },
+  "nombre": "CLP",
+  "tasaEnQuetzales": 0.008070621163428465,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.921Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0c2"
+  },
+  "codigo": "CNY",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.795Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.958Z"
+  },
+  "nombre": "CNY",
+  "tasaEnQuetzales": 1.0720411663807892,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.958Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0c3"
+  },
+  "codigo": "COP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.797Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.960Z"
+  },
+  "nombre": "COP",
+  "tasaEnQuetzales": 0.001887844302684118,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.960Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0c4"
+  },
+  "codigo": "CRC",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.799Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.962Z"
+  },
+  "nombre": "CRC",
+  "tasaEnQuetzales": 0.015198515409014847,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.962Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0c5"
+  },
+  "codigo": "CUP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.802Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.963Z"
+  },
+  "nombre": "CUP",
+  "tasaEnQuetzales": 0.31985670419651996,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.964Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0c6"
+  },
+  "codigo": "CVE",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.804Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.965Z"
+  },
+  "nombre": "CVE",
+  "tasaEnQuetzales": 0.08164065051270329,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.965Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0c7"
+  },
+  "codigo": "CZK",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.806Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.967Z"
+  },
+  "nombre": "CZK",
+  "tasaEnQuetzales": 0.36571094207138677,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.967Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0c8"
+  },
+  "codigo": "DJF",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.809Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.969Z"
+  },
+  "nombre": "DJF",
+  "tasaEnQuetzales": 0.0431946784156192,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.969Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0c9"
+  },
+  "codigo": "DKK",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.813Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.971Z"
+  },
+  "nombre": "DKK",
+  "tasaEnQuetzales": 1.2067093037287318,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.971Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0ca"
+  },
+  "codigo": "DOP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.815Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.972Z"
+  },
+  "nombre": "DOP",
+  "tasaEnQuetzales": 0.12700670595407437,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.972Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0cb"
+  },
+  "codigo": "DZD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.818Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.974Z"
+  },
+  "nombre": "DZD",
+  "tasaEnQuetzales": 0.059133108627520546,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.974Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0cc"
+  },
+  "codigo": "EGP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.820Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.976Z"
+  },
+  "nombre": "EGP",
+  "tasaEnQuetzales": 0.15620606704364398,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.976Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0cd"
+  },
+  "codigo": "ERN",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.822Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.978Z"
+  },
+  "nombre": "ERN",
+  "tasaEnQuetzales": 0.5117707267144319,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.978Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0ce"
+  },
+  "codigo": "ETB",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.824Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.980Z"
+  },
+  "nombre": "ETB",
+  "tasaEnQuetzales": 0.05510795648675756,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.980Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0cf"
+  },
+  "codigo": "EUR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.828Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.981Z"
+  },
+  "nombre": "Euro",
+  "tasaEnQuetzales": 9.000900090009,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.981Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0d0"
+  },
+  "codigo": "FJD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.830Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.983Z"
+  },
+  "nombre": "FJD",
+  "tasaEnQuetzales": 3.4246575342465757,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.983Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0d1"
+  },
+  "codigo": "FKP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.834Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.985Z"
+  },
+  "nombre": "FKP",
+  "tasaEnQuetzales": 10.384215991692628,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.985Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0d2"
+  },
+  "codigo": "FOK",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.838Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.986Z"
+  },
+  "nombre": "FOK",
+  "tasaEnQuetzales": 1.2067093037287318,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.986Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0d3"
+  },
+  "codigo": "GBP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.841Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.988Z"
+  },
+  "nombre": "Libra Esterlina",
+  "tasaEnQuetzales": 10.384215991692628,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.988Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0d4"
+  },
+  "codigo": "GEL",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.844Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.990Z"
+  },
+  "nombre": "GEL",
+  "tasaEnQuetzales": 2.834467120181406,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.990Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0d5"
+  },
+  "codigo": "GGP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.888Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.992Z"
+  },
+  "nombre": "GGP",
+  "tasaEnQuetzales": 10.384215991692628,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.992Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0d6"
+  },
+  "codigo": "GHS",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.894Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.994Z"
+  },
+  "nombre": "GHS",
+  "tasaEnQuetzales": 0.7327080890973037,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.994Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434bb6bce22bdadfe0d7"
+  },
+  "codigo": "GIP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.899Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.996Z"
+  },
+  "nombre": "GIP",
+  "tasaEnQuetzales": 10.384215991692628,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.996Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0d8"
+  },
+  "codigo": "GMD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:51.903Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.998Z"
+  },
+  "nombre": "GMD",
+  "tasaEnQuetzales": 0.10547410610695075,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.998Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0d9"
+  },
+  "codigo": "GNF",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.073Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:07.999Z"
+  },
+  "nombre": "GNF",
+  "tasaEnQuetzales": 0.0008837334628061772,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:07.999Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0da"
+  },
+  "codigo": "GYD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.096Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.001Z"
+  },
+  "nombre": "GYD",
+  "tasaEnQuetzales": 0.03669940253372675,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.001Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0db"
+  },
+  "codigo": "HKD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.114Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.003Z"
+  },
+  "nombre": "HKD",
+  "tasaEnQuetzales": 0.9777082518576458,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.003Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0dc"
+  },
+  "codigo": "HNL",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.132Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.005Z"
+  },
+  "nombre": "HNL",
+  "tasaEnQuetzales": 0.2931175987806308,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.005Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0dd"
+  },
+  "codigo": "HRK",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.149Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.007Z"
+  },
+  "nombre": "HRK",
+  "tasaEnQuetzales": 1.1947431302270013,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.007Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0de"
+  },
+  "codigo": "HTG",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.161Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.009Z"
+  },
+  "nombre": "HTG",
+  "tasaEnQuetzales": 0.0584726932522512,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.010Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0df"
+  },
+  "codigo": "HUF",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.176Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.012Z"
+  },
+  "nombre": "HUF",
+  "tasaEnQuetzales": 0.022557883529135764,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.012Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0e0"
+  },
+  "codigo": "IDR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.203Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.014Z"
+  },
+  "nombre": "IDR",
+  "tasaEnQuetzales": 0.00047353993786114224,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.014Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0e1"
+  },
+  "codigo": "ILS",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.223Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.015Z"
+  },
+  "nombre": "ILS",
+  "tasaEnQuetzales": 2.3014959723820483,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.016Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0e2"
+  },
+  "codigo": "IMP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.272Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.017Z"
+  },
+  "nombre": "IMP",
+  "tasaEnQuetzales": 10.384215991692628,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.018Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0e3"
+  },
+  "codigo": "INR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.339Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.019Z"
+  },
+  "nombre": "INR",
+  "tasaEnQuetzales": 0.0888209901763985,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.019Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0e4"
+  },
+  "codigo": "IQD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.387Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.021Z"
+  },
+  "nombre": "IQD",
+  "tasaEnQuetzales": 0.00586084707995016,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.021Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0e5"
+  },
+  "codigo": "IRR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.441Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.023Z"
+  },
+  "nombre": "IRR",
+  "tasaEnQuetzales": 0.00017991245423994195,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.023Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0e6"
+  },
+  "codigo": "ISK",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.476Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.025Z"
+  },
+  "nombre": "ISK",
+  "tasaEnQuetzales": 0.06324710644488014,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.025Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0e7"
+  },
+  "codigo": "JEP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.508Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.027Z"
+  },
+  "nombre": "JEP",
+  "tasaEnQuetzales": 10.384215991692628,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.028Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0e8"
+  },
+  "codigo": "JMD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.521Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.029Z"
+  },
+  "nombre": "JMD",
+  "tasaEnQuetzales": 0.04790924073435284,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.029Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0e9"
+  },
+  "codigo": "JOD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.547Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.031Z"
+  },
+  "nombre": "JOD",
+  "tasaEnQuetzales": 10.827197921178,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.031Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0ea"
+  },
+  "codigo": "JPY",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.660Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.033Z"
+  },
+  "nombre": "Yen Japonés",
+  "tasaEnQuetzales": 0.052375764686164415,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.033Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0eb"
+  },
+  "codigo": "KES",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.772Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.034Z"
+  },
+  "nombre": "KES",
+  "tasaEnQuetzales": 0.059385596617396424,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.034Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0ec"
+  },
+  "codigo": "KGS",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.811Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.036Z"
+  },
+  "nombre": "KGS",
+  "tasaEnQuetzales": 0.08770852702299717,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.036Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6878434cb6bce22bdadfe0ed"
+  },
+  "codigo": "KHR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:26:52.837Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.038Z"
+  },
+  "nombre": "KHR",
+  "tasaEnQuetzales": 0.0019140818426942462,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.038Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0ee"
+  },
+  "codigo": "KID",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.395Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.040Z"
+  },
+  "nombre": "KID",
+  "tasaEnQuetzales": 5.053057099545225,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.040Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0ef"
+  },
+  "codigo": "KMF",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.398Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.042Z"
+  },
+  "nombre": "KMF",
+  "tasaEnQuetzales": 0.01829822818256508,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.042Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0f0"
+  },
+  "codigo": "KRW",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.401Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.043Z"
+  },
+  "nombre": "KRW",
+  "tasaEnQuetzales": 0.005574707773818497,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.043Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0f1"
+  },
+  "codigo": "KWD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.404Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.045Z"
+  },
+  "nombre": "KWD",
+  "tasaEnQuetzales": 25.144581342720645,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.045Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0f2"
+  },
+  "codigo": "KYD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.406Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.047Z"
+  },
+  "nombre": "KYD",
+  "tasaEnQuetzales": 9.208103130755065,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.047Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0f3"
+  },
+  "codigo": "KZT",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.409Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.048Z"
+  },
+  "nombre": "KZT",
+  "tasaEnQuetzales": 0.014264175380889144,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.048Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0f4"
+  },
+  "codigo": "LAK",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.411Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.050Z"
+  },
+  "nombre": "LAK",
+  "tasaEnQuetzales": 0.0003548970055174773,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.050Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0f5"
+  },
+  "codigo": "LBP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.414Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.052Z"
+  },
+  "nombre": "LBP",
+  "tasaEnQuetzales": 0.00008577203970456336,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.052Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0f6"
+  },
+  "codigo": "LKR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.417Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.054Z"
+  },
+  "nombre": "LKR",
+  "tasaEnQuetzales": 0.0254397903761273,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.054Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0f7"
+  },
+  "codigo": "LRD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.420Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.055Z"
+  },
+  "nombre": "LRD",
+  "tasaEnQuetzales": 0.03830302287456526,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.055Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0f8"
+  },
+  "codigo": "LSL",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.423Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.057Z"
+  },
+  "nombre": "LSL",
+  "tasaEnQuetzales": 0.43717758153361896,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.057Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0f9"
+  },
+  "codigo": "LYD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.425Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.059Z"
+  },
+  "nombre": "LYD",
+  "tasaEnQuetzales": 1.41643059490085,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.059Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0fa"
+  },
+  "codigo": "MAD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.428Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.061Z"
+  },
+  "nombre": "MAD",
+  "tasaEnQuetzales": 0.8527330092947898,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.061Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0fb"
+  },
+  "codigo": "MDL",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.430Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.063Z"
+  },
+  "nombre": "MDL",
+  "tasaEnQuetzales": 0.4538852578068265,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.063Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0fc"
+  },
+  "codigo": "MGA",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.433Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.065Z"
+  },
+  "nombre": "MGA",
+  "tasaEnQuetzales": 0.001738136522976079,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.066Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0fd"
+  },
+  "codigo": "MKD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.436Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.067Z"
+  },
+  "nombre": "MKD",
+  "tasaEnQuetzales": 0.14512524308478217,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.067Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0fe"
+  },
+  "codigo": "MMK",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.439Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.069Z"
+  },
+  "nombre": "MMK",
+  "tasaEnQuetzales": 0.0036525730916401366,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.069Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe0ff"
+  },
+  "codigo": "MNT",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.442Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.070Z"
+  },
+  "nombre": "MNT",
+  "tasaEnQuetzales": 0.0021393412882599796,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.071Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe100"
+  },
+  "codigo": "MOP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.445Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.072Z"
+  },
+  "nombre": "MOP",
+  "tasaEnQuetzales": 0.9492168960607498,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.072Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe101"
+  },
+  "codigo": "MRU",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.447Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.076Z"
+  },
+  "nombre": "MRU",
+  "tasaEnQuetzales": 0.19224853891110427,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.077Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe102"
+  },
+  "codigo": "MUR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.451Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.080Z"
+  },
+  "nombre": "MUR",
+  "tasaEnQuetzales": 0.16910745087428553,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.081Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe103"
+  },
+  "codigo": "MVR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.453Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.113Z"
+  },
+  "nombre": "MVR",
+  "tasaEnQuetzales": 0.49649967727520977,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.113Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe104"
+  },
+  "codigo": "MWK",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.456Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.129Z"
+  },
+  "nombre": "MWK",
+  "tasaEnQuetzales": 0.004427962583716167,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.129Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe105"
+  },
+  "codigo": "MXN",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.459Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.132Z"
+  },
+  "nombre": "Peso Mexicano",
+  "tasaEnQuetzales": 0.41143797572515944,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.132Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe106"
+  },
+  "codigo": "MYR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.462Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.136Z"
+  },
+  "nombre": "MYR",
+  "tasaEnQuetzales": 1.815211472136504,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.137Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe107"
+  },
+  "codigo": "MZN",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.464Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.142Z"
+  },
+  "nombre": "MZN",
+  "tasaEnQuetzales": 0.12011146343807054,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.143Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe108"
+  },
+  "codigo": "NAD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.467Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.151Z"
+  },
+  "nombre": "NAD",
+  "tasaEnQuetzales": 0.43717758153361896,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.151Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe109"
+  },
+  "codigo": "NGN",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.470Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.154Z"
+  },
+  "nombre": "NGN",
+  "tasaEnQuetzales": 0.0050244540177041665,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.154Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe10a"
+  },
+  "codigo": "NIO",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.473Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.156Z"
+  },
+  "nombre": "NIO",
+  "tasaEnQuetzales": 0.20860713019170993,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.156Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe10b"
+  },
+  "codigo": "NOK",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.475Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.159Z"
+  },
+  "nombre": "NOK",
+  "tasaEnQuetzales": 0.7606876616461281,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.159Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe10c"
+  },
+  "codigo": "NPR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.477Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.161Z"
+  },
+  "nombre": "NPR",
+  "tasaEnQuetzales": 0.05551330376324686,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.161Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe10d"
+  },
+  "codigo": "NZD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.480Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.165Z"
+  },
+  "nombre": "NZD",
+  "tasaEnQuetzales": 4.62962962962963,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.165Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe10e"
+  },
+  "codigo": "OMR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.483Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.167Z"
+  },
+  "nombre": "OMR",
+  "tasaEnQuetzales": 19.964064683569575,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.168Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe10f"
+  },
+  "codigo": "PAB",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.486Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.170Z"
+  },
+  "nombre": "PAB",
+  "tasaEnQuetzales": 7.674597083653108,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.170Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe110"
+  },
+  "codigo": "PEN",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.488Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.173Z"
+  },
+  "nombre": "PEN",
+  "tasaEnQuetzales": 2.154708037060978,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.176Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe111"
+  },
+  "codigo": "PGK",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.491Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.222Z"
+  },
+  "nombre": "PGK",
+  "tasaEnQuetzales": 1.8264840182648403,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.223Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe112"
+  },
+  "codigo": "PHP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.495Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.232Z"
+  },
+  "nombre": "PHP",
+  "tasaEnQuetzales": 0.13502383170629614,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.232Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe113"
+  },
+  "codigo": "PKR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.499Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.235Z"
+  },
+  "nombre": "PKR",
+  "tasaEnQuetzales": 0.02688800875473565,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.235Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe114"
+  },
+  "codigo": "PLN",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.505Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.237Z"
+  },
+  "nombre": "PLN",
+  "tasaEnQuetzales": 2.116850127011008,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.237Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe115"
+  },
+  "codigo": "PYG",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.508Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.240Z"
+  },
+  "nombre": "PYG",
+  "tasaEnQuetzales": 0.0010123324362043284,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.240Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe116"
+  },
+  "codigo": "QAR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.511Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.251Z"
+  },
+  "nombre": "QAR",
+  "tasaEnQuetzales": 2.108814846056516,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.252Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe117"
+  },
+  "codigo": "RON",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.513Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.254Z"
+  },
+  "nombre": "RON",
+  "tasaEnQuetzales": 1.7758835020422659,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.254Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe118"
+  },
+  "codigo": "RSD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.517Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.256Z"
+  },
+  "nombre": "RSD",
+  "tasaEnQuetzales": 0.07686867755127141,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.256Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe119"
+  },
+  "codigo": "RUB",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.519Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.265Z"
+  },
+  "nombre": "RUB",
+  "tasaEnQuetzales": 0.09769632075656032,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.265Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe11a"
+  },
+  "codigo": "RWF",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.522Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.270Z"
+  },
+  "nombre": "RWF",
+  "tasaEnQuetzales": 0.005310364237883076,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.270Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe11b"
+  },
+  "codigo": "SAR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.524Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.273Z"
+  },
+  "nombre": "SAR",
+  "tasaEnQuetzales": 2.0470829068577276,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.273Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe11c"
+  },
+  "codigo": "SBD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.527Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.354Z"
+  },
+  "nombre": "SBD",
+  "tasaEnQuetzales": 0.9237021984112322,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.354Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe11d"
+  },
+  "codigo": "SCR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.530Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.374Z"
+  },
+  "nombre": "SCR",
+  "tasaEnQuetzales": 0.5278994879374966,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.375Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe11e"
+  },
+  "codigo": "SDG",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.535Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.395Z"
+  },
+  "nombre": "SDG",
+  "tasaEnQuetzales": 0.014109665967767878,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.396Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe11f"
+  },
+  "codigo": "SEK",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.538Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.404Z"
+  },
+  "nombre": "SEK",
+  "tasaEnQuetzales": 0.8061915511125444,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.404Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe120"
+  },
+  "codigo": "SGD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.540Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.409Z"
+  },
+  "nombre": "SGD",
+  "tasaEnQuetzales": 6.006006006006006,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.409Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe121"
+  },
+  "codigo": "SHP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.544Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.418Z"
+  },
+  "nombre": "SHP",
+  "tasaEnQuetzales": 10.384215991692628,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.419Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe122"
+  },
+  "codigo": "SLE",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.546Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.422Z"
+  },
+  "nombre": "SLE",
+  "tasaEnQuetzales": 0.33552543282780833,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.422Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe123"
+  },
+  "codigo": "SLL",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.550Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.425Z"
+  },
+  "nombre": "SLL",
+  "tasaEnQuetzales": 0.00033552213434487446,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.425Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe124"
+  },
+  "codigo": "SOS",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.554Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.431Z"
+  },
+  "nombre": "SOS",
+  "tasaEnQuetzales": 0.013433168642685775,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.431Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe125"
+  },
+  "codigo": "SRD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.557Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.443Z"
+  },
+  "nombre": "SRD",
+  "tasaEnQuetzales": 0.20865065620631376,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.444Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe126"
+  },
+  "codigo": "SSP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.560Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.449Z"
+  },
+  "nombre": "SSP",
+  "tasaEnQuetzales": 0.0016945562380851515,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.449Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe127"
+  },
+  "codigo": "STN",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.562Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.454Z"
+  },
+  "nombre": "STN",
+  "tasaEnQuetzales": 0.36743092298647856,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.454Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe128"
+  },
+  "codigo": "SYP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.565Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.457Z"
+  },
+  "nombre": "SYP",
+  "tasaEnQuetzales": 0.0005877809740000964,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.457Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe129"
+  },
+  "codigo": "SZL",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.569Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.461Z"
+  },
+  "nombre": "SZL",
+  "tasaEnQuetzales": 0.43717758153361896,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.461Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe12a"
+  },
+  "codigo": "THB",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.571Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.463Z"
+  },
+  "nombre": "THB",
+  "tasaEnQuetzales": 0.23865778859693085,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.464Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe12b"
+  },
+  "codigo": "TJS",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.574Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.466Z"
+  },
+  "nombre": "TJS",
+  "tasaEnQuetzales": 0.8028259473346179,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.466Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe12c"
+  },
+  "codigo": "TMT",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.577Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.468Z"
+  },
+  "nombre": "TMT",
+  "tasaEnQuetzales": 2.1925016443762333,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.469Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe12d"
+  },
+  "codigo": "TND",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.579Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.472Z"
+  },
+  "nombre": "TND",
+  "tasaEnQuetzales": 2.67022696929239,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.472Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe12e"
+  },
+  "codigo": "TOP",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.582Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.478Z"
+  },
+  "nombre": "TOP",
+  "tasaEnQuetzales": 3.209242618741977,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.478Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe12f"
+  },
+  "codigo": "TRY",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.586Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.484Z"
+  },
+  "nombre": "TRY",
+  "tasaEnQuetzales": 0.18975332068311196,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.485Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe130"
+  },
+  "codigo": "TTD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.610Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.488Z"
+  },
+  "nombre": "TTD",
+  "tasaEnQuetzales": 1.1310937676733401,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.488Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe131"
+  },
+  "codigo": "TVD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.614Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.495Z"
+  },
+  "nombre": "TVD",
+  "tasaEnQuetzales": 5.053057099545225,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.495Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe132"
+  },
+  "codigo": "TWD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.619Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.497Z"
+  },
+  "nombre": "TWD",
+  "tasaEnQuetzales": 0.26171844329869925,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.497Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe133"
+  },
+  "codigo": "TZS",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.625Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.500Z"
+  },
+  "nombre": "TZS",
+  "tasaEnQuetzales": 0.0029497724545528557,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.500Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe134"
+  },
+  "codigo": "UAH",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.628Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.503Z"
+  },
+  "nombre": "UAH",
+  "tasaEnQuetzales": 0.18359740760460463,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.503Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe135"
+  },
+  "codigo": "UGX",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.630Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.506Z"
+  },
+  "nombre": "UGX",
+  "tasaEnQuetzales": 0.002138002959851298,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.506Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe136"
+  },
+  "codigo": "USD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.636Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.510Z"
+  },
+  "nombre": "Dólar Estadounidense",
+  "tasaEnQuetzales": 7.674597083653108,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.511Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe137"
+  },
+  "codigo": "UYU",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.639Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.513Z"
+  },
+  "nombre": "UYU",
+  "tasaEnQuetzales": 0.19077416154756002,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.513Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe138"
+  },
+  "codigo": "UZS",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.645Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.516Z"
+  },
+  "nombre": "UZS",
+  "tasaEnQuetzales": 0.0006038131403627046,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.517Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe139"
+  },
+  "codigo": "VES",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.649Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.519Z"
+  },
+  "nombre": "VES",
+  "tasaEnQuetzales": 0.06326151043182307,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.519Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe13a"
+  },
+  "codigo": "VND",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.655Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.521Z"
+  },
+  "nombre": "VND",
+  "tasaEnQuetzales": 0.00029513599645364586,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.521Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe13b"
+  },
+  "codigo": "VUV",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.659Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.522Z"
+  },
+  "nombre": "VUV",
+  "tasaEnQuetzales": 0.06401925699250334,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.522Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe13c"
+  },
+  "codigo": "WST",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.663Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.527Z"
+  },
+  "nombre": "WST",
+  "tasaEnQuetzales": 2.7956388034665918,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.528Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe13d"
+  },
+  "codigo": "XAF",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.672Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.532Z"
+  },
+  "nombre": "XAF",
+  "tasaEnQuetzales": 0.013723671136923812,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.532Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe13e"
+  },
+  "codigo": "XCD",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.675Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.534Z"
+  },
+  "nombre": "XCD",
+  "tasaEnQuetzales": 2.8433323855558714,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.534Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe13f"
+  },
+  "codigo": "XCG",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.685Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.536Z"
+  },
+  "nombre": "XCG",
+  "tasaEnQuetzales": 4.288164665523157,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.536Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe140"
+  },
+  "codigo": "XDR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.692Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.538Z"
+  },
+  "nombre": "XDR",
+  "tasaEnQuetzales": 10.527423939362038,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.538Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe141"
+  },
+  "codigo": "XOF",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.697Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.540Z"
+  },
+  "nombre": "XOF",
+  "tasaEnQuetzales": 0.013723671136923812,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.540Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe142"
+  },
+  "codigo": "XPF",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.702Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.543Z"
+  },
+  "nombre": "XPF",
+  "tasaEnQuetzales": 0.07543753771876886,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.543Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe143"
+  },
+  "codigo": "YER",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.704Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.545Z"
+  },
+  "nombre": "YER",
+  "tasaEnQuetzales": 0.03184895949449332,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.546Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe144"
+  },
+  "codigo": "ZAR",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.708Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.547Z"
+  },
+  "nombre": "ZAR",
+  "tasaEnQuetzales": 0.43717758153361896,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.547Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe145"
+  },
+  "codigo": "ZMW",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.712Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.549Z"
+  },
+  "nombre": "ZMW",
+  "tasaEnQuetzales": 0.3311148637462336,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.549Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68784373b6bce22bdadfe146"
+  },
+  "codigo": "ZWL",
+  "activo": true,
+  "createdAt": {
+    "$date": "2025-07-17T00:27:31.714Z"
+  },
+  "fechaActualizacion": {
+    "$date": "2025-07-24T01:35:08.550Z"
+  },
+  "nombre": "ZWL",
+  "tasaEnQuetzales": 0.28656579550664835,
+  "updatedAt": {
+    "$date": "2025-07-24T01:35:08.550Z"
+  }
+}]

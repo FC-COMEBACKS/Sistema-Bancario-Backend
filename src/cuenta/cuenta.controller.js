@@ -11,13 +11,7 @@ export const crearCuenta = async (req, res) => {
     try {
         const { usuario, tipo, activa = true } = req.body;
         
-        const cuentaExistente = await Cuenta.findOne({ usuario });
-        if (cuentaExistente) {
-            return res.status(400).json({
-                msg: "El usuario ya tiene una cuenta y solo puede tener una"
-            });
-        }
-        
+       
         let numeroCuenta;
         let existe = true;
         
@@ -286,31 +280,31 @@ export const getCuentas = async (req, res) => {
 export const getCuentaByUsuario = async (req, res) => {
     try {
         const { uid } = req.params;
+        const usuario = req.usuario;
         
-        const cuenta = await Cuenta.findOne({ usuario: uid })
-            .populate('usuario', 'nombre username email')
-            .populate({
-                path: 'movimientos',
-                options: { sort: { fechaCreacion: -1 }, limit: 5 }
-            })
-            .lean(); 
-
-        if (!cuenta) {
-            return res.status(404).json({
-                msg: "No tienes una cuenta asociada"
+        const esAdmin = usuario.rol === 'ADMIN';
+        const esPropietario = usuario._id.toString() === uid;
+        
+        if (!esAdmin && !esPropietario) {
+            return res.status(403).json({
+                success: false,
+                message: "No tienes permisos para ver estas cuentas"
             });
         }
-
-        cuenta.cid = cuenta._id;
-
-        res.json({
-            cuenta
+        
+        const cuentas = await Cuenta.find({ usuario: uid })
+            .populate('usuario', 'nombre username email')
+            .sort({ fechaCreacion: -1 });
+            
+        return res.status(200).json({
+            success: true,
+            cuentas 
         });
-    } catch (error) {
-        console.error("Error en getCuentaByUsuario:", error);
-        res.status(500).json({
-            msg: "Error al obtener la cuenta",
-            error: error.message
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: "Error al obtener las cuentas",
+            error: err.message
         });
     }
 };

@@ -1,5 +1,5 @@
 import { body, param } from "express-validator";
-import { cuentaExists, userExists, usuarioTieneCuenta } from "../helpers/db-validator.js";
+import { cuentaExists, userExists } from "../helpers/db-validator.js";
 import { validateField } from "./validate-fields.js";
 import { handleErrors } from "./handle-errors.js";
 import { validateJWT } from "./validate-jwt.js";
@@ -15,8 +15,6 @@ export const crearCuentaValidator = [
     body("tipo")
         .notEmpty().withMessage("El tipo de cuenta es obligatorio")
         .isIn(["AHORROS", "CORRIENTE"]).withMessage("El tipo de cuenta debe ser AHORROS o CORRIENTE"),
-    body("usuario")
-        .custom(usuarioTieneCuenta),
     validateField,
     handleErrors
 ]

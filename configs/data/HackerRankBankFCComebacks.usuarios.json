@@ -1,0 +1,79 @@
+[{
+  "_id": {
+    "$oid": "6859fe70a440759bd8e8066b"
+  },
+  "nombre": "Marcooo",
+  "username": "ADMINB",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$bTeofFusjdnHvd9ru2bA6A$Q+l2jas6JAFu6B52koQDsJokMkt2biP8TdE5tQFvnyE",
+  "rol": "ADMIN",
+  "dpi": "7030304051234",
+  "estado": "ACTIVO",
+  "direccion": "Oficina Central",
+  "celular": "37996330",
+  "email": "adminb@admin.com",
+  "nombreTrabajo": "Administrador",
+  "ingresosMensuales": 10000,
+  "fechaRegistro": {
+    "$date": "2025-06-24T01:25:04.219Z"
+  },
+  "__v": 0,
+  "updatedAt": {
+    "$date": "2025-07-09T16:44:12.278Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68775e0f6330a6215526b334"
+  },
+  "nombre": "danitt030",
+  "username": "danitt030",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$t+JkMBVSEMSVBZ2tIxQd5g$e3w6ZASXfj31xDqI1IQrcPN2M7HOBdaFuFHg53yz3lI",
+  "rol": "CLIENT",
+  "dpi": "1111111111111",
+  "estado": "ACTIVO",
+  "direccion": "KINAL",
+  "celular": "12345678",
+  "email": "danitt030@gmail.com",
+  "nombreTrabajo": "INFORMATICA",
+  "ingresosMensuales": 4500,
+  "cuentasAgregadas": [
+    {
+      "$oid": "6878799bee695ae0d29e6bee"
+    }
+  ],
+  "fechaRegistro": {
+    "$date": "2025-07-16T08:08:47.334Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-16T08:08:47.338Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-17T04:23:37.315Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68787973ee695ae0d29e6a2b"
+  },
+  "nombre": "Juan Gallardo",
+  "username": "JUANPZ",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$JO+QgLPETO8v9MZphcRKSA$wrDs42cy63Z3gj95rrQAB3GBxgeiD14Gx3j4a4LCvwU",
+  "rol": "CLIENT",
+  "dpi": "1234567890123",
+  "estado": "ACTIVO",
+  "direccion": "Zona 5, Ciudad de Guatemala",
+  "celular": "12345678",
+  "email": "juangallardo@email.com",
+  "nombreTrabajo": "Ingeniero",
+  "ingresosMensuales": 1000,
+  "cuentasAgregadas": [],
+  "fechaRegistro": {
+    "$date": "2025-07-17T04:17:55.945Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-17T04:17:55.957Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-17T04:17:55.957Z"
+  }
+}]
