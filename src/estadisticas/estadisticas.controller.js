@@ -6,6 +6,7 @@ import ProductoServicio from '../productoServicio/productoServicio.model.js';
 export const getEstadisticasGenerales = async (req, res) => {
     try {
         const { usuario } = req;
+        
         if (usuario.rol !== 'ADMIN') {
             return res.status(403).json({
                 success: false,

@@ -3,7 +3,7 @@ import User from "../user/user.model.js"
 
 export const validateJWT = async (req, res, next) => {
     try{
-        let token = req.body.token || req.query.token || req.headers["authorization"]
+        let token = (req.body && req.body.token) || (req.query && req.query.token) || req.headers["authorization"]
 
         if(!token){
             return res.status(400).json({
@@ -13,8 +13,33 @@ export const validateJWT = async (req, res, next) => {
         }
 
         token = token.replace(/^Bearer\s+/, "")
-
-        const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY)
+        
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+        } catch (jwtError) {
+            return res.status(401).json({
+                success: false,
+                message: "Token inválido",
+                error: jwtError.message
+            });
+        }
+        
+        if (!decoded) {
+            return res.status(401).json({
+                success: false,
+                message: "Token inválido o malformado"
+            });
+        }
+        
+        if (!decoded.uid) {
+            return res.status(401).json({
+                success: false,
+                message: "Token no contiene información de usuario válida"
+            });
+        }
+        
+        const { uid } = decoded
 
         const user = await User.findById(uid)
 
@@ -28,7 +53,7 @@ export const validateJWT = async (req, res, next) => {
         if(user.estado === "INACTIVO"){
             return res.status(400).json({
                 success: false,
-                message: " Usuario desactivado previamente"
+                message: "Usuario desactivado previamente"
             })
         }
 
