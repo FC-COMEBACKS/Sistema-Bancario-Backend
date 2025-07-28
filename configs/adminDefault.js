@@ -11,13 +11,13 @@ export const crearAdmin = async () => {
         }
 
         const datosAdmin = {
-            username: "ADMINB",
-            password: await hash("ADMINB"),
+            username: "ADMINBB",
+            password: await hash("ADMINBB"),
             nombre: "Marco",
             email: "adminb@admin.com",
             celular: "37996330",
-            direccion: "Oficina Central",
-            dpi: "7030304051234",
+            direccion: "KINAL",
+            dpi: "7030304051235",
             nombreTrabajo: "Administrador",
             ingresosMensuales: 10000,
             rol: "ADMIN"
